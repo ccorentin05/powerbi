@@ -257,9 +257,9 @@ const fadeInUp = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.05, duration: 0.4, ease: 'easeOut' },
+    transition: { delay: i * 0.05, duration: 0.4, ease: 'easeOut' as const },
   }),
-}
+} as any
 
 const stagger = {
   visible: { transition: { staggerChildren: 0.06 } },
@@ -269,19 +269,6 @@ const stagger = {
 /*  Small reusable components                                          */
 /* ------------------------------------------------------------------ */
 
-function SectionHeading({ icon: Icon, title, subtitle }: { icon: LucideIcon; title: string; subtitle?: string }) {
-  return (
-    <div className="mb-8">
-      <div className="flex items-center gap-3 mb-2">
-        <div className="p-2 rounded-lg bg-primary/10">
-          <Icon className="w-6 h-6 text-primary" />
-        </div>
-        <h2 className="text-2xl font-bold text-pbi-text">{title}</h2>
-      </div>
-      {subtitle && <p className="text-pbi-muted ml-13">{subtitle}</p>}
-    </div>
-  )
-}
 
 function RoleBadge({ allowed }: { allowed: boolean }) {
   return allowed ? (
