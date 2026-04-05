@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #f2c811;
+  --color-primary-dark: #d4a90a;
+  --color-primary-light: #fae27a;
+  --color-fabric: #0078d4;
+  --color-fabric-dark: #005a9e;
+  --color-fabric-light: #4da6ff;
+  --color-pbi-yellow: #f2c811;
+  --color-pbi-dark: #1a1a2e;
+  --color-pbi-darker: #0f0f1e;
+  --color-pbi-card: #16213e;
+  --color-pbi-card-hover: #1a2744;
+  --color-pbi-border: #2a3a5c;
+  --color-pbi-text: #e2e8f0;
+  --color-pbi-muted: #94a3b8;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-info: #3b82f6;
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-pbi-darker);
+  color: var(--color-pbi-text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-pbi-darker); }
+::-webkit-scrollbar-thumb { background: var(--color-pbi-border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-pbi-muted); }
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-fabric-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-card {
+  background: rgba(22, 33, 62, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(42, 58, 92, 0.5);
+  border-radius: 16px;
+}
+
+.glow-yellow { box-shadow: 0 0 20px rgba(242, 200, 17, 0.15), 0 0 60px rgba(242, 200, 17, 0.05); }
+.glow-blue { box-shadow: 0 0 20px rgba(0, 120, 212, 0.15), 0 0 60px rgba(0, 120, 212, 0.05); }
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(42, 58, 92, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(42, 58, 92, 0.3) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: var(--color-pbi-border);
+  border-radius: 3px;
+  outline: none;
+  width: 100%;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(242, 200, 17, 0.4);
+}
