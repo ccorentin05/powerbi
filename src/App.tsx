@@ -17,6 +17,7 @@ import Certifications from './pages/Certifications'
 import NotebookTemplates from './pages/NotebookTemplates'
 import ApiReference from './pages/ApiReference'
 import CiCdPipelines from './pages/CiCdPipelines'
+import Exercises from './pages/Exercises'
 import Chatbot from './components/Chatbot'
 
 export default function App() {
@@ -41,6 +42,7 @@ export default function App() {
           <Route path="/notebooks" element={<NotebookTemplates />} />
           <Route path="/api" element={<ApiReference />} />
           <Route path="/cicd" element={<CiCdPipelines />} />
+          <Route path="/exercises" element={<Exercises />} />
         </Routes>
       </Layout>
       <Chatbot />

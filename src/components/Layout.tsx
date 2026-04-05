@@ -20,6 +20,7 @@ import {
   FileCode,
   GitBranch,
   Plug,
+  PenTool,
 } from 'lucide-react'
 
 const navItems = [
@@ -40,6 +41,7 @@ const navItems = [
   { path: '/notebooks', label: 'Notebooks', icon: FileCode },
   { path: '/api', label: 'API', icon: Plug },
   { path: '/cicd', label: 'CI/CD', icon: GitBranch },
+  { path: '/exercises', label: 'Exercices', icon: PenTool },
 ]
 
 export default function Layout({ children }: { children: React.ReactNode }) {
