@@ -17,6 +17,7 @@ import {
   Sparkles,
   Zap,
   TrendingUp,
+  CheckCircle2,
 } from 'lucide-react'
 import AnimatedCounter from '../components/AnimatedCounter'
 
@@ -24,91 +25,129 @@ const stats = [
   { label: 'Fonctions DAX', value: 190, suffix: '+' },
   { label: 'Fiches Techniques', value: 80, suffix: '+' },
   { label: 'Patterns Architecture', value: 20, suffix: '+' },
-  { label: 'Exercices Pratiques', value: 22, suffix: '' },
+  { label: 'Exercices', value: 22, suffix: '' },
   { label: 'Items Roadmap', value: 40, suffix: '+' },
+]
+
+const techStack = [
+  'Power BI',
+  'Microsoft Fabric',
+  'OneLake',
+  'DAX',
+  'Power Query',
+  'Lakehouse',
+  'Data Factory',
+  'Real-Time Intelligence',
+  'Synapse',
+  'Copilot',
+  'PySpark',
+  'Delta Lake',
 ]
 
 const bentoCards = [
   {
     icon: Calculator,
     eyebrow: 'Outils',
-    title: 'Simulez vos couts Fabric',
-    desc: 'Calculez votre capacite F2 a F2048, comparez les licences, evaluez le ROI de votre migration.',
-    bg: 'var(--bento-peach)',
-    iconBg: '#F4A881',
+    title: 'Simulez vos couts Fabric en temps reel',
+    desc: 'Calculez votre capacite de F2 a F2048, comparez les licences, evaluez le ROI de votre migration. Tout est interactif.',
+    bg: 'linear-gradient(135deg, #FFE5D4 0%, #FFD0B5 100%)',
+    iconBg: '#F4805C',
+    accent: '#F4805C',
     to: '/simulator',
-    span: 'md:col-span-2',
+    span: 'md:col-span-2 md:row-span-2',
+    big: true,
   },
   {
     icon: GraduationCap,
-    eyebrow: 'Apprentissage',
-    title: '190+ fonctions DAX documentees',
-    desc: 'Reference complete avec exemples, complexite, et cas d\'usage.',
-    bg: 'var(--bento-mint)',
-    iconBg: '#7BC298',
+    eyebrow: 'DAX',
+    title: '190+ fonctions documentees',
+    desc: 'Reference complete avec exemples, complexite et cas d\'usage.',
+    bg: 'linear-gradient(135deg, #D6F0E0 0%, #B5E6C9 100%)',
+    iconBg: '#5BA876',
+    accent: '#5BA876',
     to: '/dax',
     span: '',
+    big: false,
   },
   {
     icon: Layers,
     eyebrow: 'Fabric',
     title: 'Plongez dans chaque workload',
-    desc: 'Data Engineering, Data Factory, Real-Time Intelligence, OneLake — guide complet.',
-    bg: 'var(--bento-sky)',
-    iconBg: '#7E9DD9',
+    desc: 'Data Engineering, Data Factory, Real-Time Intelligence, OneLake.',
+    bg: 'linear-gradient(135deg, #DCE7F7 0%, #C0D4EF 100%)',
+    iconBg: '#5C7EC4',
+    accent: '#5C7EC4',
     to: '/fabric',
     span: '',
+    big: false,
   },
   {
     icon: Code2,
     eyebrow: 'Developpeur',
     title: 'API REST & CI/CD prets a l\'emploi',
-    desc: '28 endpoints documentes, templates GitHub Actions, notebooks PySpark.',
-    bg: 'var(--bento-lavender)',
-    iconBg: '#A589D9',
+    desc: '28 endpoints documentes, templates GitHub Actions, notebooks PySpark optimises pour la production.',
+    bg: 'linear-gradient(135deg, #E8DFF5 0%, #D1BEF0 100%)',
+    iconBg: '#8366B8',
+    accent: '#8366B8',
     to: '/api',
     span: 'md:col-span-2',
+    big: false,
   },
   {
     icon: BrainCircuit,
-    eyebrow: 'Intelligence Artificielle',
+    eyebrow: 'IA',
     title: 'Copilot, Vibe BI & MCP',
     desc: 'Tirez parti de l\'IA generative dans Power BI et Fabric.',
-    bg: 'var(--bento-yellow)',
-    iconBg: '#E5C04A',
+    bg: 'linear-gradient(135deg, #FFF3C4 0%, #FFE89B 100%)',
+    iconBg: '#D4A92E',
+    accent: '#D4A92E',
     to: '/ai',
     span: '',
+    big: false,
   },
   {
     icon: PenTool,
     eyebrow: 'Pratique',
     title: '22 exercices avec corrections',
     desc: 'Mettez en pratique vos connaissances DAX, modelisation et architecture.',
-    bg: 'var(--bento-rose)',
-    iconBg: '#E58797',
+    bg: 'linear-gradient(135deg, #FFD6DC 0%, #FFB5C0 100%)',
+    iconBg: '#D4566B',
+    accent: '#D4566B',
     to: '/exercises',
     span: '',
+    big: false,
   },
   {
     icon: Newspaper,
     eyebrow: 'Actualites',
-    title: 'Roadmap & nouveautes',
-    desc: '40+ items roadmap Q2-Q4 2025, mises a jour mensuelles, ressources communaute.',
-    bg: 'var(--bento-cream)',
-    iconBg: '#E5B656',
+    title: 'Roadmap & nouveautes mensuelles',
+    desc: '40+ items roadmap Q2-Q4 2025, ressources communaute, blogs et podcasts.',
+    bg: 'linear-gradient(135deg, #FFF6E8 0%, #FFE6B5 100%)',
+    iconBg: '#D49A2E',
+    accent: '#D49A2E',
     to: '/whatsnew',
-    span: '',
+    span: 'md:col-span-2',
+    big: false,
   },
   {
     icon: ClipboardCheck,
     eyebrow: 'Performance',
     title: 'Checklist d\'optimisation',
     desc: '35 points pour des modeles rapides et legers.',
-    bg: 'var(--bento-sage)',
-    iconBg: '#9BB680',
+    bg: 'linear-gradient(135deg, #E5EEDC 0%, #C7DBA8 100%)',
+    iconBg: '#7B9C47',
+    accent: '#7B9C47',
     to: '/performance',
     span: '',
+    big: false,
   },
+]
+
+const features = [
+  { icon: CheckCircle2, label: '100% francophone' },
+  { icon: CheckCircle2, label: 'Mis a jour mensuellement' },
+  { icon: CheckCircle2, label: 'Outils interactifs' },
+  { icon: CheckCircle2, label: 'Exemples pratiques' },
 ]
 
 const timelineEvents = [
@@ -116,7 +155,7 @@ const timelineEvents = [
   { year: '2010', title: 'PowerPivot', desc: 'Premier moteur xVelocity (VertiPaq) integre a Excel.' },
   { year: '2015', title: 'Power BI GA', desc: 'Lancement officiel du service et Power BI Desktop gratuit.' },
   { year: '2017', title: 'Power BI Premium', desc: 'Capacites dediees pour les entreprises.' },
-  { year: '2023', title: 'Microsoft Fabric', desc: 'Unification de Power BI, Synapse, ADF en une plateforme SaaS.' },
+  { year: '2023', title: 'Microsoft Fabric', desc: 'Unification de Power BI, Synapse et ADF en une plateforme SaaS.' },
   { year: '2024', title: 'Copilot in Power BI', desc: 'IA generative integree, Data Activator, Real-Time Intelligence.' },
   { year: '2025', title: 'Fabric maturite', desc: 'pbi-cli, Vibe BI, MCP Protocol, Fabric Databases, EPM.' },
 ]
@@ -135,17 +174,45 @@ export default function Home() {
     <div style={{ background: 'var(--background)' }}>
       {/* ============================ HERO ============================ */}
       <section className="relative overflow-hidden">
-        <div className="mx-auto w-full max-w-7xl px-6 sm:px-10 pt-24 md:pt-32 pb-20 md:pb-28">
-          <div className="text-center max-w-4xl mx-auto">
+        {/* Animated gradient blobs */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+          <div
+            className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full opacity-30"
+            style={{
+              background: 'radial-gradient(circle, #6e7cf1 0%, transparent 70%)',
+              filter: 'blur(80px)',
+              transform: 'translate(-50%, -30%)',
+            }}
+          />
+          <div
+            className="absolute top-20 right-1/4 w-[500px] h-[500px] rounded-full opacity-25"
+            style={{
+              background: 'radial-gradient(circle, #f17eb8 0%, transparent 70%)',
+              filter: 'blur(80px)',
+              transform: 'translate(50%, -20%)',
+            }}
+          />
+          <div
+            className="absolute top-40 left-1/2 w-[400px] h-[400px] rounded-full opacity-20"
+            style={{
+              background: 'radial-gradient(circle, #67c5d8 0%, transparent 70%)',
+              filter: 'blur(80px)',
+              transform: 'translate(-50%, 0)',
+            }}
+          />
+        </div>
+
+        <div className="relative mx-auto w-full max-w-7xl px-6 sm:px-10 pt-32 md:pt-44 pb-20 md:pb-32">
+          <div className="text-center max-w-5xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
               <span
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium border"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium border backdrop-blur-sm"
                 style={{
-                  background: 'var(--card)',
+                  background: 'rgba(255,255,255,0.7)',
                   borderColor: 'var(--border)',
                   color: 'var(--muted-foreground)',
                 }}
@@ -158,22 +225,31 @@ export default function Home() {
             <motion.h1
               className="mt-10 font-bold tracking-tight"
               style={{
+                fontSize: 'clamp(3rem, 8vw, 7rem)',
+                lineHeight: '0.95',
+                letterSpacing: '-0.045em',
                 color: 'var(--foreground)',
-                fontSize: 'clamp(2.75rem, 7vw, 5.5rem)',
-                lineHeight: '1.05',
-                letterSpacing: '-0.04em',
               }}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               Devenez expert
               <br />
-              <span style={{ color: 'var(--primary)' }}>Power BI &amp; Fabric.</span>
+              <span
+                style={{
+                  background: 'linear-gradient(135deg, #6e7cf1 0%, #9b8afb 50%, #f17eb8 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                Power BI &amp; Fabric.
+              </span>
             </motion.h1>
 
             <motion.p
-              className="mt-8 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
+              className="mt-10 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
               style={{ color: 'var(--muted-foreground)' }}
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -191,53 +267,125 @@ export default function Home() {
             >
               <Link
                 to="/simulator"
-                className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold transition-all"
-                style={{ background: 'var(--foreground)', color: 'var(--background)' }}
+                className="group inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold transition-all"
+                style={{
+                  background: 'var(--foreground)',
+                  color: 'var(--background)',
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)'
+                  e.currentTarget.style.boxShadow = '0 16px 40px rgba(0,0,0,0.25)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)'
+                  e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.2)'
+                }}
               >
                 Explorer les outils
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
               </Link>
               <Link
                 to="/dax"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold border transition-all"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold border backdrop-blur-sm transition-all"
                 style={{
                   borderColor: 'var(--border)',
                   color: 'var(--foreground)',
-                  background: 'var(--card)',
+                  background: 'rgba(255,255,255,0.7)',
                 }}
               >
                 <BookOpen size={16} />
                 Commencer a apprendre
               </Link>
             </motion.div>
+
+            <motion.div
+              className="mt-14 flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
+              {features.map((f) => (
+                <div key={f.label} className="flex items-center gap-2">
+                  <f.icon size={14} style={{ color: 'var(--primary)' }} />
+                  <span
+                    className="text-sm font-medium"
+                    style={{ color: 'var(--muted-foreground)' }}
+                  >
+                    {f.label}
+                  </span>
+                </div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>
 
+      {/* ============================ TECH MARQUEE ============================ */}
+      <section
+        className="border-t border-b py-10 overflow-hidden"
+        style={{ borderColor: 'var(--border)', background: 'var(--card)' }}
+      >
+        <p
+          className="text-center text-xs font-bold uppercase tracking-widest mb-8"
+          style={{ color: 'var(--muted-foreground)' }}
+        >
+          Couvert en profondeur
+        </p>
+        <div
+          className="flex gap-12 whitespace-nowrap"
+          style={{ animation: 'scroll-x 40s linear infinite' }}
+        >
+          {[...techStack, ...techStack].map((tech, i) => (
+            <span
+              key={i}
+              className="text-2xl md:text-3xl font-bold shrink-0"
+              style={{
+                color: 'var(--foreground)',
+                opacity: 0.4,
+                letterSpacing: '-0.02em',
+              }}
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+        <style>{`
+          @keyframes scroll-x {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        `}</style>
+      </section>
+
       {/* ============================ STATS ============================ */}
-      <section className="mx-auto w-full max-w-7xl px-6 sm:px-10 pb-24">
+      <section className="mx-auto w-full max-w-7xl px-6 sm:px-10 py-24">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="rounded-2xl border grid grid-cols-2 md:grid-cols-5 gap-8 p-10"
+          className="rounded-3xl border grid grid-cols-2 md:grid-cols-5 gap-8 p-12"
           style={{
             background: 'var(--card)',
             borderColor: 'var(--border)',
-            boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)',
+            boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04)',
           }}
         >
           {stats.map((s, i) => (
             <div key={i} className="text-center">
               <div
-                className="text-4xl md:text-5xl font-bold"
-                style={{ color: 'var(--foreground)', letterSpacing: '-0.03em' }}
+                className="text-5xl md:text-6xl font-bold"
+                style={{
+                  color: 'var(--foreground)',
+                  letterSpacing: '-0.04em',
+                  lineHeight: '1',
+                }}
               >
                 <AnimatedCounter target={s.value} suffix={s.suffix} />
               </div>
               <p
-                className="mt-2 text-sm font-medium"
+                className="mt-3 text-sm font-medium"
                 style={{ color: 'var(--muted-foreground)' }}
               >
                 {s.label}
@@ -249,7 +397,19 @@ export default function Home() {
 
       {/* ============================ BENTO GRID ============================ */}
       <section className="mx-auto w-full max-w-7xl px-6 sm:px-10 py-24 md:py-32">
-        <div className="text-center mb-20">
+        <div className="text-center mb-20 max-w-3xl mx-auto">
+          <motion.span
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-6"
+            style={{
+              background: 'rgba(110,124,241,0.1)',
+              color: 'var(--primary)',
+            }}
+          >
+            Tout ce dont vous avez besoin
+          </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -258,18 +418,20 @@ export default function Home() {
             className="font-bold tracking-tight"
             style={{
               color: 'var(--foreground)',
-              fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
-              lineHeight: '1.1',
-              letterSpacing: '-0.03em',
+              fontSize: 'clamp(2.25rem, 5vw, 4rem)',
+              lineHeight: '1.05',
+              letterSpacing: '-0.035em',
             }}
           >
-            Tout ce dont vous avez besoin.
+            Une suite complete
             <br />
-            <span style={{ color: 'var(--muted-foreground)' }}>Sur une seule plateforme.</span>
+            <span style={{ color: 'var(--muted-foreground)' }}>
+              pour aller plus loin.
+            </span>
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 auto-rows-[280px] gap-5">
           {bentoCards.map((card, i) => {
             const Icon = card.icon
             return (
@@ -284,50 +446,62 @@ export default function Home() {
                 <Link
                   to={card.to}
                   className="block h-full rounded-3xl p-8 md:p-10 transition-all duration-300 relative overflow-hidden"
-                  style={{ background: card.bg, minHeight: '280px' }}
+                  style={{ background: card.bg }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-4px)'
+                    e.currentTarget.style.transform = 'translateY(-4px) scale(1.005)'
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)'
+                    e.currentTarget.style.transform = 'translateY(0) scale(1)'
                   }}
                 >
-                  <div className="flex items-start justify-between mb-6">
-                    <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center"
-                      style={{ background: card.iconBg, color: '#ffffff' }}
-                    >
-                      <Icon size={22} />
-                    </div>
-                    <ArrowRight
-                      size={20}
-                      style={{ color: '#171717' }}
-                      className="opacity-30 group-hover:opacity-100 group-hover:translate-x-1 transition-all"
-                    />
-                  </div>
+                  {/* Decorative shape */}
+                  <div
+                    className="absolute -bottom-20 -right-20 w-56 h-56 rounded-full opacity-20"
+                    style={{ background: card.iconBg }}
+                  />
 
-                  <p
-                    className="text-xs font-bold uppercase tracking-wider mb-3"
-                    style={{ color: '#171717', opacity: 0.6 }}
-                  >
-                    {card.eyebrow}
-                  </p>
-                  <h3
-                    className="font-bold mb-3 leading-tight"
-                    style={{
-                      color: '#171717',
-                      fontSize: '1.5rem',
-                      letterSpacing: '-0.02em',
-                    }}
-                  >
-                    {card.title}
-                  </h3>
-                  <p
-                    className="text-sm leading-relaxed"
-                    style={{ color: '#171717', opacity: 0.7 }}
-                  >
-                    {card.desc}
-                  </p>
+                  <div className="relative h-full flex flex-col">
+                    <div className="flex items-start justify-between mb-6">
+                      <div
+                        className="w-12 h-12 rounded-2xl flex items-center justify-center"
+                        style={{
+                          background: card.iconBg,
+                          color: '#ffffff',
+                          boxShadow: `0 8px 20px ${card.iconBg}40`,
+                        }}
+                      >
+                        <Icon size={22} />
+                      </div>
+                      <ArrowRight
+                        size={20}
+                        style={{ color: '#171717' }}
+                        className="opacity-30 group-hover:opacity-100 group-hover:translate-x-1 transition-all"
+                      />
+                    </div>
+
+                    <p
+                      className="text-xs font-bold uppercase tracking-wider mb-3"
+                      style={{ color: '#171717', opacity: 0.55 }}
+                    >
+                      {card.eyebrow}
+                    </p>
+                    <h3
+                      className="font-bold mb-3 leading-tight"
+                      style={{
+                        color: '#171717',
+                        fontSize: card.big ? '2rem' : '1.4rem',
+                        letterSpacing: '-0.025em',
+                      }}
+                    >
+                      {card.title}
+                    </h3>
+                    <p
+                      className="text-sm leading-relaxed mt-auto"
+                      style={{ color: '#171717', opacity: 0.7, maxWidth: '90%' }}
+                    >
+                      {card.desc}
+                    </p>
+                  </div>
                 </Link>
               </motion.div>
             )
@@ -341,24 +515,35 @@ export default function Home() {
         style={{ background: 'var(--card)', borderColor: 'var(--border)' }}
       >
         <div className="mx-auto w-full max-w-7xl px-6 sm:px-10 py-24 md:py-32">
-          <div className="text-center mb-20">
+          <div className="text-center mb-20 max-w-3xl mx-auto">
+            <span
+              className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-6"
+              style={{
+                background: 'rgba(110,124,241,0.1)',
+                color: 'var(--primary)',
+              }}
+            >
+              Histoire
+            </span>
             <h2
               className="font-bold tracking-tight"
               style={{
                 color: 'var(--foreground)',
-                fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
-                lineHeight: '1.1',
-                letterSpacing: '-0.03em',
+                fontSize: 'clamp(2.25rem, 5vw, 4rem)',
+                lineHeight: '1.05',
+                letterSpacing: '-0.035em',
               }}
             >
               15 ans d'innovation.
               <br />
-              <span style={{ color: 'var(--muted-foreground)' }}>De Crescent a Fabric.</span>
+              <span style={{ color: 'var(--muted-foreground)' }}>
+                De Crescent a Fabric.
+              </span>
             </h2>
           </div>
 
           <div className="max-w-3xl mx-auto">
-            <div className="space-y-8">
+            <div className="space-y-2">
               {timelineEvents.map((ev, i) => (
                 <motion.div
                   key={`${ev.year}-${ev.title}`}
@@ -366,18 +551,19 @@ export default function Home() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: '-60px' }}
                   transition={{ duration: 0.4, delay: i * 0.05 }}
-                  className="flex gap-8 items-start"
+                  className="flex gap-8 items-start py-6 border-b last:border-b-0"
+                  style={{ borderColor: 'var(--border)' }}
                 >
                   <div
-                    className="shrink-0 w-20 text-2xl font-bold"
+                    className="shrink-0 w-24 text-3xl font-bold"
                     style={{
                       color: 'var(--primary)',
-                      letterSpacing: '-0.02em',
+                      letterSpacing: '-0.03em',
                     }}
                   >
                     {ev.year}
                   </div>
-                  <div className="flex-1 pb-2">
+                  <div className="flex-1">
                     <h4
                       className="text-xl font-semibold mb-1.5"
                       style={{
@@ -408,16 +594,13 @@ export default function Home() {
             className="font-bold tracking-tight mb-4"
             style={{
               color: 'var(--foreground)',
-              fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)',
+              fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)',
               letterSpacing: '-0.03em',
             }}
           >
             Acces rapide
           </h2>
-          <p
-            className="text-lg"
-            style={{ color: 'var(--muted-foreground)' }}
-          >
+          <p className="text-lg" style={{ color: 'var(--muted-foreground)' }}>
             Les pages les plus consultees, en un clic.
           </p>
         </div>
@@ -479,56 +662,92 @@ export default function Home() {
       {/* ============================ FINAL CTA ============================ */}
       <section className="mx-auto w-full max-w-7xl px-6 sm:px-10 pb-24 md:pb-32">
         <div
-          className="rounded-3xl p-12 md:p-20 text-center"
+          className="relative rounded-3xl p-12 md:p-20 text-center overflow-hidden"
           style={{ background: 'var(--foreground)' }}
         >
-          <div className="flex justify-center mb-8">
+          {/* Gradient blobs */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
             <div
-              className="w-14 h-14 rounded-2xl flex items-center justify-center"
-              style={{ background: 'rgba(255,255,255,0.1)' }}
-            >
-              <Zap size={26} style={{ color: 'var(--background)' }} />
-            </div>
-          </div>
-          <h3
-            className="font-bold tracking-tight mb-6"
-            style={{
-              color: 'var(--background)',
-              fontSize: 'clamp(2rem, 4vw, 3rem)',
-              lineHeight: '1.1',
-              letterSpacing: '-0.03em',
-            }}
-          >
-            Pret a maitriser
-            <br />
-            Power BI &amp; Fabric ?
-          </h3>
-          <p
-            className="text-lg mb-10 max-w-xl mx-auto"
-            style={{ color: 'rgba(255,255,255,0.7)' }}
-          >
-            Explorez tous les outils, fiches et exercices pour devenir expert.
-          </p>
-          <div className="flex gap-3 justify-center flex-wrap">
-            <Link
-              to="/simulator"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold transition-all"
-              style={{ background: 'var(--background)', color: 'var(--foreground)' }}
-            >
-              <TrendingUp size={16} />
-              Commencer maintenant
-            </Link>
-            <Link
-              to="/fiches"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold border transition-all"
+              className="absolute top-0 left-1/4 w-[400px] h-[400px] rounded-full opacity-30"
               style={{
-                borderColor: 'rgba(255,255,255,0.2)',
-                color: 'var(--background)',
-                background: 'transparent',
+                background: 'radial-gradient(circle, #6e7cf1 0%, transparent 70%)',
+                filter: 'blur(60px)',
+                transform: 'translate(-50%, -30%)',
+              }}
+            />
+            <div
+              className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full opacity-30"
+              style={{
+                background: 'radial-gradient(circle, #f17eb8 0%, transparent 70%)',
+                filter: 'blur(60px)',
+                transform: 'translate(50%, 30%)',
+              }}
+            />
+          </div>
+
+          <div className="relative">
+            <div className="flex justify-center mb-8">
+              <div
+                className="w-16 h-16 rounded-2xl flex items-center justify-center backdrop-blur-sm"
+                style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.15)' }}
+              >
+                <Zap size={28} style={{ color: '#ffffff' }} />
+              </div>
+            </div>
+            <h3
+              className="font-bold tracking-tight mb-6"
+              style={{
+                color: '#ffffff',
+                fontSize: 'clamp(2.25rem, 5vw, 4rem)',
+                lineHeight: '1.05',
+                letterSpacing: '-0.035em',
               }}
             >
-              Parcourir les fiches
-            </Link>
+              Pret a maitriser
+              <br />
+              <span
+                style={{
+                  background: 'linear-gradient(135deg, #6e7cf1 0%, #f17eb8 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                Power BI &amp; Fabric ?
+              </span>
+            </h3>
+            <p
+              className="text-lg mb-10 max-w-xl mx-auto"
+              style={{ color: 'rgba(255,255,255,0.7)' }}
+            >
+              Explorez tous les outils, fiches et exercices pour devenir expert.
+            </p>
+            <div className="flex gap-3 justify-center flex-wrap">
+              <Link
+                to="/simulator"
+                className="group inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold transition-all"
+                style={{
+                  background: '#ffffff',
+                  color: 'var(--foreground)',
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
+                }}
+              >
+                <TrendingUp size={16} />
+                Commencer maintenant
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
+              </Link>
+              <Link
+                to="/fiches"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold border transition-all backdrop-blur-sm"
+                style={{
+                  borderColor: 'rgba(255,255,255,0.2)',
+                  color: '#ffffff',
+                  background: 'rgba(255,255,255,0.05)',
+                }}
+              >
+                Parcourir les fiches
+              </Link>
+            </div>
           </div>
         </div>
       </section>
