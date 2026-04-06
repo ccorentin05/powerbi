@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef, useMemo, useCallback } from 'react'
-import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { useState, useEffect, useRef, useCallback } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
 import {
   LayoutDashboard,
   Calculator,
@@ -25,7 +25,6 @@ import {
   Map,
   Wrench,
   ChevronDown,
-  Search,
   Menu,
   X,
   Share2,
@@ -126,153 +125,6 @@ const navigation: NavEntry[] = [
     ],
   },
 ]
-
-// Flatten all pages for search
-function getAllPages(): NavPage[] {
-  const pages: NavPage[] = []
-  for (const entry of navigation) {
-    if (isCategory(entry)) {
-      pages.push(...entry.items)
-    } else {
-      pages.push({ path: entry.path, label: entry.label, icon: entry.icon, description: '' })
-    }
-  }
-  return pages
-}
-
-// --- Navbar Search ---
-
-function NavbarSearch() {
-  const [query, setQuery] = useState('')
-  const [isFocused, setIsFocused] = useState(false)
-  const inputRef = useRef<HTMLInputElement>(null)
-  const navigate = useNavigate()
-  const allPages = useMemo(() => getAllPages(), [])
-
-  const results = useMemo(() => {
-    if (!query.trim()) return []
-    const q = query.toLowerCase()
-    return allPages.filter(
-      (p) => p.label.toLowerCase().includes(q) || p.description.toLowerCase().includes(q)
-    )
-  }, [query, allPages])
-
-  const showDropdown = isFocused && results.length > 0
-
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault()
-        inputRef.current?.focus()
-      }
-      if (e.key === 'Escape') {
-        inputRef.current?.blur()
-        setQuery('')
-      }
-    }
-    document.addEventListener('keydown', handler)
-    return () => document.removeEventListener('keydown', handler)
-  }, [])
-
-  const handleSelect = (path: string) => {
-    navigate(path)
-    setQuery('')
-    inputRef.current?.blur()
-  }
-
-  return (
-    <div className="relative">
-      <div className="relative">
-        <Search
-          size={15}
-          className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"
-          style={{ color: 'var(--muted-foreground)' }}
-        />
-        <input
-          ref={inputRef}
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setTimeout(() => setIsFocused(false), 150)}
-          placeholder="Rechercher..."
-          className="w-56 lg:w-72 pl-10 pr-16 py-2.5 rounded-lg text-sm border focus:outline-none transition-all"
-          style={{
-            background: 'var(--background)',
-            borderColor: 'var(--border)',
-            color: 'var(--foreground)',
-          }}
-          onFocusCapture={(e) => {
-            e.currentTarget.style.borderColor = 'var(--primary)'
-            e.currentTarget.style.background = 'var(--card)'
-          }}
-          onBlurCapture={(e) => {
-            e.currentTarget.style.borderColor = 'var(--border)'
-            e.currentTarget.style.background = 'var(--background)'
-          }}
-        />
-        <span
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] px-1.5 py-0.5 rounded border font-mono pointer-events-none"
-          style={{
-            background: 'var(--card)',
-            borderColor: 'var(--border)',
-            color: 'var(--muted-foreground)',
-          }}
-        >
-          Ctrl+K
-        </span>
-      </div>
-
-      {showDropdown && (
-        <div
-          className="absolute right-0 top-full mt-3 w-96 rounded-xl border overflow-hidden z-50 max-h-[480px] overflow-y-auto py-2"
-          style={{
-            background: 'var(--card)',
-            borderColor: 'var(--border)',
-            boxShadow: '0 8px 30px rgba(0,0,0,0.12)',
-          }}
-        >
-          {results.map((page) => (
-            <button
-              key={page.path}
-              onMouseDown={() => handleSelect(page.path)}
-              className="w-full flex items-center gap-4 px-5 py-3 transition-colors text-left cursor-pointer"
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'var(--secondary)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'transparent'
-              }}
-            >
-              <div
-                className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
-                style={{ background: 'rgba(110,124,241,0.1)' }}
-              >
-                <page.icon size={16} style={{ color: 'var(--primary)' }} />
-              </div>
-              <div className="min-w-0 flex-1">
-                <div
-                  className="text-sm font-medium truncate"
-                  style={{ color: 'var(--foreground)' }}
-                >
-                  {page.label}
-                </div>
-                {page.description && (
-                  <div
-                    className="text-xs truncate mt-0.5"
-                    style={{ color: 'var(--muted-foreground)' }}
-                  >
-                    {page.description}
-                  </div>
-                )}
-              </div>
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
-  )
-}
 
 // --- Dropdown for nav categories ---
 
@@ -575,11 +427,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               </nav>
             </div>
 
-            {/* Right: Search + Mobile toggle */}
-            <div className="flex items-center gap-4 shrink-0">
-              <div className="hidden md:block">
-                <NavbarSearch />
-              </div>
+            {/* Right: CTA + Mobile toggle */}
+            <div className="flex items-center gap-3 shrink-0">
+              <NavLink
+                to="/simulator"
+                className="hidden md:inline-flex items-center justify-center px-4 py-2 rounded-md text-white font-medium text-sm transition-colors"
+                style={{ background: '#2383E2', letterSpacing: '-0.005em' }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = '#0F6FFF')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = '#2383E2')}
+              >
+                Commencer
+              </NavLink>
 
               {/* Mobile hamburger */}
               <button

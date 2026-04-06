@@ -21,7 +21,6 @@ import WhatsNew from './pages/WhatsNew'
 import Roadmap from './pages/Roadmap'
 import Resources from './pages/Resources'
 import PerformanceChecklist from './pages/PerformanceChecklist'
-import Chatbot from './components/Chatbot'
 
 export default function App() {
   return (
@@ -51,7 +50,6 @@ export default function App() {
           <Route path="/performance" element={<PerformanceChecklist />} />
         </Routes>
       </Layout>
-      <Chatbot />
     </>
   )
 }
