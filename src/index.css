@@ -1,25 +1,61 @@
 @import "tailwindcss";
 
+/*
+  Design system inspiré Linear / Vercel / Notion.
+  Couleurs désaturées, ombres douces, typographie clean.
+  Aligné sur l'app LinkedIn pour cohérence visuelle.
+*/
+
+:root {
+  --background: #fafafa;
+  --foreground: #171717;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --primary: #6e7cf1;
+  --primary-foreground: #ffffff;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #171717;
+  --muted: #f0f0f0;
+  --muted-foreground: #6b6b6b;
+  --accent: #f5f5f5;
+  --accent-foreground: #171717;
+  --border: #e5e5e5;
+  --border-subtle: #ebebeb;
+  --input: #f0f0f0;
+  --ring: #6e7cf1;
+  --radius: 0.75rem;
+
+  /* Accent colors (soft, désaturées) */
+  --accent-purple: #9b8afb;
+  --accent-green: #5bb98c;
+  --accent-amber: #e5a84b;
+  --accent-blue: #6e7cf1;
+  --accent-cyan: #67c5d8;
+  --accent-rose: #f17eb8;
+  --text-tertiary: #a3a3a3;
+}
+
 @theme {
-  --color-primary: #6366f1;
-  --color-primary-dark: #4f46e5;
-  --color-primary-light: #a5b4fc;
-  --color-fabric: #0078d4;
-  --color-fabric-dark: #005a9e;
-  --color-fabric-light: #4da6ff;
-  --color-pbi-yellow: #f2c811;
+  /* Tailwind tokens mappés sur les CSS variables LinkedIn */
+  --color-primary: #6e7cf1;
+  --color-primary-dark: #5566e8;
+  --color-primary-light: #9aa5f6;
+  --color-fabric: #6e7cf1;
+  --color-fabric-dark: #5566e8;
+  --color-fabric-light: #9aa5f6;
+  --color-pbi-yellow: #e5a84b;
   --color-pbi-dark: #f5f5f5;
   --color-pbi-darker: #fafafa;
   --color-pbi-card: #ffffff;
-  --color-pbi-card-hover: #f8fafc;
-  --color-pbi-border: #e5e7eb;
-  --color-pbi-text: #1e293b;
-  --color-pbi-muted: #64748b;
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
+  --color-pbi-card-hover: #f5f5f5;
+  --color-pbi-border: #e5e5e5;
+  --color-pbi-text: #171717;
+  --color-pbi-muted: #6b6b6b;
+  --color-success: #5bb98c;
+  --color-warning: #e5a84b;
   --color-danger: #ef4444;
-  --color-info: #3b82f6;
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --color-info: #6e7cf1;
+  --font-sans: 'Inter', -apple-system, system-ui, sans-serif;
 }
 
 * {
@@ -29,67 +65,78 @@
 }
 
 body {
-  font-family: var(--font-sans);
-  background: var(--color-pbi-darker);
-  color: var(--color-pbi-text);
-  min-height: 100vh;
-  overflow-x: hidden;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow-x: hidden;
+  letter-spacing: -0.01em;
 }
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+}
 
+/* Scrollbar minimale */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d4d4d4; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #a3a3a3; }
+
+/* Utility helpers — matchent le style LinkedIn */
 .gradient-text {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-fabric) 100%);
+  background: linear-gradient(135deg, #6e7cf1 0%, #9b8afb 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .glass-card {
-  background: var(--color-pbi-card);
-  border: 1px solid var(--color-pbi-border);
-  border-radius: 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
-  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-card:hover {
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.06);
   transform: translateY(-1px);
-  border-color: #d1d5db;
+  border-color: var(--border-subtle);
 }
 
-.glow-yellow { box-shadow: 0 1px 3px rgba(99, 102, 241, 0.1); }
-.glow-blue { box-shadow: 0 1px 3px rgba(0, 120, 212, 0.1); }
+.glow-yellow,
+.glow-blue {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+}
 
 .bg-grid {
   background-image:
-    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(0, 0, 0, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
-  height: 6px;
-  background: var(--color-pbi-border);
-  border-radius: 3px;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
   outline: none;
   width: 100%;
 }
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  background: var(--color-primary);
+  background: var(--primary);
   cursor: pointer;
-  box-shadow: 0 1px 4px rgba(99, 102, 241, 0.3);
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(110, 124, 241, 0.4);
 }
