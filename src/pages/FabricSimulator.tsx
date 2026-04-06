@@ -199,7 +199,7 @@ export default function FabricSimulator() {
                 onClick={() => setSelectedIdx(idx)}
                 className={`relative rounded-xl px-3 py-3 text-center transition-colors cursor-pointer ${
                   active
-                    ? 'bg-fabric/20 border-2 border-fabric text-white'
+                    ? 'bg-fabric/20 border-2 border-fabric text-pbi-text'
                     : 'glass-card hover:bg-pbi-card-hover text-pbi-muted border border-pbi-border/40'
                 }`}
                 style={
@@ -235,7 +235,7 @@ export default function FabricSimulator() {
               <Server className="w-5 h-5 text-fabric" />
             </div>
             <div>
-              <p className="font-bold text-white text-lg">{selected.sku}</p>
+              <p className="font-bold text-pbi-text text-lg">{selected.sku}</p>
               <p className="text-xs text-pbi-muted">{selected.bestFor}</p>
             </div>
           </div>
@@ -292,7 +292,7 @@ export default function FabricSimulator() {
               <span className="text-pbi-muted flex items-center gap-1">
                 <Clock className="w-3.5 h-3.5" /> Heures / jour
               </span>
-              <span className="text-white font-semibold">{hoursPerDay}h</span>
+              <span className="text-pbi-text font-semibold">{hoursPerDay}h</span>
             </div>
             <input
               type="range"
@@ -325,11 +325,11 @@ export default function FabricSimulator() {
           </div>
 
           {/* Cost display */}
-          <div className="rounded-xl bg-pbi-darker/60 p-5 text-center space-y-1">
+          <div className="rounded-xl bg-gray-100 p-5 text-center space-y-1">
             <p className="text-pbi-muted text-sm">
               Cout estime {yearly ? 'annuel' : 'mensuel'}
             </p>
-            <p className="text-3xl md:text-4xl font-extrabold text-white">
+            <p className="text-3xl md:text-4xl font-extrabold text-pbi-text">
               <AnimatedNumber value={displayCost} />
             </p>
             <p className="text-xs text-pbi-muted">
@@ -342,7 +342,7 @@ export default function FabricSimulator() {
             <TrendingUp className="w-5 h-5 text-success shrink-0 mt-0.5" />
             <div>
               <p className="text-sm font-semibold text-success">Economie Reserve vs PAYG</p>
-              <p className="text-white font-bold text-lg">
+              <p className="text-pbi-text font-bold text-lg">
                 {formatEuro(yearly ? savingsYearly : savingsMonthly)}{' '}
                 <span className="text-pbi-muted text-xs font-normal">
                   / {yearly ? 'an' : 'mois'}
@@ -371,11 +371,11 @@ export default function FabricSimulator() {
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
               <ComposedChart data={comparisonData} margin={{ top: 10, right: 10, bottom: 0, left: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(42,58,92,0.5)" />
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(229,231,235,0.5)" />
                 <XAxis
                   dataKey="sku"
                   tick={{ fill: '#94a3b8', fontSize: 11 }}
-                  axisLine={{ stroke: '#2a3a5c' }}
+                  axisLine={{ stroke: '#e5e7eb' }}
                   tickLine={false}
                 />
                 <YAxis
@@ -394,10 +394,10 @@ export default function FabricSimulator() {
                 />
                 <Tooltip
                   contentStyle={{
-                    background: '#16213e',
-                    border: '1px solid #2a3a5c',
+                    background: '#ffffff',
+                    border: '1px solid #e5e7eb',
                     borderRadius: 12,
-                    color: '#e2e8f0',
+                    color: '#1e293b',
                     fontSize: 13,
                   }}
                   formatter={(value: any, name: any) => {
@@ -456,7 +456,7 @@ export default function FabricSimulator() {
                 <span className="text-pbi-muted flex items-center gap-1">
                   <s.icon className="w-3.5 h-3.5" /> {s.label}
                 </span>
-                <span className="text-white font-semibold">
+                <span className="text-pbi-text font-semibold">
                   {s.value}{s.unit}
                 </span>
               </div>
@@ -483,7 +483,7 @@ export default function FabricSimulator() {
             >
               <div className="flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-fabric" />
-                <p className="font-semibold text-white">
+                <p className="font-semibold text-pbi-text">
                   Capacite recommandee :{' '}
                   <span className="text-fabric">{recommended.sku}</span>
                 </p>
@@ -501,7 +501,7 @@ export default function FabricSimulator() {
                     {Math.round(utilization)}%
                   </span>
                 </div>
-                <div className="w-full h-2.5 rounded-full bg-pbi-darker/60 overflow-hidden">
+                <div className="w-full h-2.5 rounded-full bg-gray-100 overflow-hidden">
                   <motion.div
                     className="h-full rounded-full"
                     initial={{ width: 0 }}
@@ -570,17 +570,17 @@ export default function FabricSimulator() {
                 </Pie>
                 <Tooltip
                   contentStyle={{
-                    background: '#16213e',
-                    border: '1px solid #2a3a5c',
+                    background: '#ffffff',
+                    border: '1px solid #e5e7eb',
                     borderRadius: 12,
-                    color: '#e2e8f0',
+                    color: '#1e293b',
                     fontSize: 13,
                   }}
                   formatter={(value: any) => formatEuro(value)}
                 />
                 <Legend
                   wrapperStyle={{ fontSize: 12, color: '#94a3b8' }}
-                  formatter={(value: string) => <span style={{ color: '#e2e8f0' }}>{value}</span>}
+                  formatter={(value: string) => <span style={{ color: '#1e293b' }}>{value}</span>}
                 />
               </PieChart>
             </ResponsiveContainer>
@@ -592,14 +592,14 @@ export default function FabricSimulator() {
               <motion.div
                 key={d.name}
                 layout
-                className="rounded-lg bg-pbi-darker/50 p-3 text-center"
+                className="rounded-lg bg-gray-100 p-3 text-center"
               >
                 <div
                   className="w-3 h-3 rounded-full mx-auto mb-1"
                   style={{ background: d.color }}
                 />
                 <p className="text-[10px] uppercase tracking-wider text-pbi-muted">{d.name}</p>
-                <p className="text-sm font-bold text-white">{formatEuro(d.value)}</p>
+                <p className="text-sm font-bold text-pbi-text">{formatEuro(d.value)}</p>
               </motion.div>
             ))}
           </div>

@@ -551,19 +551,19 @@ export default function PerformanceChecklist() {
             </div>
 
             <div className="grid grid-cols-3 gap-4 mb-5">
-              <div className="text-center bg-pbi-darker/50 rounded-lg py-2">
+              <div className="text-center bg-gray-100 rounded-lg py-2">
                 <div className="text-xl font-bold text-pbi-text">
                   {totalItems}
                 </div>
                 <div className="text-[11px] text-pbi-muted">Total</div>
               </div>
-              <div className="text-center bg-pbi-darker/50 rounded-lg py-2">
+              <div className="text-center bg-gray-100 rounded-lg py-2">
                 <div className="text-xl font-bold text-success">
                   {checkedCount}
                 </div>
                 <div className="text-[11px] text-pbi-muted">Completes</div>
               </div>
-              <div className="text-center bg-pbi-darker/50 rounded-lg py-2">
+              <div className="text-center bg-gray-100 rounded-lg py-2">
                 <div className="text-xl font-bold text-danger">
                   {highImpactRemaining}
                 </div>
@@ -581,7 +581,7 @@ export default function PerformanceChecklist() {
                     <span className="text-xs text-pbi-muted w-28 text-right truncate">
                       {cp.name}
                     </span>
-                    <div className="flex-1 h-2 bg-pbi-darker rounded-full overflow-hidden">
+                    <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
                       <motion.div
                         className="h-full bg-primary rounded-full"
                         initial={{ width: 0 }}
@@ -622,7 +622,7 @@ export default function PerformanceChecklist() {
             className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
               showFilters || hasActiveFilters
                 ? 'bg-primary/20 text-primary'
-                : 'bg-pbi-darker text-pbi-muted hover:text-pbi-text'
+                : 'bg-gray-100 text-pbi-muted hover:text-pbi-text'
             }`}
           >
             <Filter className="w-4 h-4" />
@@ -637,7 +637,7 @@ export default function PerformanceChecklist() {
             <select
               value={sortMode}
               onChange={(e) => setSortMode(e.target.value as SortMode)}
-              className="bg-pbi-darker text-pbi-text text-sm rounded-lg px-2 py-1.5 border border-pbi-border focus:outline-none focus:border-primary cursor-pointer"
+              className="bg-gray-100 text-pbi-text text-sm rounded-lg px-2 py-1.5 border border-pbi-border focus:outline-none focus:border-primary cursor-pointer"
             >
               <option value="default">Par defaut</option>
               <option value="impact">Par impact</option>
@@ -651,7 +651,7 @@ export default function PerformanceChecklist() {
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm transition-colors cursor-pointer ${
               showOnlyUnchecked
                 ? 'bg-primary/20 text-primary'
-                : 'bg-pbi-darker text-pbi-muted hover:text-pbi-text'
+                : 'bg-gray-100 text-pbi-muted hover:text-pbi-text'
             }`}
           >
             {showOnlyUnchecked ? (
@@ -668,7 +668,7 @@ export default function PerformanceChecklist() {
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm transition-colors cursor-pointer ${
               confirmReset
                 ? 'bg-danger/20 text-danger'
-                : 'bg-pbi-darker text-pbi-muted hover:text-danger'
+                : 'bg-gray-100 text-pbi-muted hover:text-danger'
             }`}
           >
             <RotateCcw className="w-4 h-4" />
@@ -820,7 +820,7 @@ export default function PerformanceChecklist() {
                       {catDone}/{cat.items.length}
                     </span>
                   </div>
-                  <div className="w-full h-1.5 bg-pbi-darker rounded-full mt-2 overflow-hidden">
+                  <div className="w-full h-1.5 bg-gray-100 rounded-full mt-2 overflow-hidden">
                     <motion.div
                       className="h-full bg-primary rounded-full"
                       initial={{ width: 0 }}

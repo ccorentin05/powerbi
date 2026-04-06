@@ -36,8 +36,8 @@ const glowStyles = {
   },
   none: {
     shadow: 'none',
-    hoverShadow: '0 0 20px rgba(42, 58, 92, 0.3)',
-    border: 'rgba(42, 58, 92, 0.5)',
+    hoverShadow: '0 0 20px rgba(229, 231, 235, 0.4)',
+    border: 'rgba(229, 231, 235, 0.5)',
     hoverBorder: 'rgba(42, 58, 92, 0.7)',
   },
 }
@@ -60,7 +60,7 @@ export default function GlowCard({
       onClick={onClick}
       className={`relative rounded-2xl overflow-hidden ${onClick ? 'cursor-pointer' : ''} ${className}`}
       style={{
-        background: 'rgba(22, 33, 62, 0.7)',
+        background: 'rgba(255, 255, 255, 0.8)',
         backdropFilter: 'blur(20px)',
         border: `1px solid ${glow.border}`,
         boxShadow: glow.shadow,

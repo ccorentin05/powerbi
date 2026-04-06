@@ -159,7 +159,7 @@ export default function LicenseComparator() {
             <motion.span
               key={userCount}
               initial={{ scale: 1.2, color: '#f2c811' }}
-              animate={{ scale: 1, color: '#e2e8f0' }}
+              animate={{ scale: 1, color: '#1e293b' }}
               className="text-3xl font-bold tabular-nums min-w-[5ch] text-right"
             >
               {userCount.toLocaleString('fr-FR')}
@@ -193,7 +193,7 @@ export default function LicenseComparator() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold"
-                      style={{ background: lic.color, color: '#1a1a2e' }}
+                      style={{ background: lic.color, color: '#1e293b' }}
                     >
                       <Crown size={12} />
                       Recommande
@@ -203,7 +203,7 @@ export default function LicenseComparator() {
 
                 <motion.div
                   animate={{
-                    borderColor: isBest ? lic.color : 'rgba(42, 58, 92, 0.5)',
+                    borderColor: isBest ? lic.color : 'rgba(229, 231, 235, 0.5)',
                     boxShadow: isBest
                       ? `0 0 30px ${lic.color}33, 0 0 80px ${lic.color}11`
                       : '0 0 0 transparent',
@@ -211,7 +211,7 @@ export default function LicenseComparator() {
                   transition={{ duration: 0.4 }}
                   className="rounded-2xl overflow-hidden border"
                   style={{
-                    background: 'rgba(22, 33, 62, 0.7)',
+                    background: 'rgba(255, 255, 255, 0.8)',
                     backdropFilter: 'blur(20px)',
                   }}
                 >
@@ -312,7 +312,7 @@ export default function LicenseComparator() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead className="sticky top-0 z-10">
-                <tr style={{ background: 'rgba(15, 15, 30, 0.95)' }}>
+                <tr style={{ background: 'rgba(255, 255, 255, 0.95)' }}>
                   <th className="text-left py-3 px-5 text-pbi-muted font-medium">
                     Fonctionnalite
                   </th>
@@ -344,7 +344,7 @@ export default function LicenseComparator() {
                       <tr
                         key={feat}
                         className="transition-colors duration-200 hover:bg-pbi-card-hover"
-                        style={{ borderBottom: '1px solid rgba(42, 58, 92, 0.3)' }}
+                        style={{ borderBottom: '1px solid rgba(229, 231, 235, 0.4)' }}
                       >
                         <td className="py-2.5 px-5 text-pbi-text">{feat}</td>
                         {licenses.map((lic) => {
@@ -384,7 +384,7 @@ export default function LicenseComparator() {
           </p>
           <ResponsiveContainer width="100%" height={400}>
             <LineChart data={chartData} margin={{ top: 10, right: 30, left: 20, bottom: 10 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(42, 58, 92, 0.5)" />
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(229, 231, 235, 0.5)" />
               <XAxis
                 dataKey="users"
                 stroke="#94a3b8"
@@ -410,15 +410,15 @@ export default function LicenseComparator() {
               />
               <Tooltip
                 contentStyle={{
-                  background: 'rgba(22, 33, 62, 0.95)',
-                  border: '1px solid rgba(42, 58, 92, 0.5)',
+                  background: 'rgba(255, 255, 255, 0.95)',
+                  border: '1px solid rgba(229, 231, 235, 0.5)',
                   borderRadius: 12,
-                  color: '#e2e8f0',
+                  color: '#1e293b',
                 }}
                 formatter={(value: any, name: any) => [formatEur(value), name]}
                 labelFormatter={(label: any) => `${label} utilisateurs`}
               />
-              <Legend wrapperStyle={{ color: '#e2e8f0' }} />
+              <Legend wrapperStyle={{ color: '#1e293b' }} />
               {licenses.map((lic) => (
                 <Line
                   key={lic.name}

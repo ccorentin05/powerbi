@@ -566,7 +566,7 @@ export default function ToolsDownloads() {
             placeholder="Rechercher un outil..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-pbi-darker border border-pbi-border rounded-lg pl-10 pr-4 py-2.5 text-pbi-text placeholder:text-pbi-muted focus:outline-none focus:border-fabric transition-colors"
+            className="w-full bg-gray-100 border border-pbi-border rounded-lg pl-10 pr-4 py-2.5 text-pbi-text placeholder:text-pbi-muted focus:outline-none focus:border-fabric transition-colors"
           />
         </div>
 
@@ -576,7 +576,7 @@ export default function ToolsDownloads() {
           className={`flex items-center gap-2 px-4 py-2.5 rounded-lg border transition-all whitespace-nowrap ${
             showFavoritesOnly
               ? 'bg-primary/20 border-primary/40 text-primary'
-              : 'bg-pbi-darker border-pbi-border text-pbi-muted hover:text-pbi-text'
+              : 'bg-gray-100 border-pbi-border text-pbi-muted hover:text-pbi-text'
           }`}
         >
           <Star className="w-4 h-4" />
@@ -653,7 +653,7 @@ export default function ToolsDownloads() {
                 {/* Top row: icon + name + fav */}
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex items-center gap-3 min-w-0">
-                    <div className="shrink-0 w-10 h-10 rounded-lg bg-pbi-darker flex items-center justify-center text-fabric">
+                    <div className="shrink-0 w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-fabric">
                       <Icon className="w-5 h-5" />
                     </div>
                     <h3 className="font-semibold text-pbi-text truncate">

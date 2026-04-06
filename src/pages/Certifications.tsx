@@ -562,7 +562,7 @@ function SectionTitle({ children, icon: Icon }: { children: React.ReactNode; ico
       >
         <Icon className="w-6 h-6" style={{ color: '#f2c811' }} />
       </div>
-      <h2 className="text-2xl md:text-3xl font-bold" style={{ color: '#e2e8f0' }}>
+      <h2 className="text-2xl md:text-3xl font-bold" style={{ color: '#1e293b' }}>
         {children}
       </h2>
     </motion.div>
@@ -609,7 +609,7 @@ function ProgressBar({ weight, color }: { weight: string; color: string }) {
   const match = weight.match(/(\d+)-(\d+)/)
   const avg = match ? (parseInt(match[1]) + parseInt(match[2])) / 2 : 20
   return (
-    <div className="w-full rounded-full h-2" style={{ background: 'rgba(42,58,92,0.5)' }}>
+    <div className="w-full rounded-full h-2" style={{ background: 'rgba(229,231,235,0.5)' }}>
       <motion.div
         className="h-2 rounded-full"
         style={{ background: color }}
@@ -639,14 +639,14 @@ function CertificationCard({ cert, index }: { cert: Certification; index: number
       animate={inView ? 'visible' : 'hidden'}
       className="rounded-2xl overflow-hidden"
       style={{
-        background: '#16213e',
+        background: '#ffffff',
         border: `1px solid ${cert.color}33`,
       }}
     >
       {/* Header */}
       <button
         onClick={() => setExpanded(!expanded)}
-        className="w-full text-left p-6 flex items-start gap-4 hover:bg-[#1a2744] transition-colors cursor-pointer"
+        className="w-full text-left p-6 flex items-start gap-4 hover:bg-[#f0f0f0] transition-colors cursor-pointer"
       >
         <div
           className="p-3 rounded-xl shrink-0 mt-1"
@@ -665,7 +665,7 @@ function CertificationCard({ cert, index }: { cert: Certification; index: number
             <LevelBadge level={cert.level} color={cert.color} />
             <StatusBadge status={cert.status} />
           </div>
-          <h3 className="text-lg font-semibold mb-2" style={{ color: '#e2e8f0' }}>
+          <h3 className="text-lg font-semibold mb-2" style={{ color: '#1e293b' }}>
             {cert.title}
           </h3>
           <div className="flex flex-wrap gap-4 text-sm" style={{ color: '#94a3b8' }}>
@@ -698,10 +698,10 @@ function CertificationCard({ cert, index }: { cert: Certification; index: number
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="px-6 pb-6 space-y-6" style={{ borderTop: '1px solid #2a3a5c' }}>
+            <div className="px-6 pb-6 space-y-6" style={{ borderTop: '1px solid #e5e7eb' }}>
               {/* Skills measured */}
               <div className="pt-6">
-                <h4 className="font-semibold mb-4 flex items-center gap-2" style={{ color: '#e2e8f0' }}>
+                <h4 className="font-semibold mb-4 flex items-center gap-2" style={{ color: '#1e293b' }}>
                   <Target className="w-5 h-5" style={{ color: cert.color }} />
                   Comp\u00E9tences mesur\u00E9es
                 </h4>
@@ -709,7 +709,7 @@ function CertificationCard({ cert, index }: { cert: Certification; index: number
                   {cert.skills.map((skill) => (
                     <div key={skill.name}>
                       <div className="flex items-center justify-between mb-1">
-                        <span className="text-sm font-medium" style={{ color: '#e2e8f0' }}>
+                        <span className="text-sm font-medium" style={{ color: '#1e293b' }}>
                           {skill.name}
                         </span>
                         <span className="text-xs font-mono" style={{ color: cert.color }}>
@@ -732,7 +732,7 @@ function CertificationCard({ cert, index }: { cert: Certification; index: number
 
               {/* Languages */}
               <div>
-                <h4 className="font-semibold mb-3 flex items-center gap-2" style={{ color: '#e2e8f0' }}>
+                <h4 className="font-semibold mb-3 flex items-center gap-2" style={{ color: '#1e293b' }}>
                   <Globe className="w-5 h-5" style={{ color: cert.color }} />
                   Langues disponibles
                 </h4>
@@ -741,7 +741,7 @@ function CertificationCard({ cert, index }: { cert: Certification; index: number
                     <span
                       key={lang}
                       className="px-2 py-1 rounded text-xs"
-                      style={{ background: '#1a2744', color: '#94a3b8', border: '1px solid #2a3a5c' }}
+                      style={{ background: '#f0f0f0', color: '#94a3b8', border: '1px solid #e5e7eb' }}
                     >
                       {lang}
                     </span>
@@ -751,7 +751,7 @@ function CertificationCard({ cert, index }: { cert: Certification; index: number
 
               {/* Prerequisites */}
               <div>
-                <h4 className="font-semibold mb-2 flex items-center gap-2" style={{ color: '#e2e8f0' }}>
+                <h4 className="font-semibold mb-2 flex items-center gap-2" style={{ color: '#1e293b' }}>
                   <Info className="w-5 h-5" style={{ color: cert.color }} />
                   Pr\u00E9requis
                 </h4>
@@ -760,7 +760,7 @@ function CertificationCard({ cert, index }: { cert: Certification; index: number
 
               {/* Resources */}
               <div>
-                <h4 className="font-semibold mb-3 flex items-center gap-2" style={{ color: '#e2e8f0' }}>
+                <h4 className="font-semibold mb-3 flex items-center gap-2" style={{ color: '#1e293b' }}>
                   <BookOpen className="w-5 h-5" style={{ color: cert.color }} />
                   Ressources d\u0027\u00E9tude
                 </h4>
@@ -776,7 +776,7 @@ function CertificationCard({ cert, index }: { cert: Certification; index: number
 
               {/* Tips */}
               <div>
-                <h4 className="font-semibold mb-3 flex items-center gap-2" style={{ color: '#e2e8f0' }}>
+                <h4 className="font-semibold mb-3 flex items-center gap-2" style={{ color: '#1e293b' }}>
                   <Lightbulb className="w-5 h-5" style={{ color: '#f59e0b' }} />
                   Conseils
                 </h4>
@@ -793,7 +793,7 @@ function CertificationCard({ cert, index }: { cert: Certification; index: number
               {/* Renewal */}
               <div className="flex items-center gap-2 text-sm" style={{ color: '#94a3b8' }}>
                 <Calendar className="w-4 h-4" style={{ color: '#10b981' }} />
-                <strong style={{ color: '#e2e8f0' }}>Renouvellement :</strong> {cert.renewal}
+                <strong style={{ color: '#1e293b' }}>Renouvellement :</strong> {cert.renewal}
               </div>
 
               {/* Action buttons */}
@@ -806,7 +806,7 @@ function CertificationCard({ cert, index }: { cert: Certification; index: number
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-colors"
                     style={{
                       background: cert.color,
-                      color: cert.color === '#f2c811' ? '#1a1a2e' : '#fff',
+                      color: cert.color === '#f2c811' ? '#1e293b' : '#fff',
                     }}
                   >
                     S\u0027inscrire <ExternalLink className="w-4 h-4" />
@@ -983,7 +983,7 @@ function StudyPlanGenerator() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Certification */}
         <div>
-          <label className="block text-sm font-medium mb-2" style={{ color: '#e2e8f0' }}>
+          <label className="block text-sm font-medium mb-2" style={{ color: '#1e293b' }}>
             Certification
           </label>
           <div className="flex gap-2">
@@ -993,9 +993,9 @@ function StudyPlanGenerator() {
                 onClick={() => { setCert(c); setShowPlan(false) }}
                 className="flex-1 px-3 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer"
                 style={{
-                  background: cert === c ? (c === 'pl-300' ? '#f2c811' : '#0078d4') : '#1a2744',
-                  color: cert === c ? (c === 'pl-300' ? '#1a1a2e' : '#fff') : '#94a3b8',
-                  border: `1px solid ${cert === c ? 'transparent' : '#2a3a5c'}`,
+                  background: cert === c ? (c === 'pl-300' ? '#f2c811' : '#0078d4') : '#f0f0f0',
+                  color: cert === c ? (c === 'pl-300' ? '#1e293b' : '#fff') : '#94a3b8',
+                  border: `1px solid ${cert === c ? 'transparent' : '#e5e7eb'}`,
                 }}
               >
                 {c.toUpperCase()}
@@ -1006,7 +1006,7 @@ function StudyPlanGenerator() {
 
         {/* Level */}
         <div>
-          <label className="block text-sm font-medium mb-2" style={{ color: '#e2e8f0' }}>
+          <label className="block text-sm font-medium mb-2" style={{ color: '#1e293b' }}>
             Niveau actuel
           </label>
           <div className="flex gap-2">
@@ -1020,9 +1020,9 @@ function StudyPlanGenerator() {
                 onClick={() => { setLevel(key); setShowPlan(false) }}
                 className="flex-1 px-3 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer"
                 style={{
-                  background: level === key ? '#0078d4' : '#1a2744',
+                  background: level === key ? '#0078d4' : '#f0f0f0',
                   color: level === key ? '#fff' : '#94a3b8',
-                  border: `1px solid ${level === key ? 'transparent' : '#2a3a5c'}`,
+                  border: `1px solid ${level === key ? 'transparent' : '#e5e7eb'}`,
                 }}
               >
                 {label}
@@ -1033,7 +1033,7 @@ function StudyPlanGenerator() {
 
         {/* Hours */}
         <div>
-          <label className="block text-sm font-medium mb-2" style={{ color: '#e2e8f0' }}>
+          <label className="block text-sm font-medium mb-2" style={{ color: '#1e293b' }}>
             Heures/semaine
           </label>
           <div className="flex gap-2">
@@ -1043,9 +1043,9 @@ function StudyPlanGenerator() {
                 onClick={() => { setHours(h); setShowPlan(false) }}
                 className="flex-1 px-3 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer"
                 style={{
-                  background: hours === h ? '#0078d4' : '#1a2744',
+                  background: hours === h ? '#0078d4' : '#f0f0f0',
                   color: hours === h ? '#fff' : '#94a3b8',
-                  border: `1px solid ${hours === h ? 'transparent' : '#2a3a5c'}`,
+                  border: `1px solid ${hours === h ? 'transparent' : '#e5e7eb'}`,
                 }}
               >
                 {h}h
@@ -1059,7 +1059,7 @@ function StudyPlanGenerator() {
       <button
         onClick={() => setShowPlan(true)}
         className="w-full md:w-auto px-6 py-3 rounded-xl font-semibold text-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
-        style={{ background: '#f2c811', color: '#1a1a2e' }}
+        style={{ background: '#f2c811', color: '#1e293b' }}
       >
         <Sparkles className="w-4 h-4" />
         G\u00E9n\u00E9rer mon plan d\u0027\u00E9tude
@@ -1082,7 +1082,7 @@ function StudyPlanGenerator() {
             >
               <Calendar className="w-8 h-8" style={{ color: '#f2c811' }} />
               <div>
-                <div className="font-bold text-lg" style={{ color: '#e2e8f0' }}>
+                <div className="font-bold text-lg" style={{ color: '#1e293b' }}>
                   {plan.totalWeeks} semaines estim\u00E9es
                 </div>
                 <div className="text-sm" style={{ color: '#94a3b8' }}>
@@ -1099,7 +1099,7 @@ function StudyPlanGenerator() {
                   variants={fadeUp}
                   custom={week.week}
                   className="p-4 rounded-xl"
-                  style={{ background: '#1a2744', border: '1px solid #2a3a5c' }}
+                  style={{ background: '#f0f0f0', border: '1px solid #e5e7eb' }}
                 >
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
@@ -1109,7 +1109,7 @@ function StudyPlanGenerator() {
                       >
                         Sem. {week.week}
                       </span>
-                      <span className="font-semibold text-sm" style={{ color: '#e2e8f0' }}>
+                      <span className="font-semibold text-sm" style={{ color: '#1e293b' }}>
                         {week.title}
                       </span>
                     </div>
@@ -1127,7 +1127,7 @@ function StudyPlanGenerator() {
                       <span
                         key={t}
                         className="text-xs px-2 py-1 rounded"
-                        style={{ background: '#16213e', color: '#94a3b8' }}
+                        style={{ background: '#ffffff', color: '#94a3b8' }}
                       >
                         {t}
                       </span>
@@ -1165,7 +1165,7 @@ function CostCalculator() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Exam count */}
         <div>
-          <label className="block text-sm font-medium mb-3" style={{ color: '#e2e8f0' }}>
+          <label className="block text-sm font-medium mb-3" style={{ color: '#1e293b' }}>
             Nombre de certifications
           </label>
           <div className="flex gap-2">
@@ -1175,9 +1175,9 @@ function CostCalculator() {
                 onClick={() => setExamCount(n)}
                 className="flex-1 px-3 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer"
                 style={{
-                  background: examCount === n ? '#f2c811' : '#1a2744',
-                  color: examCount === n ? '#1a1a2e' : '#94a3b8',
-                  border: `1px solid ${examCount === n ? 'transparent' : '#2a3a5c'}`,
+                  background: examCount === n ? '#f2c811' : '#f0f0f0',
+                  color: examCount === n ? '#1e293b' : '#94a3b8',
+                  border: `1px solid ${examCount === n ? 'transparent' : '#e5e7eb'}`,
                 }}
               >
                 {n}
@@ -1188,7 +1188,7 @@ function CostCalculator() {
 
         {/* Practice test */}
         <div>
-          <label className="block text-sm font-medium mb-3" style={{ color: '#e2e8f0' }}>
+          <label className="block text-sm font-medium mb-3" style={{ color: '#1e293b' }}>
             Test de pratique (~50\u20AC/exam)
           </label>
           <div className="flex gap-2">
@@ -1196,9 +1196,9 @@ function CostCalculator() {
               onClick={() => setPracticeTest(false)}
               className="flex-1 px-3 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer"
               style={{
-                background: !practiceTest ? '#0078d4' : '#1a2744',
+                background: !practiceTest ? '#0078d4' : '#f0f0f0',
                 color: !practiceTest ? '#fff' : '#94a3b8',
-                border: `1px solid ${!practiceTest ? 'transparent' : '#2a3a5c'}`,
+                border: `1px solid ${!practiceTest ? 'transparent' : '#e5e7eb'}`,
               }}
             >
               Non
@@ -1207,9 +1207,9 @@ function CostCalculator() {
               onClick={() => setPracticeTest(true)}
               className="flex-1 px-3 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer"
               style={{
-                background: practiceTest ? '#0078d4' : '#1a2744',
+                background: practiceTest ? '#0078d4' : '#f0f0f0',
                 color: practiceTest ? '#fff' : '#94a3b8',
-                border: `1px solid ${practiceTest ? 'transparent' : '#2a3a5c'}`,
+                border: `1px solid ${practiceTest ? 'transparent' : '#e5e7eb'}`,
               }}
             >
               Oui
@@ -1219,7 +1219,7 @@ function CostCalculator() {
 
         {/* Instructor-led */}
         <div>
-          <label className="block text-sm font-medium mb-3" style={{ color: '#e2e8f0' }}>
+          <label className="block text-sm font-medium mb-3" style={{ color: '#1e293b' }}>
             Formation avec instructeur
           </label>
           <div className="flex gap-2">
@@ -1233,9 +1233,9 @@ function CostCalculator() {
                 onClick={() => setInstructorLed(key)}
                 className="flex-1 px-3 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer"
                 style={{
-                  background: instructorLed === key ? '#0078d4' : '#1a2744',
+                  background: instructorLed === key ? '#0078d4' : '#f0f0f0',
                   color: instructorLed === key ? '#fff' : '#94a3b8',
-                  border: `1px solid ${instructorLed === key ? 'transparent' : '#2a3a5c'}`,
+                  border: `1px solid ${instructorLed === key ? 'transparent' : '#e5e7eb'}`,
                 }}
               >
                 {label}
@@ -1248,27 +1248,27 @@ function CostCalculator() {
       {/* Cost breakdown */}
       <div
         className="p-6 rounded-xl space-y-3"
-        style={{ background: '#1a2744', border: '1px solid #2a3a5c' }}
+        style={{ background: '#f0f0f0', border: '1px solid #e5e7eb' }}
       >
         <div className="flex justify-between text-sm" style={{ color: '#94a3b8' }}>
           <span>Examen(s) ({examCount} x 165\u20AC)</span>
-          <span style={{ color: '#e2e8f0' }}>{examCost}\u20AC</span>
+          <span style={{ color: '#1e293b' }}>{examCost}\u20AC</span>
         </div>
         {practiceTest && (
           <div className="flex justify-between text-sm" style={{ color: '#94a3b8' }}>
             <span>Test(s) de pratique ({examCount} x 50\u20AC)</span>
-            <span style={{ color: '#e2e8f0' }}>{practiceCost}\u20AC</span>
+            <span style={{ color: '#1e293b' }}>{practiceCost}\u20AC</span>
           </div>
         )}
         {trainingCost > 0 && (
           <div className="flex justify-between text-sm" style={{ color: '#94a3b8' }}>
             <span>Formation instructeur</span>
-            <span style={{ color: '#e2e8f0' }}>{trainingCost}\u20AC</span>
+            <span style={{ color: '#1e293b' }}>{trainingCost}\u20AC</span>
           </div>
         )}
         <div
           className="flex justify-between pt-3 font-bold"
-          style={{ borderTop: '1px solid #2a3a5c', color: '#e2e8f0' }}
+          style={{ borderTop: '1px solid #e5e7eb', color: '#1e293b' }}
         >
           <span>Total estim\u00E9</span>
           <span style={{ color: '#f2c811', fontSize: '1.25rem' }}>{total}\u20AC</span>
@@ -1356,13 +1356,13 @@ function ExamTips() {
           variants={fadeUp}
           custom={0}
           className="p-5 rounded-xl"
-          style={{ background: '#16213e', border: `1px solid ${section.color}33` }}
+          style={{ background: '#ffffff', border: `1px solid ${section.color}33` }}
         >
           <div className="flex items-center gap-3 mb-4">
             <div className="p-2 rounded-lg" style={{ background: `${section.color}22` }}>
               <section.icon className="w-5 h-5" style={{ color: section.color }} />
             </div>
-            <h4 className="font-semibold" style={{ color: '#e2e8f0' }}>
+            <h4 className="font-semibold" style={{ color: '#1e293b' }}>
               {section.title}
             </h4>
           </div>
@@ -1386,7 +1386,7 @@ function ExamTips() {
 
 export default function Certifications() {
   return (
-    <div className="min-h-screen px-4 py-12 md:px-8" style={{ background: '#0f0f1e' }}>
+    <div className="min-h-screen px-4 py-12 md:px-8" style={{ background: '#fafafa' }}>
       <div className="max-w-5xl mx-auto space-y-16">
         {/* ---- Header ---- */}
         <motion.div
@@ -1428,7 +1428,7 @@ export default function Certifications() {
           <SectionTitle icon={TrendingUp}>Parcours de certification</SectionTitle>
           <div
             className="p-6 rounded-2xl"
-            style={{ background: '#16213e', border: '1px solid #2a3a5c' }}
+            style={{ background: '#ffffff', border: '1px solid #e5e7eb' }}
           >
             <CertificationRoadmap />
           </div>
@@ -1450,7 +1450,7 @@ export default function Certifications() {
                 whileInView="visible"
                 viewport={{ once: true, margin: '-30px' }}
                 className="p-5 rounded-xl group transition-colors"
-                style={{ background: '#16213e', border: '1px solid #2a3a5c' }}
+                style={{ background: '#ffffff', border: '1px solid #e5e7eb' }}
                 whileHover={{ scale: 1.02, borderColor: '#0078d4' }}
               >
                 <div className="flex items-start gap-3">
@@ -1463,7 +1463,7 @@ export default function Certifications() {
                   <div>
                     <h4
                       className="font-semibold text-sm mb-1 group-hover:underline"
-                      style={{ color: '#e2e8f0' }}
+                      style={{ color: '#1e293b' }}
                     >
                       {lab.title}
                     </h4>
@@ -1491,7 +1491,7 @@ export default function Certifications() {
           <SectionTitle icon={Sparkles}>G\u00E9n\u00E9rateur de plan d\u0027\u00E9tude</SectionTitle>
           <div
             className="p-6 rounded-2xl"
-            style={{ background: '#16213e', border: '1px solid #2a3a5c' }}
+            style={{ background: '#ffffff', border: '1px solid #e5e7eb' }}
           >
             <StudyPlanGenerator />
           </div>
@@ -1502,7 +1502,7 @@ export default function Certifications() {
           <SectionTitle icon={Calculator}>Calculateur de co\u00FBt</SectionTitle>
           <div
             className="p-6 rounded-2xl"
-            style={{ background: '#16213e', border: '1px solid #2a3a5c' }}
+            style={{ background: '#ffffff', border: '1px solid #e5e7eb' }}
           >
             <CostCalculator />
           </div>

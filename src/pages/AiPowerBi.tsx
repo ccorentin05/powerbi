@@ -112,7 +112,7 @@ function SectionTitle({
         >
           <Icon size={24} style={{ color }} />
         </div>
-        <h2 className="text-2xl md:text-3xl font-bold text-[#e2e8f0]">
+        <h2 className="text-2xl md:text-3xl font-bold text-[#1e293b]">
           {title}
         </h2>
       </div>
@@ -147,7 +147,7 @@ function ExpandableCard({
     <motion.div
       variants={fadeUp}
       custom={index}
-      className="rounded-2xl border border-[#2a3a5c] overflow-hidden"
+      className="rounded-2xl border border-[#e5e7eb] overflow-hidden"
       style={{
         background:
           'linear-gradient(135deg, rgba(22,33,62,0.95), rgba(26,39,68,0.85))',
@@ -156,11 +156,11 @@ function ExpandableCard({
     >
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between p-5 text-left hover:bg-[#1a2744]/50 transition-colors cursor-pointer"
+        className="w-full flex items-center justify-between p-5 text-left hover:bg-[#f0f0f0]/50 transition-colors cursor-pointer"
       >
         <div className="flex items-center gap-3">
           <Icon size={20} style={{ color }} />
-          <span className="text-[#e2e8f0] font-semibold text-lg">{title}</span>
+          <span className="text-[#1e293b] font-semibold text-lg">{title}</span>
         </div>
         {open ? (
           <ChevronUp size={18} className="text-[#94a3b8]" />
@@ -199,8 +199,8 @@ function CodeBlock({
   language?: string
 }) {
   return (
-    <div className="rounded-xl overflow-hidden border border-[#2a3a5c] my-4">
-      <div className="flex items-center gap-2 px-4 py-2 bg-[#0f0f1e] border-b border-[#2a3a5c]">
+    <div className="rounded-xl overflow-hidden border border-[#e5e7eb] my-4">
+      <div className="flex items-center gap-2 px-4 py-2 bg-[#fafafa] border-b border-[#e5e7eb]">
         <div className="w-3 h-3 rounded-full bg-[#ef4444]" />
         <div className="w-3 h-3 rounded-full bg-[#f59e0b]" />
         <div className="w-3 h-3 rounded-full bg-[#10b981]" />
@@ -208,7 +208,7 @@ function CodeBlock({
           {language}
         </span>
       </div>
-      <pre className="p-4 bg-[#0a0a18] text-sm overflow-x-auto">
+      <pre className="p-4 bg-[#1e1e2e] text-sm overflow-x-auto">
         <code className="text-[#e2e8f0] font-mono whitespace-pre">
           {code}
         </code>
@@ -528,7 +528,7 @@ const roadmapItems = [
 
 export default function AiPowerBi() {
   return (
-    <div className="min-h-screen bg-[#0f0f1e] pb-20">
+    <div className="min-h-screen bg-[#fafafa] pb-20">
       {/* ============================================================ */}
       {/*  1. HERO                                                      */}
       {/* ============================================================ */}
@@ -682,7 +682,7 @@ function CopilotSection() {
             key={cap.title}
             variants={fadeUp}
             custom={i + 1}
-            className="p-5 rounded-2xl border border-[#2a3a5c] hover:border-[#a855f7]/40 transition-colors"
+            className="p-5 rounded-2xl border border-[#e5e7eb] hover:border-[#a855f7]/40 transition-colors"
             style={{
               background:
                 'linear-gradient(135deg, rgba(22,33,62,0.9), rgba(26,39,68,0.8))',
@@ -696,7 +696,7 @@ function CopilotSection() {
                 <cap.icon size={20} className="text-[#a855f7]" />
               </div>
               <div>
-                <h3 className="text-[#e2e8f0] font-semibold mb-1">
+                <h3 className="text-[#1e293b] font-semibold mb-1">
                   {cap.title}
                 </h3>
                 <p className="text-[#94a3b8] text-sm">{cap.desc}</p>
@@ -721,15 +721,15 @@ function CopilotSection() {
             </h3>
             <ul className="text-[#94a3b8] text-sm space-y-1">
               <li>
-                <strong className="text-[#e2e8f0]">Capacite :</strong> F64+
+                <strong className="text-[#1e293b]">Capacite :</strong> F64+
                 ou Power BI Premium Per User (PPU)
               </li>
               <li>
-                <strong className="text-[#e2e8f0]">Admin :</strong> Activer
+                <strong className="text-[#1e293b]">Admin :</strong> Activer
                 le toggle "Bing Search" dans le portail d'admin Fabric
               </li>
               <li>
-                <strong className="text-[#e2e8f0]">Region :</strong>{' '}
+                <strong className="text-[#1e293b]">Region :</strong>{' '}
                 Disponible dans les regions supportant Azure OpenAI
               </li>
             </ul>
@@ -739,7 +739,7 @@ function CopilotSection() {
 
       {/* Availability grid */}
       <motion.div variants={fadeUp} custom={6} className="mb-8">
-        <h3 className="text-[#e2e8f0] font-semibold mb-4 flex items-center gap-2">
+        <h3 className="text-[#1e293b] font-semibold mb-4 flex items-center gap-2">
           <Eye size={18} className="text-[#0078d4]" />
           Disponibilite
         </h3>
@@ -747,9 +747,9 @@ function CopilotSection() {
           {copilotAvailability.map((item) => (
             <div
               key={item.label}
-              className="flex items-center justify-between p-3 rounded-xl border border-[#2a3a5c] bg-[#16213e]/80"
+              className="flex items-center justify-between p-3 rounded-xl border border-[#e5e7eb] bg-[#ffffff]/80"
             >
-              <span className="text-[#e2e8f0] text-sm">{item.label}</span>
+              <span className="text-[#1e293b] text-sm">{item.label}</span>
               <Badge label={item.status} color={item.color} />
             </div>
           ))}
@@ -845,7 +845,7 @@ function VibeBiSection() {
 
         <div
           className="relative rounded-3xl p-8 md:p-12"
-          style={{ background: 'linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%)' }}
+          style={{ background: 'linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)' }}
         >
           {/* Top badge */}
           <motion.div
@@ -887,7 +887,7 @@ function VibeBiSection() {
           <motion.p
             variants={fadeUp}
             custom={2}
-            className="text-xl text-[#e2e8f0] mb-8 max-w-2xl"
+            className="text-xl text-[#1e293b] mb-8 max-w-2xl"
           >
             Build full Power BI reports chatting with Claude Code
           </motion.p>
@@ -944,7 +944,7 @@ function VibeBiSection() {
                 >
                   <item.icon size={20} className="text-[#f2c811] mt-0.5 shrink-0" />
                   <div>
-                    <h4 className="text-[#e2e8f0] font-semibold text-sm">
+                    <h4 className="text-[#1e293b] font-semibold text-sm">
                       {item.title}
                     </h4>
                     <p className="text-[#94a3b8] text-xs mt-0.5">{item.desc}</p>
@@ -1038,7 +1038,7 @@ function McpSection() {
           Qu'est-ce que MCP ?
         </h3>
         <p className="text-[#94a3b8] text-sm leading-relaxed">
-          Le <strong className="text-[#e2e8f0]">Model Context Protocol</strong>{' '}
+          Le <strong className="text-[#1e293b]">Model Context Protocol</strong>{' '}
           est un protocole ouvert qui standardise la communication entre les
           outils IA (Claude, ChatGPT, etc.) et les sources de donnees /
           applications. Il permet aux LLMs d'interagir directement avec Power
@@ -1053,7 +1053,7 @@ function McpSection() {
             key={server.title}
             variants={scaleIn}
             custom={i + 2}
-            className="p-5 rounded-2xl border border-[#2a3a5c] hover:border-[#10b981]/40 transition-all hover:-translate-y-1"
+            className="p-5 rounded-2xl border border-[#e5e7eb] hover:border-[#10b981]/40 transition-all hover:-translate-y-1"
             style={{
               background:
                 'linear-gradient(180deg, rgba(22,33,62,0.95), rgba(15,15,30,0.95))',
@@ -1065,7 +1065,7 @@ function McpSection() {
             >
               <Database size={20} style={{ color: server.color }} />
             </div>
-            <h4 className="text-[#e2e8f0] font-semibold mb-2">
+            <h4 className="text-[#1e293b] font-semibold mb-2">
               {server.title}
             </h4>
             <p className="text-[#94a3b8] text-sm">{server.description}</p>
@@ -1075,7 +1075,7 @@ function McpSection() {
 
       {/* Use cases */}
       <motion.div variants={fadeUp} custom={5} className="mb-8">
-        <h3 className="text-[#e2e8f0] font-semibold mb-4 flex items-center gap-2">
+        <h3 className="text-[#1e293b] font-semibold mb-4 flex items-center gap-2">
           <Rocket size={18} className="text-[#f2c811]" />
           Cas d'usage
         </h3>
@@ -1083,7 +1083,7 @@ function McpSection() {
           {mcpUseCases.map((uc, i) => (
             <div
               key={i}
-              className="flex items-start gap-3 p-3 rounded-xl border border-[#2a3a5c] bg-[#16213e]/60"
+              className="flex items-start gap-3 p-3 rounded-xl border border-[#e5e7eb] bg-[#ffffff]/60"
             >
               <CheckCircle2
                 size={16}
@@ -1164,7 +1164,7 @@ function AiFeaturesSection() {
               key={feature.title}
               variants={scaleIn}
               custom={i + 1}
-              className="rounded-2xl border border-[#2a3a5c] overflow-hidden transition-all hover:border-opacity-60 cursor-pointer"
+              className="rounded-2xl border border-[#e5e7eb] overflow-hidden transition-all hover:border-opacity-60 cursor-pointer"
               style={{
                 borderColor: isOpen ? `${feature.color}60` : undefined,
                 background:
@@ -1184,7 +1184,7 @@ function AiFeaturesSection() {
                   </div>
                   <Badge label={feature.badge} color={feature.color} />
                 </div>
-                <h4 className="text-[#e2e8f0] font-semibold mb-2">
+                <h4 className="text-[#1e293b] font-semibold mb-2">
                   {feature.title}
                 </h4>
                 <p className="text-[#94a3b8] text-sm">
@@ -1200,7 +1200,7 @@ function AiFeaturesSection() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <div className="mt-4 pt-4 border-t border-[#2a3a5c]">
+                      <div className="mt-4 pt-4 border-t border-[#e5e7eb]">
                         <p className="text-[#94a3b8] text-sm">
                           {feature.details}
                         </p>
@@ -1242,9 +1242,9 @@ function HealthChecksSection() {
       >
         <p className="text-[#94a3b8] leading-relaxed text-sm mb-4">
           Automatisez vos controles qualite en executant le{' '}
-          <strong className="text-[#e2e8f0]">Best Practice Analyzer</strong>{' '}
+          <strong className="text-[#1e293b]">Best Practice Analyzer</strong>{' '}
           (BPA) et le{' '}
-          <strong className="text-[#e2e8f0]">Memory Analyzer</strong>{' '}
+          <strong className="text-[#1e293b]">Memory Analyzer</strong>{' '}
           directement depuis un notebook Fabric Lakehouse. Planifiez des
           executions regulieres et recevez des alertes automatiques.
         </p>
@@ -1278,7 +1278,7 @@ function HealthChecksSection() {
           ].map((item) => (
             <div
               key={item.title}
-              className="flex items-start gap-3 p-4 rounded-xl border border-[#2a3a5c] bg-[#16213e]/60"
+              className="flex items-start gap-3 p-4 rounded-xl border border-[#e5e7eb] bg-[#ffffff]/60"
             >
               <item.icon
                 size={18}
@@ -1286,7 +1286,7 @@ function HealthChecksSection() {
                 className="mt-0.5 shrink-0"
               />
               <div>
-                <h4 className="text-[#e2e8f0] font-semibold text-sm">
+                <h4 className="text-[#1e293b] font-semibold text-sm">
                   {item.title}
                 </h4>
                 <p className="text-[#94a3b8] text-xs mt-0.5">{item.desc}</p>
@@ -1421,7 +1421,7 @@ function AiToolsSection() {
             key={tool.title}
             variants={scaleIn}
             custom={i + 1}
-            className="group p-5 rounded-2xl border border-[#2a3a5c] hover:border-opacity-60 transition-all hover:-translate-y-1"
+            className="group p-5 rounded-2xl border border-[#e5e7eb] hover:border-opacity-60 transition-all hover:-translate-y-1"
             style={{
               background:
                 'linear-gradient(180deg, rgba(22,33,62,0.95), rgba(15,15,30,0.95))',
@@ -1433,7 +1433,7 @@ function AiToolsSection() {
             >
               <tool.icon size={24} style={{ color: tool.color }} />
             </div>
-            <h4 className="text-[#e2e8f0] font-semibold mb-2">
+            <h4 className="text-[#1e293b] font-semibold mb-2">
               {tool.title}
             </h4>
             <p className="text-[#94a3b8] text-sm">{tool.desc}</p>
@@ -1523,7 +1523,7 @@ function FutureSection() {
                 className="absolute left-4 top-5 w-5 h-5 rounded-full border-2 hidden md:flex items-center justify-center"
                 style={{
                   borderColor: item.color,
-                  background: '#0f0f1e',
+                  background: '#fafafa',
                 }}
               >
                 <div
@@ -1533,7 +1533,7 @@ function FutureSection() {
               </div>
 
               <div
-                className="p-5 rounded-2xl border border-[#2a3a5c] hover:border-opacity-60 transition-all"
+                className="p-5 rounded-2xl border border-[#e5e7eb] hover:border-opacity-60 transition-all"
                 style={{
                   background:
                     'linear-gradient(135deg, rgba(22,33,62,0.95), rgba(26,39,68,0.85))',
@@ -1542,7 +1542,7 @@ function FutureSection() {
                 <div className="flex items-start justify-between mb-2">
                   <div className="flex items-center gap-3">
                     <item.icon size={20} style={{ color: item.color }} />
-                    <h4 className="text-[#e2e8f0] font-semibold">
+                    <h4 className="text-[#1e293b] font-semibold">
                       {item.title}
                     </h4>
                   </div>
@@ -1559,14 +1559,14 @@ function FutureSection() {
       <motion.div
         variants={fadeUp}
         custom={roadmapItems.length + 1}
-        className="mt-12 text-center p-8 rounded-2xl border border-[#2a3a5c]"
+        className="mt-12 text-center p-8 rounded-2xl border border-[#e5e7eb]"
         style={{
           background:
             'linear-gradient(135deg, rgba(168,85,247,0.06), rgba(0,120,212,0.06), rgba(242,200,17,0.06))',
         }}
       >
         <Brain size={32} className="text-[#a855f7] mx-auto mb-4" />
-        <h3 className="text-[#e2e8f0] text-xl font-bold mb-2">
+        <h3 className="text-[#1e293b] text-xl font-bold mb-2">
           L'IA transforme la BI
         </h3>
         <p className="text-[#94a3b8] max-w-lg mx-auto">

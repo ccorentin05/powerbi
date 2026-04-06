@@ -282,11 +282,11 @@ function CodeBlock({ code, title }: { code: string; title?: string }) {
   return (
     <div className="rounded-lg overflow-hidden border border-pbi-border">
       {title && (
-        <div className="px-4 py-2 bg-pbi-darker text-xs font-mono text-pbi-muted border-b border-pbi-border">
+        <div className="px-4 py-2 bg-gray-100 text-xs font-mono text-pbi-muted border-b border-pbi-border">
           {title}
         </div>
       )}
-      <pre className="p-4 bg-pbi-darker/50 text-sm font-mono text-pbi-text overflow-x-auto whitespace-pre-wrap">
+      <pre className="p-4 bg-gray-100 text-sm font-mono text-pbi-text overflow-x-auto whitespace-pre-wrap">
         {code}
       </pre>
     </div>
@@ -413,7 +413,7 @@ function WorkspaceRolesSection() {
                 key={row.action}
                 variants={fadeInUp}
                 custom={i}
-                className="border-b border-pbi-border/50 hover:bg-pbi-card-hover/50 transition-colors"
+                className="border-b border-pbi-border hover:bg-pbi-card-hover/50 transition-colors"
               >
                 <td className="py-3 px-4 text-pbi-text">{row.action}</td>
                 <td className="py-3 px-4"><RoleBadge allowed={row.admin} /></td>
@@ -462,7 +462,7 @@ function SharingMethodsSection() {
               className={`rounded-lg border transition-colors cursor-pointer ${
                 isExpanded
                   ? 'border-primary/50 bg-pbi-card-hover'
-                  : 'border-pbi-border bg-pbi-darker/30 hover:bg-pbi-card-hover/50'
+                  : 'border-pbi-border bg-gray-50 hover:bg-pbi-card-hover/50'
               }`}
               onClick={() => setExpanded(isExpanded ? null : method.title)}
             >
@@ -568,7 +568,7 @@ function RLSSection() {
               className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                 activePattern === i
                   ? 'bg-primary/20 text-primary border border-primary/30'
-                  : 'bg-pbi-darker text-pbi-muted border border-pbi-border hover:border-pbi-muted'
+                  : 'bg-gray-100 text-pbi-muted border border-pbi-border hover:border-pbi-muted'
               }`}
             >
               {pattern.name}
@@ -597,7 +597,7 @@ function RLSSection() {
       <div>
         <h3 className="text-lg font-semibold text-pbi-text mb-3">Testing RLS</h3>
         <div className="grid gap-4 md:grid-cols-2">
-          <div className="p-4 rounded-lg bg-pbi-darker/50 border border-pbi-border">
+          <div className="p-4 rounded-lg bg-gray-100 border border-pbi-border">
             <h4 className="font-medium text-pbi-text mb-2">In Power BI Desktop</h4>
             <ol className="text-sm text-pbi-muted space-y-1 list-decimal list-inside">
               <li>Modeling tab &rarr; "View as"</li>
@@ -607,7 +607,7 @@ function RLSSection() {
               <li>Check all pages and visuals</li>
             </ol>
           </div>
-          <div className="p-4 rounded-lg bg-pbi-darker/50 border border-pbi-border">
+          <div className="p-4 rounded-lg bg-gray-100 border border-pbi-border">
             <h4 className="font-medium text-pbi-text mb-2">In Power BI Service</h4>
             <ol className="text-sm text-pbi-muted space-y-1 list-decimal list-inside">
               <li>Open the dataset settings</li>
@@ -718,7 +718,7 @@ function SensitivityLabelsSection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="p-4 rounded-lg bg-pbi-darker/50 border border-pbi-border"
+            className="p-4 rounded-lg bg-gray-100 border border-pbi-border"
           >
             <div className="flex items-center gap-2 mb-3">
               <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }} />
@@ -736,14 +736,14 @@ function SensitivityLabelsSection() {
       <div className="space-y-4">
         <h3 className="text-lg font-semibold text-pbi-text">Key Concepts</h3>
         <div className="grid gap-4 md:grid-cols-2">
-          <div className="p-4 rounded-lg bg-pbi-darker/50 border border-pbi-border">
+          <div className="p-4 rounded-lg bg-gray-100 border border-pbi-border">
             <h4 className="font-medium text-pbi-text mb-2">Downstream Inheritance</h4>
             <p className="text-sm text-pbi-muted">
               When a dataset has a sensitivity label, all reports and dashboards built on it automatically inherit that label.
               Exports (Excel, PDF, PowerPoint) also carry the label and its protections.
             </p>
           </div>
-          <div className="p-4 rounded-lg bg-pbi-darker/50 border border-pbi-border">
+          <div className="p-4 rounded-lg bg-gray-100 border border-pbi-border">
             <h4 className="font-medium text-pbi-text mb-2">Auto-Labeling Policies</h4>
             <p className="text-sm text-pbi-muted">
               Admins can configure policies in Purview to automatically apply labels based on content inspection.
@@ -780,7 +780,7 @@ function FabricDomainsSection() {
         </p>
 
         <div className="grid gap-4 md:grid-cols-3">
-          <div className="p-4 rounded-lg bg-pbi-darker/50 border border-pbi-border">
+          <div className="p-4 rounded-lg bg-gray-100 border border-pbi-border">
             <h4 className="font-medium text-primary mb-2">Domain Admin</h4>
             <ul className="text-sm text-pbi-muted space-y-1">
               <li>Manage domain settings</li>
@@ -789,7 +789,7 @@ function FabricDomainsSection() {
               <li>Configure endorsement policies</li>
             </ul>
           </div>
-          <div className="p-4 rounded-lg bg-pbi-darker/50 border border-pbi-border">
+          <div className="p-4 rounded-lg bg-gray-100 border border-pbi-border">
             <h4 className="font-medium text-fabric mb-2">Domain Contributor</h4>
             <ul className="text-sm text-pbi-muted space-y-1">
               <li>Assign workspaces to the domain</li>
@@ -798,7 +798,7 @@ function FabricDomainsSection() {
               <li>Self-service governance</li>
             </ul>
           </div>
-          <div className="p-4 rounded-lg bg-pbi-darker/50 border border-pbi-border">
+          <div className="p-4 rounded-lg bg-gray-100 border border-pbi-border">
             <h4 className="font-medium text-success mb-2">Benefits</h4>
             <ul className="text-sm text-pbi-muted space-y-1">
               <li>Governance at scale</li>
@@ -833,7 +833,7 @@ function AccessPatternsSection() {
     >
       <div className="space-y-4">
         {/* Decision flow */}
-        <div className="p-6 rounded-lg bg-pbi-darker/30 border border-pbi-border">
+        <div className="p-6 rounded-lg bg-gray-50 border border-pbi-border">
           <h3 className="text-lg font-semibold text-pbi-text mb-4 text-center">Decision Flow</h3>
           <div className="flex flex-col items-center gap-3 text-sm">
             <div className="px-4 py-2 rounded-lg bg-primary/20 text-primary font-medium border border-primary/30">
@@ -866,7 +866,7 @@ function AccessPatternsSection() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="p-4 rounded-lg bg-pbi-darker/50 border border-pbi-border hover:border-primary/30 transition-colors"
+                className="p-4 rounded-lg bg-gray-100 border border-pbi-border hover:border-primary/30 transition-colors"
               >
                 <div className="flex items-center gap-2 mb-3">
                   <div
@@ -905,7 +905,7 @@ function AuditSection() {
       subtitle="Track access, usage, and governance compliance"
     >
       <div className="grid gap-4 md:grid-cols-2">
-        <div className="p-4 rounded-lg bg-pbi-darker/50 border border-pbi-border">
+        <div className="p-4 rounded-lg bg-gray-100 border border-pbi-border">
           <div className="flex items-center gap-2 mb-3">
             <Search className="w-5 h-5 text-primary" />
             <h4 className="font-medium text-pbi-text">Activity Log</h4>
@@ -922,7 +922,7 @@ function AuditSection() {
           />
         </div>
 
-        <div className="p-4 rounded-lg bg-pbi-darker/50 border border-pbi-border">
+        <div className="p-4 rounded-lg bg-gray-100 border border-pbi-border">
           <div className="flex items-center gap-2 mb-3">
             <BarChart3 className="w-5 h-5 text-primary" />
             <h4 className="font-medium text-pbi-text">Usage Metrics</h4>
@@ -939,7 +939,7 @@ function AuditSection() {
           </ul>
         </div>
 
-        <div className="p-4 rounded-lg bg-pbi-darker/50 border border-pbi-border">
+        <div className="p-4 rounded-lg bg-gray-100 border border-pbi-border">
           <div className="flex items-center gap-2 mb-3">
             <Database className="w-5 h-5 text-primary" />
             <h4 className="font-medium text-pbi-text">Scanner API (GetInfo)</h4>
@@ -956,7 +956,7 @@ function AuditSection() {
           </ul>
         </div>
 
-        <div className="p-4 rounded-lg bg-pbi-darker/50 border border-pbi-border">
+        <div className="p-4 rounded-lg bg-gray-100 border border-pbi-border">
           <div className="flex items-center gap-2 mb-3">
             <Settings className="w-5 h-5 text-primary" />
             <h4 className="font-medium text-pbi-text">Admin Portal Settings</h4>
@@ -1044,7 +1044,7 @@ function CommonMistakesSection() {
 
 export default function SharingAccess() {
   return (
-    <div className="min-h-screen bg-pbi-dark">
+    <div className="min-h-screen bg-gray-50">
       {/* Hero */}
       <section className="relative overflow-hidden py-16 px-4">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-fabric/5" />

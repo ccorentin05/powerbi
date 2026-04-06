@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
 import {
   LayoutDashboard,
   Calculator,
@@ -54,7 +53,6 @@ interface NavStandalone {
   path: string
   label: string
   icon: LucideIcon
-  description: string
 }
 
 type NavEntry = NavCategory | NavStandalone
@@ -71,17 +69,17 @@ const navigation: NavEntry[] = [
     path: '/',
     label: 'Accueil',
     icon: LayoutDashboard,
-    description: 'Tableau de bord principal',
   },
   {
     id: 'outils',
     label: 'Outils',
     icon: Wrench,
     items: [
-      { path: '/simulator', label: 'Simulateur Fabric', icon: Calculator, description: 'Simuler les coûts Fabric' },
+      { path: '/simulator', label: 'Simulateur Fabric', icon: Calculator, description: 'Simuler les couts Fabric' },
       { path: '/licenses', label: 'Comparateur Licences', icon: CreditCard, description: 'Comparer les licences Power BI' },
       { path: '/roi', label: 'Calculateur ROI', icon: TrendingUp, description: 'Calculer le retour sur investissement' },
       { path: '/formatter', label: 'Formateur DAX/M', icon: AlignLeft, description: 'Formater du code DAX et M' },
+      { path: '/performance', label: 'Checklist Performance', icon: Zap, description: "Checklist d'optimisation des performances" },
     ],
   },
   {
@@ -89,10 +87,10 @@ const navigation: NavEntry[] = [
     label: 'Apprendre',
     icon: BookOpen,
     items: [
-      { path: '/dax', label: 'Référence DAX', icon: Code2, description: 'Fonctions et patterns DAX' },
-      { path: '/fiches', label: 'Fiches Techniques', icon: BookOpen, description: 'Fiches de référence rapide' },
-      { path: '/exercises', label: 'Exercices Pratiques', icon: PenTool, description: 'Exercices pour pratiquer' },
-      { path: '/certifications', label: 'Certifications', icon: Award, description: 'Préparer les certifications Microsoft' },
+      { path: '/dax', label: 'Reference DAX', icon: Code2, description: 'Fonctions et patterns DAX' },
+      { path: '/fiches', label: 'Fiches Techniques', icon: BookOpen, description: 'Fiches de reference rapide' },
+      { path: '/exercises', label: 'Exercices', icon: PenTool, description: 'Exercices pour pratiquer' },
+      { path: '/certifications', label: 'Certifications', icon: Award, description: 'Preparer les certifications Microsoft' },
     ],
   },
   {
@@ -100,39 +98,32 @@ const navigation: NavEntry[] = [
     label: 'Fabric',
     icon: Cloud,
     items: [
-      { path: '/fabric', label: 'Guide Complet Fabric', icon: Cloud, description: 'Guide approfondi Microsoft Fabric' },
+      { path: '/fabric', label: 'Plongee Fabric', icon: Cloud, description: 'Guide approfondi Microsoft Fabric' },
       { path: '/architecture', label: 'Patterns Architecture', icon: Network, description: "Patterns d'architecture Fabric" },
-      { path: '/notebooks', label: 'Templates Notebooks', icon: FileCode, description: 'Templates de notebooks Fabric' },
-      { path: '/cicd', label: 'CI/CD & GitHub Actions', icon: GitBranch, description: 'Pipelines CI/CD pour Power BI' },
-      { path: '/sharing', label: 'Partage & Accès', icon: Share2, description: "Gestion du partage et de l'accès" },
+      { path: '/sharing', label: 'Partage & Acces', icon: Share2, description: "Gestion du partage et de l'acces" },
     ],
   },
   {
     id: 'dev',
-    label: 'Développeur',
+    label: 'Developpeur',
     icon: Plug,
     items: [
-      { path: '/api', label: 'API Reference', icon: Plug, description: 'Documentation des APIs Power BI' },
-      { path: '/ai', label: 'IA & Power BI', icon: Bot, description: 'Intelligence artificielle et Power BI' },
-      { path: '/tools', label: 'Outils & Téléchargements', icon: Download, description: 'Outils et ressources à télécharger' },
+      { path: '/api', label: 'Reference API', icon: Plug, description: 'Documentation des APIs Power BI' },
+      { path: '/notebooks', label: 'Templates Notebook', icon: FileCode, description: 'Templates de notebooks Fabric' },
+      { path: '/cicd', label: 'Pipelines CI/CD', icon: GitBranch, description: 'Pipelines CI/CD pour Power BI' },
     ],
   },
   {
     id: 'news',
-    label: 'Actualités',
+    label: 'Actualites',
     icon: Newspaper,
     items: [
-      { path: '/whatsnew', label: 'Nouveautés', icon: Sparkles, description: 'Dernières nouveautés Power BI' },
+      { path: '/ai', label: 'IA & Power BI', icon: Bot, description: 'Intelligence artificielle et Power BI' },
+      { path: '/tools', label: 'Outils & Telechargements', icon: Download, description: 'Outils et ressources a telecharger' },
+      { path: '/whatsnew', label: 'Quoi de neuf', icon: Sparkles, description: 'Dernieres nouveautes Power BI' },
       { path: '/roadmap', label: 'Roadmap', icon: Map, description: 'Feuille de route Microsoft' },
       { path: '/resources', label: 'Ressources', icon: GraduationCap, description: 'Liens et ressources utiles' },
     ],
-  },
-  {
-    id: 'performance',
-    path: '/performance',
-    label: 'Checklist Performance',
-    icon: Zap,
-    description: "Checklist d'optimisation des performances",
   },
 ]
 
@@ -143,173 +134,15 @@ function getAllPages(): NavPage[] {
     if (isCategory(entry)) {
       pages.push(...entry.items)
     } else {
-      pages.push({ path: entry.path, label: entry.label, icon: entry.icon, description: entry.description })
+      pages.push({ path: entry.path, label: entry.label, icon: entry.icon, description: '' })
     }
   }
   return pages
 }
 
-// Find which category a path belongs to
-function findCategoryForPath(path: string): string | null {
-  for (const entry of navigation) {
-    if (isCategory(entry) && entry.items.some((item) => item.path === path)) {
-      return entry.id
-    }
-  }
-  return null
-}
+// --- Navbar Search ---
 
-// --- localStorage helpers ---
-
-const STORAGE_KEY = 'pbi-nav-open-categories'
-
-function loadOpenCategories(): Record<string, boolean> {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY)
-    return raw ? JSON.parse(raw) : {}
-  } catch {
-    return {}
-  }
-}
-
-function saveOpenCategories(state: Record<string, boolean>) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state))
-}
-
-// --- Components ---
-
-function CategorySection({
-  category,
-  isOpen,
-  onToggle,
-  currentPath,
-}: {
-  category: NavCategory
-  isOpen: boolean
-  onToggle: () => void
-  currentPath: string
-}) {
-  const hasActive = category.items.some((item) => item.path === currentPath)
-
-  return (
-    <div>
-      <button
-        onClick={onToggle}
-        className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors group cursor-pointer ${
-          hasActive && !isOpen ? 'text-primary' : 'text-pbi-muted hover:text-pbi-text'
-        }`}
-      >
-        <category.icon className="w-5 h-5 shrink-0" />
-        <span className="text-sm font-semibold flex-1 text-left">{category.label}</span>
-        <motion.div
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.2 }}
-        >
-          <ChevronDown className="w-4 h-4" />
-        </motion.div>
-      </button>
-
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-            className="overflow-hidden"
-          >
-            <div className="ml-4 pl-3 border-l border-pbi-border/40 flex flex-col gap-0.5 py-1">
-              {category.items.map((item) => {
-                const isActive = currentPath === item.path
-                return (
-                  <NavLink
-                    key={item.path}
-                    to={item.path}
-                    className="relative flex items-center gap-3 px-3 py-2 rounded-xl transition-colors group"
-                  >
-                    {isActive && (
-                      <motion.div
-                        layoutId="sidebar-active"
-                        className="absolute inset-0 rounded-xl"
-                        style={{
-                          background: 'rgba(242, 200, 17, 0.1)',
-                          border: '1px solid rgba(242, 200, 17, 0.2)',
-                        }}
-                        transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                      />
-                    )}
-                    {isActive && (
-                      <motion.div
-                        layoutId="sidebar-indicator"
-                        className="absolute -left-3 top-1/2 -translate-y-1/2 w-1 h-5 rounded-r-full bg-primary"
-                        transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                      />
-                    )}
-                    <item.icon
-                      className={`relative z-10 w-4 h-4 shrink-0 transition-colors ${
-                        isActive ? 'text-primary' : 'text-pbi-muted group-hover:text-pbi-text'
-                      }`}
-                    />
-                    <span
-                      className={`relative z-10 text-sm font-medium ${
-                        isActive ? 'text-primary' : 'text-pbi-muted group-hover:text-pbi-text'
-                      }`}
-                    >
-                      {item.label}
-                    </span>
-                  </NavLink>
-                )
-              })}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  )
-}
-
-function StandaloneLink({ entry, currentPath }: { entry: NavStandalone; currentPath: string }) {
-  const isActive = currentPath === entry.path
-  return (
-    <NavLink
-      to={entry.path}
-      className="relative flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors group"
-    >
-      {isActive && (
-        <motion.div
-          layoutId="sidebar-active"
-          className="absolute inset-0 rounded-xl"
-          style={{
-            background: 'rgba(242, 200, 17, 0.1)',
-            border: '1px solid rgba(242, 200, 17, 0.2)',
-          }}
-          transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-        />
-      )}
-      {isActive && (
-        <motion.div
-          layoutId="sidebar-indicator"
-          className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 rounded-r-full bg-primary"
-          transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-        />
-      )}
-      <entry.icon
-        className={`relative z-10 w-5 h-5 shrink-0 transition-colors ${
-          isActive ? 'text-primary' : 'text-pbi-muted group-hover:text-pbi-text'
-        }`}
-      />
-      <span
-        className={`relative z-10 text-sm font-semibold ${
-          isActive ? 'text-primary' : 'text-pbi-muted group-hover:text-pbi-text'
-        }`}
-      >
-        {entry.label}
-      </span>
-    </NavLink>
-  )
-}
-
-function GlobalSearch({ onNavigate }: { onNavigate?: () => void }) {
+function NavbarSearch() {
   const [query, setQuery] = useState('')
   const [isFocused, setIsFocused] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -326,7 +159,6 @@ function GlobalSearch({ onNavigate }: { onNavigate?: () => void }) {
 
   const showDropdown = isFocused && results.length > 0
 
-  // Ctrl+K shortcut
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
@@ -346,13 +178,12 @@ function GlobalSearch({ onNavigate }: { onNavigate?: () => void }) {
     navigate(path)
     setQuery('')
     inputRef.current?.blur()
-    onNavigate?.()
   }
 
   return (
-    <div className="relative px-3 py-3">
+    <div className="relative">
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-pbi-muted" />
+        <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-pbi-muted" />
         <input
           ref={inputRef}
           type="text"
@@ -361,118 +192,229 @@ function GlobalSearch({ onNavigate }: { onNavigate?: () => void }) {
           onFocus={() => setIsFocused(true)}
           onBlur={() => setTimeout(() => setIsFocused(false), 150)}
           placeholder="Rechercher..."
-          className="w-full pl-10 pr-14 py-2 rounded-xl text-sm bg-pbi-card border border-pbi-border/40 text-pbi-text placeholder-pbi-muted focus:outline-none focus:border-primary/50 transition-colors"
+          className="w-48 lg:w-64 pl-9 pr-16 py-1.5 rounded-lg text-sm bg-[var(--color-pbi-darker)] border border-[var(--color-pbi-border)] text-[var(--color-pbi-text)] placeholder-[var(--color-pbi-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/20 focus:border-[var(--color-primary)]/50 transition-all"
         />
-        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-pbi-muted bg-pbi-darker/60 px-1.5 py-0.5 rounded border border-pbi-border/30">
+        <span className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[10px] text-[var(--color-pbi-muted)] bg-white px-1.5 py-0.5 rounded border border-[var(--color-pbi-border)] font-mono">
           Ctrl+K
         </span>
       </div>
 
-      <AnimatePresence>
-        {showDropdown && (
-          <motion.div
-            initial={{ opacity: 0, y: -4 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -4 }}
-            transition={{ duration: 0.15 }}
-            className="absolute left-3 right-3 top-full mt-1 rounded-xl bg-pbi-card border border-pbi-border/60 shadow-xl overflow-hidden z-50 max-h-64 overflow-y-auto"
-          >
-            {results.map((page) => (
-              <button
-                key={page.path}
-                onMouseDown={() => handleSelect(page.path)}
-                className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-pbi-card-hover transition-colors text-left cursor-pointer"
-              >
-                <page.icon className="w-4 h-4 text-pbi-muted shrink-0" />
-                <div className="min-w-0">
-                  <div className="text-sm font-medium text-pbi-text truncate">{page.label}</div>
-                  <div className="text-xs text-pbi-muted truncate">{page.description}</div>
-                </div>
-              </button>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {showDropdown && (
+        <div className="absolute right-0 top-full mt-2 w-80 rounded-xl bg-white border border-[var(--color-pbi-border)] shadow-lg shadow-black/5 overflow-hidden z-50 max-h-80 overflow-y-auto">
+          {results.map((page) => (
+            <button
+              key={page.path}
+              onMouseDown={() => handleSelect(page.path)}
+              className="w-full flex items-center gap-3 px-4 py-3 hover:bg-[var(--color-pbi-darker)] transition-colors text-left cursor-pointer"
+            >
+              <page.icon className="w-4 h-4 text-[var(--color-pbi-muted)] shrink-0" />
+              <div className="min-w-0">
+                <div className="text-sm font-medium text-[var(--color-pbi-text)] truncate">{page.label}</div>
+                {page.description && (
+                  <div className="text-xs text-[var(--color-pbi-muted)] truncate">{page.description}</div>
+                )}
+              </div>
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
 
-function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
-  const location = useLocation()
-  const currentPath = location.pathname
+// --- Dropdown for nav categories ---
 
-  const [openCategories, setOpenCategories] = useState<Record<string, boolean>>(() => {
-    const saved = loadOpenCategories()
-    // Auto-open category of current path
-    const activeCat = findCategoryForPath(currentPath)
-    if (activeCat) saved[activeCat] = true
-    return saved
-  })
+function NavDropdown({
+  category,
+  currentPath,
+  onNavigate,
+}: {
+  category: NavCategory
+  currentPath: string
+  onNavigate?: () => void
+}) {
+  const [isOpen, setIsOpen] = useState(false)
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const hasActive = category.items.some((item) => item.path === currentPath)
 
-  // Auto-open category when route changes
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    setIsOpen(true)
+  }
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => setIsOpen(false), 150)
+  }
+
   useEffect(() => {
-    const activeCat = findCategoryForPath(currentPath)
-    if (activeCat && !openCategories[activeCat]) {
-      setOpenCategories((prev) => {
-        const next = { ...prev, [activeCat]: true }
-        saveOpenCategories(next)
-        return next
-      })
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
     }
-  }, [currentPath]) // eslint-disable-line react-hooks/exhaustive-deps
-
-  const toggleCategory = useCallback((id: string) => {
-    setOpenCategories((prev) => {
-      const next = { ...prev, [id]: !prev[id] }
-      saveOpenCategories(next)
-      return next
-    })
   }, [])
 
   return (
-    <>
-      {/* Logo */}
-      <div className="flex items-center gap-3 px-5 h-16 border-b border-pbi-border/40 shrink-0">
-        <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-primary/10 shrink-0">
-          <BarChart3 className="w-5 h-5 text-primary" />
+    <div
+      className="relative"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <button
+        className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
+          hasActive
+            ? 'text-[var(--color-primary)]'
+            : 'text-[var(--color-pbi-muted)] hover:text-[var(--color-pbi-text)] hover:bg-[var(--color-pbi-darker)]'
+        }`}
+      >
+        {category.label}
+        <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+
+      <div
+        className={`absolute left-0 top-full pt-1 z-50 transition-all duration-150 ${
+          isOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-1'
+        }`}
+      >
+        <div className="w-64 rounded-xl bg-white border border-[var(--color-pbi-border)] shadow-lg shadow-black/5 overflow-hidden py-1">
+          {category.items.map((item) => {
+            const isActive = currentPath === item.path
+            return (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                onClick={() => {
+                  setIsOpen(false)
+                  onNavigate?.()
+                }}
+                className={`flex items-center gap-3 px-4 py-2.5 transition-colors ${
+                  isActive
+                    ? 'bg-[var(--color-primary)]/5 text-[var(--color-primary)]'
+                    : 'text-[var(--color-pbi-text)] hover:bg-[var(--color-pbi-darker)]'
+                }`}
+              >
+                <item.icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-[var(--color-primary)]' : 'text-[var(--color-pbi-muted)]'}`} />
+                <div className="min-w-0">
+                  <div className="text-sm font-medium truncate">{item.label}</div>
+                  <div className={`text-xs truncate ${isActive ? 'text-[var(--color-primary)]/70' : 'text-[var(--color-pbi-muted)]'}`}>
+                    {item.description}
+                  </div>
+                </div>
+              </NavLink>
+            )
+          })}
         </div>
-        <span className="font-bold text-lg gradient-text whitespace-nowrap">PBI Expert Hub</span>
       </div>
+    </div>
+  )
+}
 
-      {/* Search */}
-      <GlobalSearch onNavigate={onNavigate} />
+// --- Mobile Menu ---
 
-      {/* Navigation */}
-      <nav className="flex-1 flex flex-col gap-0.5 px-3 pb-4 overflow-y-auto" onClick={onNavigate}>
-        {navigation.map((entry) =>
-          isCategory(entry) ? (
-            <CategorySection
-              key={entry.id}
-              category={entry}
-              isOpen={!!openCategories[entry.id]}
-              onToggle={() => toggleCategory(entry.id)}
-              currentPath={currentPath}
-            />
-          ) : (
-            <StandaloneLink key={entry.id} entry={entry} currentPath={currentPath} />
-          )
-        )}
-      </nav>
+function MobileMenu({
+  isOpen,
+  onClose,
+  currentPath,
+}: {
+  isOpen: boolean
+  onClose: () => void
+  currentPath: string
+}) {
+  const [expandedCategory, setExpandedCategory] = useState<string | null>(null)
 
-      {/* Footer */}
-      <div className="px-5 py-4 border-t border-pbi-border/40 shrink-0">
-        <p className="text-xs text-pbi-muted text-center leading-relaxed">
-          Expert Power BI & Fabric
-        </p>
-        <p className="text-[10px] text-pbi-muted/50 text-center mt-1">v2.0</p>
+  const toggleCategory = useCallback((id: string) => {
+    setExpandedCategory((prev) => (prev === id ? null : id))
+  }, [])
+
+  if (!isOpen) return null
+
+  return (
+    <>
+      {/* Backdrop */}
+      <div
+        className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm transition-opacity"
+        onClick={onClose}
+      />
+
+      {/* Panel */}
+      <div className="fixed top-[57px] left-0 right-0 z-50 bg-white border-b border-[var(--color-pbi-border)] shadow-lg shadow-black/5 max-h-[calc(100vh-57px)] overflow-y-auto">
+        <nav className="py-2 px-4">
+          {navigation.map((entry) => {
+            if (!isCategory(entry)) {
+              const isActive = currentPath === entry.path
+              return (
+                <NavLink
+                  key={entry.id}
+                  to={entry.path}
+                  onClick={onClose}
+                  className={`flex items-center gap-3 px-3 py-3 rounded-lg transition-colors ${
+                    isActive
+                      ? 'text-[var(--color-primary)] bg-[var(--color-primary)]/5'
+                      : 'text-[var(--color-pbi-text)] hover:bg-[var(--color-pbi-darker)]'
+                  }`}
+                >
+                  <entry.icon className="w-5 h-5" />
+                  <span className="text-sm font-medium">{entry.label}</span>
+                </NavLink>
+              )
+            }
+
+            const category = entry
+            const isExpanded = expandedCategory === category.id
+            const hasActive = category.items.some((item) => item.path === currentPath)
+
+            return (
+              <div key={category.id}>
+                <button
+                  onClick={() => toggleCategory(category.id)}
+                  className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg transition-colors cursor-pointer ${
+                    hasActive ? 'text-[var(--color-primary)]' : 'text-[var(--color-pbi-text)]'
+                  }`}
+                >
+                  <category.icon className="w-5 h-5" />
+                  <span className="text-sm font-medium flex-1 text-left">{category.label}</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
+                </button>
+
+                <div
+                  className={`overflow-hidden transition-all duration-200 ${
+                    isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                  }`}
+                >
+                  <div className="ml-5 pl-3 border-l-2 border-[var(--color-pbi-border)] py-1">
+                    {category.items.map((item) => {
+                      const isActive = currentPath === item.path
+                      return (
+                        <NavLink
+                          key={item.path}
+                          to={item.path}
+                          onClick={onClose}
+                          className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
+                            isActive
+                              ? 'text-[var(--color-primary)] bg-[var(--color-primary)]/5'
+                              : 'text-[var(--color-pbi-muted)] hover:text-[var(--color-pbi-text)] hover:bg-[var(--color-pbi-darker)]'
+                          }`}
+                        >
+                          <item.icon className="w-4 h-4 shrink-0" />
+                          <span className="text-sm">{item.label}</span>
+                        </NavLink>
+                      )
+                    })}
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </nav>
       </div>
     </>
   )
 }
 
+// --- Main Layout ---
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
+  const currentPath = location.pathname
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -480,86 +422,77 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   }, [location.pathname])
 
   return (
-    <div className="flex min-h-screen bg-pbi-darker">
-      {/* Desktop Sidebar */}
-      <aside
-        className="hidden md:flex fixed left-0 top-0 h-full z-50 flex-col w-[280px]"
-        style={{
-          background: 'rgba(15, 15, 30, 0.85)',
-          backdropFilter: 'blur(24px)',
-          borderRight: '1px solid rgba(42, 58, 92, 0.4)',
-        }}
+    <div className="min-h-screen bg-[var(--color-pbi-darker)]">
+      {/* Top Navbar */}
+      <header
+        className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-[var(--color-pbi-border)]"
       >
-        <SidebarContent />
-      </aside>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-14">
+            {/* Left: Logo + Nav */}
+            <div className="flex items-center gap-8">
+              {/* Logo */}
+              <NavLink to="/" className="flex items-center gap-2.5 shrink-0">
+                <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-[var(--color-primary)]/10">
+                  <BarChart3 className="w-4.5 h-4.5 text-[var(--color-primary)]" />
+                </div>
+                <span className="font-bold text-[var(--color-pbi-text)] text-base hidden sm:block">
+                  Power BI & Fabric
+                </span>
+              </NavLink>
 
-      {/* Mobile header */}
-      <div
-        className="md:hidden fixed top-0 left-0 right-0 z-50 flex items-center h-14 px-4"
-        style={{
-          background: 'rgba(15, 15, 30, 0.92)',
-          backdropFilter: 'blur(24px)',
-          borderBottom: '1px solid rgba(42, 58, 92, 0.4)',
-        }}
-      >
-        <button
-          onClick={() => setMobileOpen(true)}
-          className="p-2 -ml-2 rounded-lg text-pbi-muted hover:text-pbi-text transition-colors"
-        >
-          <Menu className="w-6 h-6" />
-        </button>
-        <div className="flex items-center gap-2 ml-3">
-          <BarChart3 className="w-5 h-5 text-primary" />
-          <span className="font-bold gradient-text">PBI Expert Hub</span>
-        </div>
-      </div>
+              {/* Desktop Nav */}
+              <nav className="hidden lg:flex items-center gap-0.5">
+                {navigation.map((entry) =>
+                  isCategory(entry) ? (
+                    <NavDropdown
+                      key={entry.id}
+                      category={entry}
+                      currentPath={currentPath}
+                    />
+                  ) : (
+                    <NavLink
+                      key={entry.id}
+                      to={entry.path}
+                      className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                        currentPath === entry.path
+                          ? 'text-[var(--color-primary)]'
+                          : 'text-[var(--color-pbi-muted)] hover:text-[var(--color-pbi-text)] hover:bg-[var(--color-pbi-darker)]'
+                      }`}
+                    >
+                      {entry.label}
+                    </NavLink>
+                  )
+                )}
+              </nav>
+            </div>
 
-      {/* Mobile overlay */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="md:hidden fixed inset-0 z-[60] bg-black/60"
-              onClick={() => setMobileOpen(false)}
-            />
-            <motion.aside
-              initial={{ x: '-100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '-100%' }}
-              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="md:hidden fixed left-0 top-0 bottom-0 z-[70] w-[300px] flex flex-col"
-              style={{
-                background: 'rgba(15, 15, 30, 0.98)',
-                backdropFilter: 'blur(24px)',
-              }}
-            >
+            {/* Right: Search + Mobile toggle */}
+            <div className="flex items-center gap-3">
+              <div className="hidden md:block">
+                <NavbarSearch />
+              </div>
+
+              {/* Mobile hamburger */}
               <button
-                onClick={() => setMobileOpen(false)}
-                className="absolute top-4 right-4 p-1.5 rounded-lg text-pbi-muted hover:text-pbi-text transition-colors"
+                onClick={() => setMobileOpen((prev) => !prev)}
+                className="lg:hidden p-2 -mr-2 rounded-lg text-[var(--color-pbi-muted)] hover:text-[var(--color-pbi-text)] hover:bg-[var(--color-pbi-darker)] transition-colors cursor-pointer"
               >
-                <X className="w-5 h-5" />
+                {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
-              <SidebarContent onNavigate={() => setMobileOpen(false)} />
-            </motion.aside>
-          </>
-        )}
-      </AnimatePresence>
+            </div>
+          </div>
+        </div>
+      </header>
 
-      {/* Main content */}
-      <main className="flex-1 md:ml-[280px] pt-14 md:pt-0">
-        <motion.div
-          key={location.pathname}
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35, ease: 'easeOut' }}
-          className="min-h-screen"
-        >
+      {/* Mobile Menu */}
+      <MobileMenu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} currentPath={currentPath} />
+
+      {/* Main Content */}
+      <main className="pt-14">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {children}
-        </motion.div>
+        </div>
       </main>
     </div>
   )

@@ -529,7 +529,7 @@ function StatsBar({ filteredCount }: { filteredCount: number }) {
           <div
             key={cat}
             className="flex items-center gap-2 px-3 py-2 rounded-lg"
-            style={{ background: 'rgba(42, 58, 92, 0.3)' }}
+            style={{ background: 'rgba(229, 231, 235, 0.4)' }}
           >
             <span style={{ color: categoryColors[cat as Exclude<Category, 'All'>] }}>
               {categoryIcons[cat as Exclude<Category, 'All'>]}
@@ -565,9 +565,9 @@ function CopyButton({ code }: { code: string }) {
       onClick={handleCopy}
       className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer"
       style={{
-        background: copied ? 'rgba(16, 185, 129, 0.2)' : 'rgba(42, 58, 92, 0.5)',
+        background: copied ? 'rgba(16, 185, 129, 0.2)' : 'rgba(229, 231, 235, 0.5)',
         color: copied ? '#10b981' : '#94a3b8',
-        border: `1px solid ${copied ? 'rgba(16, 185, 129, 0.3)' : 'rgba(42, 58, 92, 0.8)'}`,
+        border: `1px solid ${copied ? 'rgba(16, 185, 129, 0.3)' : 'rgba(229, 231, 235, 0.8)'}`,
       }}
     >
       <AnimatePresence mode="wait">
@@ -646,7 +646,7 @@ function TemplateCard({ template, index }: { template: Template; index: number }
                   {template.difficulty}
                 </span>
                 <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs text-pbi-muted"
-                  style={{ background: 'rgba(42, 58, 92, 0.4)' }}
+                  style={{ background: 'rgba(229, 231, 235, 0.5)' }}
                 >
                   <Clock className="w-3 h-3" />
                   ~{template.estimatedMinutes} min
@@ -772,8 +772,8 @@ export default function NotebookTemplates() {
             placeholder="Rechercher un template..."
             className="w-full pl-11 pr-10 py-3 rounded-xl text-sm text-pbi-text placeholder-pbi-muted outline-none transition-colors"
             style={{
-              background: 'rgba(22, 33, 62, 0.7)',
-              border: '1px solid rgba(42, 58, 92, 0.5)',
+              background: 'rgba(255, 255, 255, 0.8)',
+              border: '1px solid rgba(229, 231, 235, 0.5)',
             }}
           />
           {search && (
@@ -806,9 +806,9 @@ export default function NotebookTemplates() {
               onClick={() => setActiveCategory(cat)}
               className="px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer"
               style={{
-                background: isActive ? `${color}20` : 'rgba(42, 58, 92, 0.3)',
+                background: isActive ? `${color}20` : 'rgba(229, 231, 235, 0.4)',
                 color: isActive ? color : '#94a3b8',
-                border: `1px solid ${isActive ? `${color}40` : 'rgba(42, 58, 92, 0.5)'}`,
+                border: `1px solid ${isActive ? `${color}40` : 'rgba(229, 231, 235, 0.5)'}`,
               }}
             >
               {cat}

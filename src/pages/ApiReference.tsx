@@ -1114,7 +1114,7 @@ function AuthSection() {
 
       <div className="glass-card overflow-hidden">
         {/* Tab buttons */}
-        <div className="flex border-b" style={{ borderColor: '#2a3a5c' }}>
+        <div className="flex border-b" style={{ borderColor: '#e5e7eb' }}>
           {authMethods.map((method) => (
             <button
               key={method.id}
@@ -1188,8 +1188,8 @@ function EndpointCard({ endpoint, isOpen, onToggle }: { endpoint: Endpoint; isOp
     <div
       className="rounded-lg border transition-colors"
       style={{
-        background: isOpen ? '#1a2744' : '#16213e',
-        borderColor: isOpen ? '#2a3a5c' : 'transparent',
+        background: isOpen ? '#f0f0f0' : '#ffffff',
+        borderColor: isOpen ? '#e5e7eb' : 'transparent',
       }}
     >
       <button
@@ -1197,7 +1197,7 @@ function EndpointCard({ endpoint, isOpen, onToggle }: { endpoint: Endpoint; isOp
         className="w-full flex items-center gap-3 px-4 py-3 text-left"
       >
         <MethodBadge method={endpoint.method} />
-        <code className="text-sm font-mono flex-1" style={{ color: '#e2e8f0' }}>
+        <code className="text-sm font-mono flex-1" style={{ color: '#1e293b' }}>
           {endpoint.path}
         </code>
         <span className="text-xs hidden sm:block" style={{ color: '#94a3b8', maxWidth: 300 }}>
@@ -1306,9 +1306,9 @@ function EndpointsSection() {
           placeholder="Rechercher un endpoint... (ex: refresh, datasets, admin)"
           className="w-full pl-10 pr-10 py-3 rounded-lg text-sm outline-none transition-colors"
           style={{
-            background: '#16213e',
-            border: '1px solid #2a3a5c',
-            color: '#e2e8f0',
+            background: '#ffffff',
+            border: '1px solid #e5e7eb',
+            color: '#1e293b',
           }}
         />
         {search && (
@@ -1412,7 +1412,7 @@ function CodeTemplatesSection() {
         {/* Template selector */}
         <div
           className="flex flex-wrap gap-2 p-4 border-b"
-          style={{ borderColor: '#2a3a5c' }}
+          style={{ borderColor: '#e5e7eb' }}
         >
           {codeTemplates.map((t) => (
             <button
@@ -1469,10 +1469,10 @@ function RateLimitsSection() {
           <table className="w-full text-sm">
             <thead>
               <tr style={{ background: 'rgba(0,120,212,0.08)' }}>
-                <th className="px-4 py-3 text-left font-semibold" style={{ color: '#e2e8f0' }}>API</th>
-                <th className="px-4 py-3 text-left font-semibold" style={{ color: '#e2e8f0' }}>Limite</th>
-                <th className="px-4 py-3 text-left font-semibold" style={{ color: '#e2e8f0' }}>Portee</th>
-                <th className="px-4 py-3 text-left font-semibold" style={{ color: '#e2e8f0' }}>Notes</th>
+                <th className="px-4 py-3 text-left font-semibold" style={{ color: '#1e293b' }}>API</th>
+                <th className="px-4 py-3 text-left font-semibold" style={{ color: '#1e293b' }}>Limite</th>
+                <th className="px-4 py-3 text-left font-semibold" style={{ color: '#1e293b' }}>Portee</th>
+                <th className="px-4 py-3 text-left font-semibold" style={{ color: '#1e293b' }}>Notes</th>
               </tr>
             </thead>
             <tbody>
@@ -1480,11 +1480,11 @@ function RateLimitsSection() {
                 <tr
                   key={i}
                   style={{
-                    borderTop: '1px solid #2a3a5c',
+                    borderTop: '1px solid #e5e7eb',
                     background: i % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.02)',
                   }}
                 >
-                  <td className="px-4 py-3" style={{ color: '#e2e8f0' }}>{rl.api}</td>
+                  <td className="px-4 py-3" style={{ color: '#1e293b' }}>{rl.api}</td>
                   <td className="px-4 py-3">
                     <span
                       className="px-2 py-0.5 rounded text-xs font-bold"
@@ -1642,7 +1642,7 @@ function ApiExplorer() {
           {/* Sidebar: categories */}
           <div
             className="border-r p-4 space-y-1"
-            style={{ borderColor: '#2a3a5c', background: 'rgba(0,0,0,0.15)' }}
+            style={{ borderColor: '#e5e7eb', background: 'rgba(0,0,0,0.04)' }}
           >
             <p className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: '#94a3b8' }}>
               Categorie

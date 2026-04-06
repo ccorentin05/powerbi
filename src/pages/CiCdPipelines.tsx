@@ -789,7 +789,7 @@ function AzureDevOpsSection() {
               {comparisons.map((row, i) => (
                 <tr
                   key={row.feature}
-                  className={`border-b border-pbi-border/20 ${i % 2 === 0 ? 'bg-pbi-card' : 'bg-pbi-darker/30'}`}
+                  className={`border-b border-pbi-border/20 ${i % 2 === 0 ? 'bg-pbi-card' : 'bg-gray-50'}`}
                 >
                   <td className="px-5 py-3 text-sm text-pbi-muted font-medium">{row.feature}</td>
                   <td className="px-5 py-3 text-sm text-pbi-text">{row.github}</td>

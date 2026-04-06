@@ -156,7 +156,7 @@ function TechCardItem({
         <CategoryBadge category={card.category} />
       </div>
 
-      <h3 className="text-lg font-semibold text-pbi-text mb-2 group-hover:text-white transition-colors">
+      <h3 className="text-lg font-semibold text-pbi-text mb-2 group-hover:text-pbi-text transition-colors">
         {card.title}
       </h3>
 
@@ -209,7 +209,7 @@ function ExpandedCard({
           <div
             className="sticky top-0 z-10 p-6 pb-4"
             style={{
-              background: 'rgba(22, 33, 62, 0.95)',
+              background: 'rgba(255, 255, 255, 0.95)',
               backdropFilter: 'blur(20px)',
             }}
           >
@@ -222,7 +222,7 @@ function ExpandedCard({
                   <Icon size={28} />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-white">{card.title}</h2>
+                  <h2 className="text-2xl font-bold text-pbi-text">{card.title}</h2>
                   <div className="mt-1">
                     <CategoryBadge category={card.category} />
                   </div>
@@ -230,7 +230,7 @@ function ExpandedCard({
               </div>
               <button
                 onClick={onClose}
-                className="p-2 rounded-lg hover:bg-pbi-border/50 transition-colors text-pbi-muted hover:text-white"
+                className="p-2 rounded-lg hover:bg-pbi-border/50 transition-colors text-pbi-muted hover:text-pbi-text"
               >
                 <X size={20} />
               </button>
@@ -331,9 +331,9 @@ function ExpandedCard({
                     }}
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 hover:scale-105"
                     style={{
-                      background: 'rgba(42, 58, 92, 0.5)',
-                      border: '1px solid rgba(42, 58, 92, 0.8)',
-                      color: '#e2e8f0',
+                      background: 'rgba(229, 231, 235, 0.5)',
+                      border: '1px solid rgba(229, 231, 235, 0.8)',
+                      color: '#1e293b',
                     }}
                   >
                     <Tag size={12} />
@@ -387,7 +387,7 @@ function StatsDashboard() {
               </div>
               <div
                 className="h-3 rounded-full overflow-hidden"
-                style={{ background: 'rgba(42, 58, 92, 0.5)' }}
+                style={{ background: 'rgba(229, 231, 235, 0.5)' }}
               >
                 <motion.div
                   className="h-full rounded-full"
@@ -405,7 +405,7 @@ function StatsDashboard() {
 
       <div
         className="mt-8 pt-6"
-        style={{ borderTop: '1px solid rgba(42, 58, 92, 0.5)' }}
+        style={{ borderTop: '1px solid rgba(229, 231, 235, 0.5)' }}
       >
         <div className="flex items-center justify-between">
           <span className="text-sm text-pbi-muted">Total des fiches</span>
@@ -488,14 +488,14 @@ export default function TechCards() {
           onChange={(e) => setSearchQuery(e.target.value)}
           className="w-full pl-12 pr-10 py-3.5 rounded-xl text-sm text-pbi-text placeholder-pbi-muted outline-none transition-all duration-300 focus:glow-blue"
           style={{
-            background: 'rgba(22, 33, 62, 0.7)',
-            border: '1px solid rgba(42, 58, 92, 0.5)',
+            background: 'rgba(255, 255, 255, 0.8)',
+            border: '1px solid rgba(229, 231, 235, 0.5)',
           }}
         />
         {searchQuery && (
           <button
             onClick={() => setSearchQuery('')}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-pbi-muted hover:text-white transition-colors"
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-pbi-muted hover:text-pbi-text transition-colors"
           >
             <X size={16} />
           </button>
@@ -516,11 +516,11 @@ export default function TechCards() {
             background:
               selectedCategory === 'all'
                 ? 'rgba(242, 200, 17, 0.2)'
-                : 'rgba(42, 58, 92, 0.3)',
+                : 'rgba(229, 231, 235, 0.4)',
             border: `1px solid ${
               selectedCategory === 'all'
                 ? 'rgba(242, 200, 17, 0.4)'
-                : 'rgba(42, 58, 92, 0.5)'
+                : 'rgba(229, 231, 235, 0.5)'
             }`,
             color: selectedCategory === 'all' ? '#f2c811' : '#94a3b8',
           }}
@@ -537,8 +537,8 @@ export default function TechCards() {
               onClick={() => setSelectedCategory(category)}
               className="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200"
               style={{
-                background: isActive ? colors.bg : 'rgba(42, 58, 92, 0.3)',
-                border: `1px solid ${isActive ? colors.border : 'rgba(42, 58, 92, 0.5)'}`,
+                background: isActive ? colors.bg : 'rgba(229, 231, 235, 0.4)',
+                border: `1px solid ${isActive ? colors.border : 'rgba(229, 231, 235, 0.5)'}`,
                 color: isActive ? colors.text : '#94a3b8',
               }}
             >

@@ -438,17 +438,17 @@ function TimelineCard({ update, index }: { update: Update; index: number }) {
         transition={{ duration: 0.5, delay: 0.1 }}
         className="relative ml-10 md:ml-0 flex-1 rounded-xl border p-5 cursor-pointer group"
         style={{
-          background: '#16213e',
-          borderColor: '#2a3a5c',
+          background: '#ffffff',
+          borderColor: '#e5e7eb',
         }}
         onClick={() => setExpanded((p) => !p)}
         onMouseEnter={(e) => {
-          e.currentTarget.style.background = '#1a2744'
+          e.currentTarget.style.background = '#f0f0f0'
           e.currentTarget.style.borderColor = categoryColor[update.category] + '60'
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.background = '#16213e'
-          e.currentTarget.style.borderColor = '#2a3a5c'
+          e.currentTarget.style.background = '#ffffff'
+          e.currentTarget.style.borderColor = '#e5e7eb'
         }}
       >
         {/* Pointer triangle */}
@@ -456,7 +456,7 @@ function TimelineCard({ update, index }: { update: Update; index: number }) {
           className={`absolute top-5 hidden md:block w-3 h-3 rotate-45 border ${
             isLeft ? '-right-1.5 border-t-0 border-l-0' : '-left-1.5 border-b-0 border-r-0'
           }`}
-          style={{ background: '#16213e', borderColor: '#2a3a5c' }}
+          style={{ background: '#ffffff', borderColor: '#e5e7eb' }}
         />
 
         <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -468,7 +468,7 @@ function TimelineCard({ update, index }: { update: Update; index: number }) {
           </span>
         </div>
 
-        <h3 className="text-lg font-bold mb-1" style={{ color: '#e2e8f0' }}>
+        <h3 className="text-lg font-bold mb-1" style={{ color: '#1e293b' }}>
           {update.title}
         </h3>
         <p className="text-sm leading-relaxed" style={{ color: '#94a3b8' }}>
@@ -486,7 +486,7 @@ function TimelineCard({ update, index }: { update: Update; index: number }) {
             >
               <div
                 className="mt-3 pt-3 text-sm leading-relaxed"
-                style={{ borderTop: '1px solid #2a3a5c', color: '#94a3b8' }}
+                style={{ borderTop: '1px solid #e5e7eb', color: '#94a3b8' }}
               >
                 {update.details}
               </div>
@@ -520,7 +520,7 @@ function TimelineCard({ update, index }: { update: Update; index: number }) {
           boxShadow: `0 0 12px ${categoryColor[update.category]}50`,
         }}
       >
-        <div className="w-2 h-2 rounded-full" style={{ background: '#0f0f1e' }} />
+        <div className="w-2 h-2 rounded-full" style={{ background: '#fafafa' }} />
       </motion.div>
 
       {/* Spacer for opposite side on desktop */}
@@ -541,8 +541,8 @@ function ComingSoonCard({ item, index }: { item: ComingSoon; index: number }) {
       transition={{ duration: 0.4, delay: index * 0.1 }}
       className="rounded-xl border p-5 relative overflow-hidden"
       style={{
-        background: 'linear-gradient(135deg, #16213e 0%, #1a2744 100%)',
-        borderColor: '#2a3a5c',
+        background: 'linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%)',
+        borderColor: '#e5e7eb',
       }}
     >
       <div
@@ -558,7 +558,7 @@ function ComingSoonCard({ item, index }: { item: ComingSoon; index: number }) {
         </div>
         <CategoryBadge category={item.category} />
       </div>
-      <h4 className="font-bold mb-1" style={{ color: '#e2e8f0' }}>
+      <h4 className="font-bold mb-1" style={{ color: '#1e293b' }}>
         {item.title}
       </h4>
       <p className="text-sm" style={{ color: '#94a3b8' }}>
@@ -606,7 +606,7 @@ export default function WhatsNew() {
   }
 
   return (
-    <div className="min-h-screen" style={{ background: '#0f0f1e' }}>
+    <div className="min-h-screen" style={{ background: '#fafafa' }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-20">
         {/* Header */}
         <motion.div
@@ -645,7 +645,7 @@ export default function WhatsNew() {
         >
           <div className="flex items-center gap-2 mb-6">
             <Clock size={20} style={{ color: '#f2c811' }} />
-            <h2 className="text-2xl font-bold" style={{ color: '#e2e8f0' }}>
+            <h2 className="text-2xl font-bold" style={{ color: '#1e293b' }}>
               Coming Soon
             </h2>
           </div>
@@ -662,11 +662,11 @@ export default function WhatsNew() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mb-12 rounded-xl border p-5"
-          style={{ background: '#16213e', borderColor: '#2a3a5c' }}
+          style={{ background: '#ffffff', borderColor: '#e5e7eb' }}
         >
           <div className="flex items-center gap-2 mb-4">
             <Filter size={16} style={{ color: '#94a3b8' }} />
-            <span className="text-sm font-semibold" style={{ color: '#e2e8f0' }}>
+            <span className="text-sm font-semibold" style={{ color: '#1e293b' }}>
               Filters
             </span>
           </div>
@@ -683,9 +683,9 @@ export default function WhatsNew() {
                   onClick={() => scrollToMonth(m)}
                   className="rounded-full px-3 py-1 text-xs font-medium transition-all"
                   style={{
-                    background: activeMonth === m ? '#0078d4' : '#1a2744',
+                    background: activeMonth === m ? '#0078d4' : '#f0f0f0',
                     color: activeMonth === m ? '#ffffff' : '#94a3b8',
-                    border: `1px solid ${activeMonth === m ? '#0078d4' : '#2a3a5c'}`,
+                    border: `1px solid ${activeMonth === m ? '#0078d4' : '#e5e7eb'}`,
                   }}
                 >
                   {m}
@@ -708,9 +708,9 @@ export default function WhatsNew() {
                     onClick={() => toggleCategory(key)}
                     className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium transition-all"
                     style={{
-                      background: active ? `${color}25` : '#1a2744',
+                      background: active ? `${color}25` : '#f0f0f0',
                       color: active ? color : '#94a3b8',
-                      border: `1px solid ${active ? color : '#2a3a5c'}`,
+                      border: `1px solid ${active ? color : '#e5e7eb'}`,
                     }}
                   >
                     <Icon size={12} />
@@ -727,7 +727,7 @@ export default function WhatsNew() {
           {/* Vertical line */}
           <div
             className="absolute left-[8px] md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5"
-            style={{ background: 'linear-gradient(to bottom, #0078d4, #2a3a5c 80%, transparent)' }}
+            style={{ background: 'linear-gradient(to bottom, #0078d4, #e5e7eb 80%, transparent)' }}
           />
 
           <div className="space-y-6">
@@ -751,7 +751,7 @@ export default function WhatsNew() {
                         transition={{ duration: 0.4 }}
                         className="relative z-10 rounded-full px-5 py-1.5 text-sm font-bold"
                         style={{
-                          background: '#1a1a2e',
+                          background: '#f5f5f5',
                           border: '2px solid #0078d4',
                           color: '#0078d4',
                           boxShadow: '0 0 20px rgba(0,120,212,0.2)',
@@ -790,7 +790,7 @@ export default function WhatsNew() {
             >
               <div
                 className="rounded-full px-4 py-1.5 text-xs font-medium"
-                style={{ background: '#1a1a2e', border: '1px solid #2a3a5c', color: '#94a3b8' }}
+                style={{ background: '#f5f5f5', border: '1px solid #e5e7eb', color: '#94a3b8' }}
               >
                 End of timeline
               </div>

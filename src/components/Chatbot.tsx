@@ -500,7 +500,7 @@ export default function Chatbot() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#f2c811] text-[#1a1a2e] shadow-lg shadow-[#f2c811]/30 transition-shadow hover:shadow-xl hover:shadow-[#f2c811]/40"
+            className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#f2c811] text-[#f5f5f5] shadow-lg shadow-[#f2c811]/30 transition-shadow hover:shadow-xl hover:shadow-[#f2c811]/40"
             aria-label="Ouvrir le chatbot"
           >
             <MessageCircle className="h-6 w-6" />
@@ -518,22 +518,22 @@ export default function Chatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.95 }}
             transition={{ type: 'spring', damping: 25, stiffness: 350 }}
-            className="fixed bottom-6 right-6 z-50 flex h-[min(600px,85vh)] w-[min(420px,92vw)] flex-col overflow-hidden rounded-2xl border border-[#2a3a5c] bg-[#0f0f1e] shadow-2xl shadow-black/50"
+            className="fixed bottom-6 right-6 z-50 flex h-[min(600px,85vh)] w-[min(420px,92vw)] flex-col overflow-hidden rounded-2xl border border-[#e5e7eb] bg-[#fafafa] shadow-2xl shadow-black/50"
           >
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-[#2a3a5c] bg-[#16213e] px-4 py-3">
+            <div className="flex items-center justify-between border-b border-[#e5e7eb] bg-[#ffffff] px-4 py-3">
               <div className="flex items-center gap-2.5">
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#f2c811]/15">
                   <Bot className="h-4.5 w-4.5 text-[#f2c811]" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-[#e2e8f0]">PBI Assistant</h3>
+                  <h3 className="text-sm font-semibold text-[#1e293b]">PBI Assistant</h3>
                   <p className="text-xs text-[#94a3b8]">Power BI & Fabric Expert</p>
                 </div>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="flex h-8 w-8 items-center justify-center rounded-lg text-[#94a3b8] transition-colors hover:bg-[#1a2744] hover:text-[#e2e8f0]"
+                className="flex h-8 w-8 items-center justify-center rounded-lg text-[#94a3b8] transition-colors hover:bg-[#f0f0f0] hover:text-[#1e293b]"
                 aria-label="Fermer le chatbot"
               >
                 <X className="h-4 w-4" />
@@ -541,7 +541,7 @@ export default function Chatbot() {
             </div>
 
             {/* Chat area */}
-            <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-[#2a3a5c]">
+            <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-[#e5e7eb]">
               {messages.length === 0 && !isTyping && (
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -562,7 +562,7 @@ export default function Chatbot() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
                         onClick={() => handleSend(s)}
-                        className="w-full rounded-lg border border-[#2a3a5c] bg-[#16213e]/60 px-3 py-2 text-left text-xs text-[#e2e8f0] transition-all hover:border-[#f2c811]/40 hover:bg-[#1a2744]"
+                        className="w-full rounded-lg border border-[#e5e7eb] bg-[#ffffff]/60 px-3 py-2 text-left text-xs text-[#1e293b] transition-all hover:border-[#f2c811]/40 hover:bg-[#f0f0f0]"
                       >
                         {s}
                       </motion.button>
@@ -581,8 +581,8 @@ export default function Chatbot() {
                   <div
                     className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${
                       msg.role === 'user'
-                        ? 'rounded-br-md bg-[#f2c811] text-[#1a1a2e] font-medium'
-                        : 'rounded-bl-md bg-[#16213e] text-[#e2e8f0] border border-[#2a3a5c]'
+                        ? 'rounded-br-md bg-[#f2c811] text-[#f5f5f5] font-medium'
+                        : 'rounded-bl-md bg-[#ffffff] text-[#1e293b] border border-[#e5e7eb]'
                     }`}
                   >
                     {/* Message text */}
@@ -600,7 +600,7 @@ export default function Chatbot() {
                               initial={{ opacity: 0, y: 4 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ delay: ci * 0.08 }}
-                              className={`rounded-xl border ${cfg.border} bg-[#0f0f1e]/80 backdrop-blur-sm p-2.5`}
+                              className={`rounded-xl border ${cfg.border} bg-[#fafafa]/80 backdrop-blur-sm p-2.5`}
                             >
                               <div className="flex items-start gap-2">
                                 <Icon className={`h-4 w-4 mt-0.5 shrink-0 ${cfg.color}`} />
@@ -609,7 +609,7 @@ export default function Chatbot() {
                                   {card.subtitle && (
                                     <p className="text-[10px] text-[#94a3b8]">{card.subtitle}</p>
                                   )}
-                                  <p className="mt-1 text-xs text-[#e2e8f0]/80 leading-relaxed">
+                                  <p className="mt-1 text-xs text-[#1e293b]/80 leading-relaxed">
                                     {card.body}
                                   </p>
                                   {card.extra && (
@@ -651,7 +651,7 @@ export default function Chatbot() {
                   animate={{ opacity: 1, y: 0 }}
                   className="flex justify-start"
                 >
-                  <div className="rounded-2xl rounded-bl-md border border-[#2a3a5c] bg-[#16213e] px-4 py-3">
+                  <div className="rounded-2xl rounded-bl-md border border-[#e5e7eb] bg-[#ffffff] px-4 py-3">
                     <div className="flex gap-1.5">
                       {[0, 1, 2].map(i => (
                         <motion.span
@@ -674,8 +674,8 @@ export default function Chatbot() {
             </div>
 
             {/* Input area */}
-            <div className="border-t border-[#2a3a5c] bg-[#16213e] p-3">
-              <div className="flex items-center gap-2 rounded-xl border border-[#2a3a5c] bg-[#0f0f1e] px-3 py-2 focus-within:border-[#f2c811]/50 transition-colors">
+            <div className="border-t border-[#e5e7eb] bg-[#ffffff] p-3">
+              <div className="flex items-center gap-2 rounded-xl border border-[#e5e7eb] bg-[#fafafa] px-3 py-2 focus-within:border-[#f2c811]/50 transition-colors">
                 <input
                   ref={inputRef}
                   type="text"
@@ -683,12 +683,12 @@ export default function Chatbot() {
                   onChange={e => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="Posez votre question..."
-                  className="flex-1 bg-transparent text-sm text-[#e2e8f0] placeholder-[#94a3b8] outline-none"
+                  className="flex-1 bg-transparent text-sm text-[#1e293b] placeholder-[#94a3b8] outline-none"
                 />
                 <button
                   onClick={() => handleSend()}
                   disabled={!input.trim() || isTyping}
-                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#f2c811] text-[#1a1a2e] transition-all hover:bg-[#f2c811]/90 disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#f2c811] text-[#f5f5f5] transition-all hover:bg-[#f2c811]/90 disabled:opacity-30 disabled:cursor-not-allowed"
                   aria-label="Envoyer"
                 >
                   <Send className="h-4 w-4" />

@@ -124,7 +124,7 @@ function SliderInput({
               const v = Number(e.target.value)
               if (v >= min && v <= max) onChange(v)
             }}
-            className="w-24 text-right text-sm bg-pbi-darker border border-pbi-border rounded-lg px-2 py-1 text-pbi-text focus:outline-none focus:border-primary"
+            className="w-24 text-right text-sm bg-gray-100 border border-pbi-border rounded-lg px-2 py-1 text-pbi-text focus:outline-none focus:border-primary"
           />
           {unit && <span className="text-xs text-pbi-muted ml-1">{unit}</span>}
         </div>
@@ -516,7 +516,7 @@ Economie TCO 3 ans: ${fmt(c.tcoCurrentThreeYear - c.tcoFabricThreeYear)} EUR`
                 <select
                   value={premiumIndex}
                   onChange={(e) => setPremiumIndex(Number(e.target.value))}
-                  className="w-full bg-pbi-darker border border-pbi-border rounded-lg px-3 py-2 text-sm text-pbi-text focus:outline-none focus:border-primary"
+                  className="w-full bg-gray-100 border border-pbi-border rounded-lg px-3 py-2 text-sm text-pbi-text focus:outline-none focus:border-primary"
                 >
                   {premiumCapacities.map((p, i) => (
                     <option key={i} value={i}>
@@ -577,7 +577,7 @@ Economie TCO 3 ans: ${fmt(c.tcoCurrentThreeYear - c.tcoFabricThreeYear)} EUR`
                 <select
                   value={fabricSkuIndex}
                   onChange={(e) => setFabricSkuIndex(Number(e.target.value))}
-                  className="w-full bg-pbi-darker border border-pbi-border rounded-lg px-3 py-2 text-sm text-pbi-text focus:outline-none focus:border-fabric"
+                  className="w-full bg-gray-100 border border-pbi-border rounded-lg px-3 py-2 text-sm text-pbi-text focus:outline-none focus:border-fabric"
                 >
                   {fabricCapacities.map((cap, i) => (
                     <option key={i} value={i}>
@@ -598,7 +598,7 @@ Economie TCO 3 ans: ${fmt(c.tcoCurrentThreeYear - c.tcoFabricThreeYear)} EUR`
                     className={`flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-all ${
                       isReserved
                         ? 'bg-fabric text-white'
-                        : 'bg-pbi-darker border border-pbi-border text-pbi-muted hover:text-pbi-text'
+                        : 'bg-gray-100 border border-pbi-border text-pbi-muted hover:text-pbi-text'
                     }`}
                   >
                     Reserve
@@ -608,7 +608,7 @@ Economie TCO 3 ans: ${fmt(c.tcoCurrentThreeYear - c.tcoFabricThreeYear)} EUR`
                     className={`flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-all ${
                       !isReserved
                         ? 'bg-fabric text-white'
-                        : 'bg-pbi-darker border border-pbi-border text-pbi-muted hover:text-pbi-text'
+                        : 'bg-gray-100 border border-pbi-border text-pbi-muted hover:text-pbi-text'
                     }`}
                   >
                     Pay-as-you-go
@@ -635,7 +635,7 @@ Economie TCO 3 ans: ${fmt(c.tcoCurrentThreeYear - c.tcoFabricThreeYear)} EUR`
               </div>
 
               {/* Summary info */}
-              <div className="mt-4 p-4 rounded-xl bg-pbi-darker/50 border border-pbi-border">
+              <div className="mt-4 p-4 rounded-xl bg-gray-100 border border-pbi-border">
                 <p className="text-xs text-pbi-muted mb-2">Detail capacite selectionnee:</p>
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <span className="text-pbi-muted">CU/seconde:</span>
@@ -729,11 +729,11 @@ Economie TCO 3 ans: ${fmt(c.tcoCurrentThreeYear - c.tcoFabricThreeYear)} EUR`
               <div className="h-80">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={calculations.breakdownData} barCategoryGap="20%">
-                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(42,58,92,0.5)" />
+                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(229,231,235,0.5)" />
                     <XAxis
                       dataKey="name"
                       tick={{ fill: '#94a3b8', fontSize: 11 }}
-                      axisLine={{ stroke: '#2a3a5c' }}
+                      axisLine={{ stroke: '#e5e7eb' }}
                       tickLine={false}
                       angle={-20}
                       textAnchor="end"
@@ -763,11 +763,11 @@ Economie TCO 3 ans: ${fmt(c.tcoCurrentThreeYear - c.tcoFabricThreeYear)} EUR`
               <div className="h-80">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={calculations.cumulativeData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(42,58,92,0.5)" />
+                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(229,231,235,0.5)" />
                     <XAxis
                       dataKey="month"
                       tick={{ fill: '#94a3b8', fontSize: 12 }}
-                      axisLine={{ stroke: '#2a3a5c' }}
+                      axisLine={{ stroke: '#e5e7eb' }}
                       tickLine={false}
                       label={{ value: 'Mois', position: 'insideBottom', offset: -5, fill: '#94a3b8', fontSize: 12 }}
                     />

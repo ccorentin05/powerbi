@@ -83,12 +83,12 @@ function SubSection({ title, children, icon: Icon }: { title: string; children: 
   return (
     <motion.div
       className="rounded-xl p-6 mb-6 border"
-      style={{ background: '#16213e', borderColor: '#2a3a5c' }}
+      style={{ background: '#ffffff', borderColor: '#e5e7eb' }}
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35 }}
     >
-      <h3 className="flex items-center gap-2 text-xl font-semibold mb-4" style={{ color: '#e2e8f0' }}>
+      <h3 className="flex items-center gap-2 text-xl font-semibold mb-4" style={{ color: '#1e293b' }}>
         {Icon && <Icon size={22} className="text-[#0078d4]" />}
         {title}
       </h3>
@@ -101,7 +101,7 @@ function InfoCard({ title, value, subtitle, color = '#0078d4' }: { title: string
   return (
     <motion.div
       className="rounded-xl p-5 border text-center"
-      style={{ background: '#16213e', borderColor: '#2a3a5c' }}
+      style={{ background: '#ffffff', borderColor: '#e5e7eb' }}
       whileHover={{ scale: 1.03, borderColor: color }}
       transition={{ duration: 0.2 }}
     >
@@ -116,7 +116,7 @@ function Tip({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex gap-3 rounded-lg p-4 my-4 border" style={{ background: 'rgba(16,185,129,0.08)', borderColor: 'rgba(16,185,129,0.3)' }}>
       <Lightbulb size={20} className="flex-shrink-0 mt-0.5" style={{ color: '#10b981' }} />
-      <p className="text-sm" style={{ color: '#e2e8f0' }}>{children}</p>
+      <p className="text-sm" style={{ color: '#1e293b' }}>{children}</p>
     </div>
   )
 }
@@ -125,7 +125,7 @@ function Warning({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex gap-3 rounded-lg p-4 my-4 border" style={{ background: 'rgba(245,158,11,0.08)', borderColor: 'rgba(245,158,11,0.3)' }}>
       <AlertTriangle size={20} className="flex-shrink-0 mt-0.5" style={{ color: '#f59e0b' }} />
-      <p className="text-sm" style={{ color: '#e2e8f0' }}>{children}</p>
+      <p className="text-sm" style={{ color: '#1e293b' }}>{children}</p>
     </div>
   )
 }
@@ -155,12 +155,12 @@ function PageLink({ to, label }: { to: string; label: string }) {
 
 function DataTable({ headers, rows }: { headers: string[]; rows: string[][] }) {
   return (
-    <div className="overflow-x-auto rounded-lg border my-4" style={{ borderColor: '#2a3a5c' }}>
-      <table className="w-full text-sm" style={{ color: '#e2e8f0' }}>
+    <div className="overflow-x-auto rounded-lg border my-4" style={{ borderColor: '#e5e7eb' }}>
+      <table className="w-full text-sm" style={{ color: '#1e293b' }}>
         <thead>
-          <tr style={{ background: '#0f0f1e' }}>
+          <tr style={{ background: '#fafafa' }}>
             {headers.map((h, i) => (
-              <th key={i} className="px-4 py-3 text-left font-semibold" style={{ color: '#f2c811', borderBottom: '1px solid #2a3a5c' }}>
+              <th key={i} className="px-4 py-3 text-left font-semibold" style={{ color: '#f2c811', borderBottom: '1px solid #e5e7eb' }}>
                 {h}
               </th>
             ))}
@@ -171,10 +171,10 @@ function DataTable({ headers, rows }: { headers: string[]; rows: string[][] }) {
             <tr
               key={ri}
               className="transition-colors"
-              style={{ background: ri % 2 === 0 ? '#16213e' : '#1a2744' }}
+              style={{ background: ri % 2 === 0 ? '#ffffff' : '#f0f0f0' }}
             >
               {row.map((cell, ci) => (
-                <td key={ci} className="px-4 py-3" style={{ borderBottom: '1px solid #2a3a5c' }}>
+                <td key={ci} className="px-4 py-3" style={{ borderBottom: '1px solid #e5e7eb' }}>
                   {cell}
                 </td>
               ))}
@@ -190,7 +190,7 @@ function FeatureList({ items }: { items: { label: string; ok: boolean }[] }) {
   return (
     <ul className="space-y-2 my-3">
       {items.map((item, i) => (
-        <li key={i} className="flex items-center gap-2 text-sm" style={{ color: '#e2e8f0' }}>
+        <li key={i} className="flex items-center gap-2 text-sm" style={{ color: '#1e293b' }}>
           {item.ok
             ? <CheckCircle2 size={16} style={{ color: '#10b981' }} />
             : <XCircle size={16} style={{ color: '#ef4444' }} />}
@@ -205,7 +205,7 @@ function BulletList({ items }: { items: string[] }) {
   return (
     <ul className="space-y-2 my-3">
       {items.map((item, i) => (
-        <li key={i} className="flex items-start gap-2 text-sm" style={{ color: '#e2e8f0' }}>
+        <li key={i} className="flex items-start gap-2 text-sm" style={{ color: '#1e293b' }}>
           <ChevronRight size={16} className="flex-shrink-0 mt-0.5" style={{ color: '#0078d4' }} />
           <span>{item}</span>
         </li>
@@ -218,7 +218,7 @@ function NumberedList({ items }: { items: string[] }) {
   return (
     <ol className="space-y-3 my-3">
       {items.map((item, i) => (
-        <li key={i} className="flex items-start gap-3 text-sm" style={{ color: '#e2e8f0' }}>
+        <li key={i} className="flex items-start gap-3 text-sm" style={{ color: '#1e293b' }}>
           <span
             className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold"
             style={{ background: '#0078d4', color: '#fff' }}
@@ -242,7 +242,7 @@ function OverviewTab() {
       <SectionTitle icon={Eye}>Vue d'ensemble de Microsoft Fabric</SectionTitle>
 
       <SubSection title="Qu'est-ce que Microsoft Fabric ?" icon={Cloud}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           Microsoft Fabric est une <strong style={{ color: '#f2c811' }}>plateforme analytique SaaS unifiee</strong> qui regroupe
           sous un seul toit l'ensemble des services de donnees : ingestion, transformation, stockage, analyse, visualisation,
           alerting et gouvernance. Contrairement a une approche multi-services (Azure Data Factory + Synapse + Power BI + ...),
@@ -260,7 +260,7 @@ function OverviewTab() {
       </SubSection>
 
       <SubSection title="OneLake : le lac de donnees unifie" icon={Database}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           OneLake est le <strong style={{ color: '#f2c811' }}>stockage unifie</strong> de Fabric. Chaque tenant dispose
           d'un seul OneLake (comme OneDrive pour les fichiers). Toutes les donnees Fabric sont stockees en format
           ouvert <strong>Delta Lake</strong> (Parquet + logs de transaction).
@@ -280,7 +280,7 @@ function OverviewTab() {
       </SubSection>
 
       <SubSection title="Modele de capacite (CU)" icon={Cpu}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           Fabric utilise un modele de <strong style={{ color: '#f2c811' }}>Capacity Units (CU)</strong> partage entre
           toutes les charges de travail. Chaque operation (copie, requete, notebook, rendu de rapport) consomme des CU.
         </p>
@@ -302,7 +302,7 @@ function OverviewTab() {
       </SubSection>
 
       <SubSection title="Architecture des Workspaces" icon={Layers}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           Les workspaces sont les conteneurs logiques dans Fabric. Chaque workspace est attache a une capacite
           et contient des items (Lakehouses, Warehouses, Notebooks, Reports, etc.).
         </p>
@@ -318,7 +318,7 @@ function OverviewTab() {
       </SubSection>
 
       <SubSection title="Types d'items Fabric (30+)" icon={Box}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           Fabric propose plus de 30 types d'items. Voici l'inventaire complet :
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -358,9 +358,9 @@ function OverviewTab() {
             <div
               key={item.name}
               className="flex items-center justify-between rounded-lg px-4 py-2 border"
-              style={{ background: '#1a2744', borderColor: '#2a3a5c' }}
+              style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}
             >
-              <span className="text-sm font-medium" style={{ color: '#e2e8f0' }}>{item.name}</span>
+              <span className="text-sm font-medium" style={{ color: '#1e293b' }}>{item.name}</span>
               <Badge color={item.color}>{item.cat}</Badge>
             </div>
           ))}
@@ -377,7 +377,7 @@ function IngestionTab() {
 
       {/* Shortcuts */}
       <SubSection title="Shortcuts (pointeurs zero-copy)" icon={GitBranch}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           Les <strong style={{ color: '#f2c811' }}>Shortcuts</strong> sont des pointeurs virtuels vers des donnees
           sans les copier. Ils permettent d'acceder a des donnees distantes comme si elles etaient locales dans votre Lakehouse.
         </p>
@@ -415,7 +415,7 @@ function IngestionTab() {
 
       {/* Mirroring */}
       <SubSection title="Mirroring (replication quasi temps-reel)" icon={RefreshCw}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           Le <strong style={{ color: '#f2c811' }}>Mirroring</strong> replique les donnees d'une base externe
           vers OneLake en quasi temps-reel via <strong>Change Data Capture (CDC)</strong>. Les donnees arrivent
           en format Delta dans un Lakehouse dedie.
@@ -463,7 +463,7 @@ function IngestionTab() {
 
       {/* Copy Activity */}
       <SubSection title="Data Pipeline — Copy Activity" icon={Factory}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           La <strong style={{ color: '#f2c811' }}>Copy Activity</strong> est le moyen classique d'ingerer des donnees
           dans Fabric. Elle supporte <strong>100+ connecteurs</strong> et offre une grande flexibilite.
         </p>
@@ -500,14 +500,14 @@ function IngestionTab() {
 
       {/* Eventstream */}
       <SubSection title="Eventstream (ingestion temps-reel)" icon={Radio}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           <strong style={{ color: '#f2c811' }}>Eventstream</strong> permet l'ingestion de donnees en temps-reel
           depuis des sources de streaming vers Fabric.
         </p>
 
         <h4 className="text-base font-semibold mb-3" style={{ color: '#0078d4' }}>Sources & Destinations</h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div className="rounded-lg p-4 border" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+          <div className="rounded-lg p-4 border" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
             <h5 className="font-semibold text-sm mb-2" style={{ color: '#10b981' }}>Sources</h5>
             <BulletList items={[
               'Azure Event Hub',
@@ -518,7 +518,7 @@ function IngestionTab() {
               'Sample data (pour tests)',
             ]} />
           </div>
-          <div className="rounded-lg p-4 border" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+          <div className="rounded-lg p-4 border" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
             <h5 className="font-semibold text-sm mb-2" style={{ color: '#ef4444' }}>Destinations</h5>
             <BulletList items={[
               'KQL Database (Eventhouse)',
@@ -556,7 +556,7 @@ function TransformationTab() {
 
       {/* Data Pipelines */}
       <SubSection title="Data Pipelines (orchestration & transformation)" icon={Workflow}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           Les <strong style={{ color: '#f2c811' }}>Data Pipelines</strong> de Fabric (heritage Azure Data Factory)
           permettent d'orchestrer des workflows de donnees avec une interface graphique drag-and-drop.
         </p>
@@ -604,7 +604,7 @@ function TransformationTab() {
             { title: 'SCD Type 2', desc: 'Slowly Changing Dimension avec historisation via Notebook Spark', complexity: 'Complex' },
             { title: 'Full Refresh', desc: 'Drop + recreate table a chaque execution', complexity: 'Simple' },
           ].map((t) => (
-            <div key={t.title} className="rounded-lg p-4 border" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+            <div key={t.title} className="rounded-lg p-4 border" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
               <h5 className="font-semibold text-sm mb-1" style={{ color: '#f2c811' }}>{t.title}</h5>
               <p className="text-xs mb-2" style={{ color: '#94a3b8' }}>{t.desc}</p>
               <Badge color={t.complexity === 'Simple' ? '#10b981' : t.complexity === 'Medium' ? '#f59e0b' : '#ef4444'}>
@@ -620,7 +620,7 @@ function TransformationTab() {
 
       {/* Notebooks */}
       <SubSection title="Notebooks (PySpark / Python)" icon={FileCode}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           Les <strong style={{ color: '#f2c811' }}>Notebooks Fabric</strong> offrent un environnement interactif
           pour le traitement de donnees avec Apache Spark (PySpark) ou Python natif.
         </p>
@@ -641,7 +641,7 @@ function TransformationTab() {
             'SemPy (Semantic Link)', 'notebookutils', 'mssparkutils', 'koalas', 'plotly', 'pyarrow',
             'great_expectations', 'mlflow'].map((lib) => (
             <div key={lib} className="rounded-lg px-3 py-2 text-center text-xs font-medium border"
-              style={{ background: '#1a2744', borderColor: '#2a3a5c', color: '#e2e8f0' }}>
+              style={{ background: '#f0f0f0', borderColor: '#e5e7eb', color: '#1e293b' }}>
               {lib}
             </div>
           ))}
@@ -652,11 +652,11 @@ function TransformationTab() {
         </p>
 
         <h4 className="text-base font-semibold mb-3" style={{ color: '#0078d4' }}>Semantic Link (SemPy)</h4>
-        <p className="text-sm mb-3" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-3" style={{ color: '#1e293b' }}>
           SemPy permet de <strong style={{ color: '#f2c811' }}>requeter les semantic models Power BI directement depuis Python</strong>.
           C'est un pont unique entre le monde Data Engineering et le monde Power BI.
         </p>
-        <div className="rounded-lg p-4 border font-mono text-xs overflow-x-auto" style={{ background: '#0f0f1e', borderColor: '#2a3a5c', color: '#e2e8f0' }}>
+        <div className="rounded-lg p-4 border font-mono text-xs overflow-x-auto" style={{ background: '#fafafa', borderColor: '#e5e7eb', color: '#1e293b' }}>
           <pre>{`import sempy.fabric as fabric
 
 # Lister les datasets du workspace
@@ -722,7 +722,7 @@ print(df.head())`}</pre>
 
       {/* Dataflow Gen2 */}
       <SubSection title="Dataflow Gen2 (Power Query Online)" icon={Workflow}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           <strong style={{ color: '#f2c811' }}>Dataflow Gen2</strong> est la version Fabric de Power Query Online.
           Il offre une interface graphique (no-code/low-code) pour transformer des donnees avec 300+ connecteurs.
         </p>
@@ -783,7 +783,7 @@ print(df.head())`}</pre>
 
       {/* Stored Procedures */}
       <SubSection title="Stored Procedures (Warehouse)" icon={Server}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           Le <strong style={{ color: '#f2c811' }}>Warehouse Fabric</strong> supporte les procedures stockees T-SQL
           pour les equipes habituees a SQL Server.
         </p>
@@ -818,7 +818,7 @@ function StorageTab() {
 
       {/* Lakehouse */}
       <SubSection title="Lakehouse" icon={Database}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           Le <strong style={{ color: '#f2c811' }}>Lakehouse</strong> est le coeur du stockage dans Fabric.
           Il combine la flexibilite d'un data lake avec la structure d'un data warehouse, le tout en format
           <strong> Delta Lake</strong> ouvert.
@@ -852,7 +852,7 @@ function StorageTab() {
 
         <h4 className="text-base font-semibold mb-3 mt-4" style={{ color: '#0078d4' }}>Endpoints d'acces</h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div className="rounded-lg p-4 border" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+          <div className="rounded-lg p-4 border" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
             <h5 className="font-semibold text-sm mb-2" style={{ color: '#0078d4' }}>SQL Analytics Endpoint</h5>
             <BulletList items={[
               'Auto-genere pour chaque Lakehouse',
@@ -863,7 +863,7 @@ function StorageTab() {
               'Cross-database queries possibles',
             ]} />
           </div>
-          <div className="rounded-lg p-4 border" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+          <div className="rounded-lg p-4 border" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
             <h5 className="font-semibold text-sm mb-2" style={{ color: '#10b981' }}>Spark Endpoint</h5>
             <BulletList items={[
               'Acces complet lecture/ecriture',
@@ -899,7 +899,7 @@ function StorageTab() {
 
       {/* Warehouse */}
       <SubSection title="Warehouse" icon={Server}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           Le <strong style={{ color: '#f2c811' }}>Warehouse Fabric</strong> offre une experience SQL Server complete
           pour les equipes habituees au T-SQL. Les donnees sont stockees en format Delta dans OneLake.
         </p>
@@ -936,7 +936,7 @@ function StorageTab() {
 
       {/* KQL Database */}
       <SubSection title="KQL Database (Eventhouse)" icon={BarChart3}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           Le <strong style={{ color: '#f2c811' }}>KQL Database</strong> (heberge dans un Eventhouse) est optimise
           pour les donnees <strong>time-series, logs et telemetrie</strong>. Il utilise le Kusto Query Language (KQL).
         </p>
@@ -954,7 +954,7 @@ function StorageTab() {
         ]} />
 
         <h4 className="text-base font-semibold mb-3 mt-4" style={{ color: '#0078d4' }}>Exemples KQL</h4>
-        <div className="rounded-lg p-4 border font-mono text-xs overflow-x-auto" style={{ background: '#0f0f1e', borderColor: '#2a3a5c', color: '#e2e8f0' }}>
+        <div className="rounded-lg p-4 border font-mono text-xs overflow-x-auto" style={{ background: '#fafafa', borderColor: '#e5e7eb', color: '#1e293b' }}>
           <pre>{`// Top 10 erreurs des dernieres 24h
 AppLogs
 | where Timestamp > ago(24h)
@@ -1022,7 +1022,7 @@ function OrchestrationTab() {
       <SectionTitle icon={Workflow}>Orchestration</SectionTitle>
 
       <SubSection title="Data Pipeline — Orchestration" icon={Settings}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           L'orchestration dans Fabric est geree par les <strong style={{ color: '#f2c811' }}>Data Pipelines</strong>.
           Les activites d'orchestration (triggers, conditions, boucles) sont <strong>gratuites en CU</strong> —
           seules les activites de calcul (Copy, Notebook, Dataflow) consomment des CU.
@@ -1061,7 +1061,7 @@ function OrchestrationTab() {
 
         <h4 className="text-base font-semibold mb-3 mt-4" style={{ color: '#0078d4' }}>Patterns d'orchestration</h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="rounded-lg p-4 border" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+          <div className="rounded-lg p-4 border" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
             <h5 className="font-semibold text-sm mb-2" style={{ color: '#f2c811' }}>Daily Refresh Pattern</h5>
             <NumberedList items={[
               'Trigger Schedule : 6h00',
@@ -1071,7 +1071,7 @@ function OrchestrationTab() {
               'Email notification si echec',
             ]} />
           </div>
-          <div className="rounded-lg p-4 border" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+          <div className="rounded-lg p-4 border" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
             <h5 className="font-semibold text-sm mb-2" style={{ color: '#f2c811' }}>Hybrid Real-time + Batch</h5>
             <NumberedList items={[
               'Eventstream : ingestion temps-reel → KQL Database',
@@ -1081,7 +1081,7 @@ function OrchestrationTab() {
               'Data Activator pour alertes en temps-reel',
             ]} />
           </div>
-          <div className="rounded-lg p-4 border" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+          <div className="rounded-lg p-4 border" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
             <h5 className="font-semibold text-sm mb-2" style={{ color: '#f2c811' }}>Retry avec Backoff Exponentiel</h5>
             <NumberedList items={[
               'Activite principale avec retry = 3',
@@ -1091,7 +1091,7 @@ function OrchestrationTab() {
               'On Failure → Set Variable (flag echec)',
             ]} />
           </div>
-          <div className="rounded-lg p-4 border" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+          <div className="rounded-lg p-4 border" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
             <h5 className="font-semibold text-sm mb-2" style={{ color: '#f2c811' }}>Multi-source Parallel Load</h5>
             <NumberedList items={[
               'ForEach : liste des sources (metadata-driven)',
@@ -1120,7 +1120,7 @@ function VisualizationTab() {
 
       {/* Power BI Modes */}
       <SubSection title="Power BI : Import vs DirectQuery vs Direct Lake" icon={Eye}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           Power BI dans Fabric offre trois modes de connexion aux donnees. Le choix du mode a un impact
           majeur sur les performances, la fraicheur des donnees et la consommation CU.
         </p>
@@ -1158,7 +1158,7 @@ function VisualizationTab() {
 
         <h4 className="text-base font-semibold mb-3 mt-4" style={{ color: '#0078d4' }}>Quand utiliser chaque mode</h4>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="rounded-lg p-4 border" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+          <div className="rounded-lg p-4 border" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
             <h5 className="font-semibold text-sm mb-2" style={{ color: '#f59e0b' }}>Import</h5>
             <BulletList items={[
               'Sources non-Fabric (SQL on-prem, Oracle)',
@@ -1167,7 +1167,7 @@ function VisualizationTab() {
               'Pas de Lakehouse/Warehouse Fabric',
             ]} />
           </div>
-          <div className="rounded-lg p-4 border" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+          <div className="rounded-lg p-4 border" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
             <h5 className="font-semibold text-sm mb-2" style={{ color: '#ef4444' }}>DirectQuery</h5>
             <BulletList items={[
               'Besoin de donnees temps-reel strict',
@@ -1176,7 +1176,7 @@ function VisualizationTab() {
               'Securite a la source (passthrough auth)',
             ]} />
           </div>
-          <div className="rounded-lg p-4 border" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+          <div className="rounded-lg p-4 border" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
             <h5 className="font-semibold text-sm mb-2" style={{ color: '#10b981' }}>Direct Lake</h5>
             <BulletList items={[
               'Donnees dans un Lakehouse Fabric',
@@ -1193,7 +1193,7 @@ function VisualizationTab() {
 
       {/* Applications */}
       <SubSection title="Power BI Applications" icon={Box}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           Les <strong style={{ color: '#f2c811' }}>Power BI Apps</strong> sont le moyen recommande de distribuer
           du contenu aux utilisateurs finaux. Elles regroupent rapports, dashboards et scorecards
           dans un package navigable.
@@ -1212,7 +1212,7 @@ function VisualizationTab() {
 
       {/* Dashboards */}
       <SubSection title="Dashboards (classiques)" icon={Gauge}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           Les <strong style={{ color: '#f59e0b' }}>Dashboards classiques</strong> Power BI permettent d'epingler
           des tuiles provenant de plusieurs rapports sur un meme ecran.
         </p>
@@ -1234,7 +1234,7 @@ function VisualizationTab() {
 
       {/* Real-time Dashboards */}
       <SubSection title="Real-Time Dashboards" icon={Zap}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           Les <strong style={{ color: '#f2c811' }}>Real-Time Dashboards</strong> utilisent KQL pour afficher
           des donnees en quasi temps-reel depuis un KQL Database / Eventhouse.
         </p>
@@ -1250,7 +1250,7 @@ function VisualizationTab() {
         ]} />
 
         <h4 className="text-base font-semibold mb-3 mt-4" style={{ color: '#0078d4' }}>Consommation CU</h4>
-        <p className="text-sm" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm" style={{ color: '#1e293b' }}>
           Chaque refresh execute toutes les requetes KQL des tiles. Avec un refresh de 30 secondes
           et 10 tiles, cela fait <strong>~2 880 requetes/jour</strong>. Assurez-vous d'optimiser
           vos requetes KQL et d'utiliser des materialized views.
@@ -1259,7 +1259,7 @@ function VisualizationTab() {
 
       {/* Paginated Reports */}
       <SubSection title="Paginated Reports" icon={FileCode}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           Les <strong style={{ color: '#f2c811' }}>Paginated Reports</strong> (SSRS dans le cloud) produisent
           des rapports <strong>pixel-perfect, print-ready</strong> optimises pour l'impression et l'export.
         </p>
@@ -1309,7 +1309,7 @@ function AlertingTab() {
       <SectionTitle icon={Bell}>Alerting — Data Activator (Reflex)</SectionTitle>
 
       <SubSection title="Qu'est-ce que Data Activator ?" icon={Zap}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           <strong style={{ color: '#f2c811' }}>Data Activator</strong> (anciennement Reflex) est le service d'alerting
           no-code de Fabric. Il surveille des donnees et declenche des actions automatiquement
           lorsque des conditions sont remplies.
@@ -1339,19 +1339,19 @@ function AlertingTab() {
 
         <h4 className="text-base font-semibold mb-3 mt-4" style={{ color: '#0078d4' }}>Actions disponibles</h4>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-          <div className="rounded-lg p-4 border text-center" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+          <div className="rounded-lg p-4 border text-center" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
             <div className="text-3xl mb-2">📧</div>
-            <h5 className="font-semibold text-sm mb-1" style={{ color: '#e2e8f0' }}>Email</h5>
+            <h5 className="font-semibold text-sm mb-1" style={{ color: '#1e293b' }}>Email</h5>
             <p className="text-xs" style={{ color: '#94a3b8' }}>Envoyer un email avec le detail de l'alerte</p>
           </div>
-          <div className="rounded-lg p-4 border text-center" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+          <div className="rounded-lg p-4 border text-center" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
             <div className="text-3xl mb-2">💬</div>
-            <h5 className="font-semibold text-sm mb-1" style={{ color: '#e2e8f0' }}>Microsoft Teams</h5>
+            <h5 className="font-semibold text-sm mb-1" style={{ color: '#1e293b' }}>Microsoft Teams</h5>
             <p className="text-xs" style={{ color: '#94a3b8' }}>Poster un message dans un canal Teams</p>
           </div>
-          <div className="rounded-lg p-4 border text-center" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+          <div className="rounded-lg p-4 border text-center" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
             <div className="text-3xl mb-2">⚡</div>
-            <h5 className="font-semibold text-sm mb-1" style={{ color: '#e2e8f0' }}>Power Automate</h5>
+            <h5 className="font-semibold text-sm mb-1" style={{ color: '#1e293b' }}>Power Automate</h5>
             <p className="text-xs" style={{ color: '#94a3b8' }}>Declencher un flow (webhook, API, ticket, etc.)</p>
           </div>
         </div>
@@ -1372,7 +1372,7 @@ function AlertingTab() {
             { title: 'Temperature critique', desc: 'Alerte IoT quand un capteur depasse la temperature critique', trigger: 'Temp > 85°C', action: 'Email + Flow (arret machine)' },
             { title: 'SLA non respecte', desc: 'Notification quand le temps de reponse API depasse le SLA', trigger: 'ResponseTime > 2000ms', action: 'Teams + Ticket Jira' },
           ].map((ex) => (
-            <div key={ex.title} className="rounded-lg p-4 border" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+            <div key={ex.title} className="rounded-lg p-4 border" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
               <h5 className="font-semibold text-sm mb-1" style={{ color: '#f2c811' }}>{ex.title}</h5>
               <p className="text-xs mb-2" style={{ color: '#94a3b8' }}>{ex.desc}</p>
               <div className="flex gap-2">
@@ -1384,7 +1384,7 @@ function AlertingTab() {
         </div>
 
         <h4 className="text-base font-semibold mb-3 mt-4" style={{ color: '#0078d4' }}>Consommation CU</h4>
-        <p className="text-sm" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm" style={{ color: '#1e293b' }}>
           Data Activator consomme des CU en fonction du nombre d'evenements traites et de la frequence
           d'evaluation des triggers. Le cout est generalement faible sauf en cas de tres haut volume
           d'evenements (&gt;10 000/min).
@@ -1406,7 +1406,7 @@ function GovernanceTab() {
 
       {/* Roles */}
       <SubSection title="Roles Workspace" icon={Users}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           Chaque workspace Fabric a 4 niveaux de roles avec des permissions croissantes.
         </p>
 
@@ -1471,7 +1471,7 @@ function GovernanceTab() {
         ]} />
         <div className="mt-4">
           <PageLink to="/fiches" label="Voir la fiche technique RLS" />
-          <span className="mx-3" style={{ color: '#2a3a5c' }}>|</span>
+          <span className="mx-3" style={{ color: '#e5e7eb' }}>|</span>
           <PageLink to="/api" label="APIs Admin pour la gouvernance" />
         </div>
       </SubSection>
@@ -1488,14 +1488,14 @@ function GovernanceTab() {
 
         <h4 className="text-base font-semibold mb-3 mt-4" style={{ color: '#0078d4' }}>Endorsement</h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="rounded-lg p-4 border" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+          <div className="rounded-lg p-4 border" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
             <h5 className="font-semibold text-sm mb-2" style={{ color: '#0078d4' }}>Promoted</h5>
             <p className="text-xs mb-2" style={{ color: '#94a3b8' }}>
               Recommande par le proprietaire du contenu. N'importe quel Member/Admin peut promouvoir.
             </p>
             <Badge color="#0078d4">Self-service</Badge>
           </div>
-          <div className="rounded-lg p-4 border" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+          <div className="rounded-lg p-4 border" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
             <h5 className="font-semibold text-sm mb-2" style={{ color: '#f2c811' }}>Certified</h5>
             <p className="text-xs mb-2" style={{ color: '#94a3b8' }}>
               Valide officiellement par un admin Fabric. Limite aux utilisateurs designes par le tenant admin.
@@ -1507,7 +1507,7 @@ function GovernanceTab() {
 
       {/* Domains */}
       <SubSection title="Domains Fabric" icon={Layers}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           Les <strong style={{ color: '#f2c811' }}>Domains</strong> sont une fonctionnalite de gouvernance qui permet
           de regrouper les workspaces par domaine metier (Finance, Marketing, RH, Supply Chain...).
         </p>
@@ -1532,7 +1532,7 @@ function OptimizationTab() {
 
       {/* CU Table */}
       <SubSection title="Table de consommation CU detaillee" icon={TrendingUp}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           Chaque operation Fabric consomme des <strong style={{ color: '#f2c811' }}>Capacity Units-secondes (CU-s)</strong>.
           Voici une table de reference detaillee.
         </p>
@@ -1583,7 +1583,7 @@ function OptimizationTab() {
 
       {/* Smoothing & Bursting */}
       <SubSection title="Smoothing, Bursting & Throttling" icon={Gauge}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           Fabric utilise un systeme de <strong style={{ color: '#f2c811' }}>lissage (smoothing)</strong> pour
           gerer les pics de charge. Comprendre ce mecanisme est essentiel pour eviter le throttling.
         </p>
@@ -1646,7 +1646,7 @@ function OptimizationTab() {
       {/* Optimization Tips */}
       <SubSection title="Conseils d'optimisation" icon={Target}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="rounded-lg p-4 border" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+          <div className="rounded-lg p-4 border" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
             <h5 className="font-semibold text-sm mb-3 flex items-center gap-2" style={{ color: '#f2c811' }}>
               <Clock size={16} /> Planning & Scheduling
             </h5>
@@ -1657,7 +1657,7 @@ function OptimizationTab() {
               'Configurer l\'auto-pause si votre cloud provider le supporte',
             ]} />
           </div>
-          <div className="rounded-lg p-4 border" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+          <div className="rounded-lg p-4 border" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
             <h5 className="font-semibold text-sm mb-3 flex items-center gap-2" style={{ color: '#f2c811' }}>
               <RefreshCw size={16} /> Refresh & Ingestion
             </h5>
@@ -1668,7 +1668,7 @@ function OptimizationTab() {
               'Utiliser le Mirroring plutot que la Copy Activity pour les sources supportees',
             ]} />
           </div>
-          <div className="rounded-lg p-4 border" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+          <div className="rounded-lg p-4 border" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
             <h5 className="font-semibold text-sm mb-3 flex items-center gap-2" style={{ color: '#f2c811' }}>
               <BarChart3 size={16} /> DAX & Requetes
             </h5>
@@ -1680,7 +1680,7 @@ function OptimizationTab() {
             ]} />
             <PageLink to="/performance" label="Checklist performance complete" />
           </div>
-          <div className="rounded-lg p-4 border" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+          <div className="rounded-lg p-4 border" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
             <h5 className="font-semibold text-sm mb-3 flex items-center gap-2" style={{ color: '#f2c811' }}>
               <Cpu size={16} /> Spark & Notebooks
             </h5>
@@ -1692,7 +1692,7 @@ function OptimizationTab() {
             ]} />
             <PageLink to="/notebooks" label="Templates de notebooks optimises" />
           </div>
-          <div className="rounded-lg p-4 border" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+          <div className="rounded-lg p-4 border" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
             <h5 className="font-semibold text-sm mb-3 flex items-center gap-2" style={{ color: '#f2c811' }}>
               <HardDrive size={16} /> Stockage & Format
             </h5>
@@ -1704,7 +1704,7 @@ function OptimizationTab() {
             ]} />
             <PageLink to="/architecture" label="Patterns d\'architecture Lakehouse" />
           </div>
-          <div className="rounded-lg p-4 border" style={{ background: '#1a2744', borderColor: '#2a3a5c' }}>
+          <div className="rounded-lg p-4 border" style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}>
             <h5 className="font-semibold text-sm mb-3 flex items-center gap-2" style={{ color: '#f2c811' }}>
               <Server size={16} /> Capacite
             </h5>
@@ -1721,7 +1721,7 @@ function OptimizationTab() {
 
       {/* Starter Pack */}
       <SubSection title='Starter Pack : "Premiere semaine avec Fabric"' icon={Sparkles}>
-        <p className="text-sm mb-4" style={{ color: '#e2e8f0' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           Checklist pour demarrer avec Microsoft Fabric en une semaine. Suivez ces etapes dans l'ordre
           pour avoir un pipeline complet fonctionnel.
         </p>
@@ -1742,7 +1742,7 @@ function OptimizationTab() {
             <motion.div
               key={i}
               className="flex gap-4 rounded-lg p-4 border"
-              style={{ background: '#1a2744', borderColor: '#2a3a5c' }}
+              style={{ background: '#f0f0f0', borderColor: '#e5e7eb' }}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.05 }}
@@ -1757,7 +1757,7 @@ function OptimizationTab() {
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1">
-                  <h5 className="font-semibold text-sm" style={{ color: '#e2e8f0' }}>{item.step}</h5>
+                  <h5 className="font-semibold text-sm" style={{ color: '#1e293b' }}>{item.step}</h5>
                   <Badge color="#f59e0b">{item.day}</Badge>
                 </div>
                 <p className="text-xs" style={{ color: '#94a3b8' }}>{item.desc}</p>
@@ -1805,7 +1805,7 @@ export default function FabricDeepDive() {
   const ActiveComponent = TAB_COMPONENTS[activeTab]
 
   return (
-    <div className="min-h-screen" style={{ background: '#0f0f1e' }}>
+    <div className="min-h-screen" style={{ background: '#fafafa' }}>
       {/* Header */}
       <motion.div
         className="text-center py-12 px-4"
@@ -1824,7 +1824,7 @@ export default function FabricDeepDive() {
       </motion.div>
 
       {/* Tab Navigation */}
-      <div className="sticky top-0 z-50 border-b" style={{ background: '#0f0f1e', borderColor: '#2a3a5c' }}>
+      <div className="sticky top-0 z-50 border-b" style={{ background: '#fafafa', borderColor: '#e5e7eb' }}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex overflow-x-auto gap-1 py-2 scrollbar-thin">
             {TABS.map((tab) => {
@@ -1842,8 +1842,8 @@ export default function FabricDeepDive() {
                   }}
                   onMouseEnter={(e) => {
                     if (!isActive) {
-                      e.currentTarget.style.background = '#1a2744'
-                      e.currentTarget.style.color = '#e2e8f0'
+                      e.currentTarget.style.background = '#f0f0f0'
+                      e.currentTarget.style.color = '#1e293b'
                     }
                   }}
                   onMouseLeave={(e) => {
@@ -1879,7 +1879,7 @@ export default function FabricDeepDive() {
 
       {/* Footer navigation */}
       <div className="max-w-7xl mx-auto px-4 pb-12">
-        <div className="rounded-xl p-6 border" style={{ background: '#16213e', borderColor: '#2a3a5c' }}>
+        <div className="rounded-xl p-6 border" style={{ background: '#ffffff', borderColor: '#e5e7eb' }}>
           <h3 className="text-lg font-semibold mb-4" style={{ color: '#f2c811' }}>Continuer l'exploration</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
@@ -1898,14 +1898,14 @@ export default function FabricDeepDive() {
                   key={link.to}
                   to={link.to}
                   className="flex items-center gap-2 rounded-lg px-4 py-3 border transition-all"
-                  style={{ background: '#1a2744', borderColor: '#2a3a5c', color: '#e2e8f0' }}
+                  style={{ background: '#f0f0f0', borderColor: '#e5e7eb', color: '#1e293b' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.borderColor = '#0078d4'
-                    e.currentTarget.style.background = '#1a2744'
+                    e.currentTarget.style.background = '#f0f0f0'
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = '#2a3a5c'
-                    e.currentTarget.style.background = '#1a2744'
+                    e.currentTarget.style.borderColor = '#e5e7eb'
+                    e.currentTarget.style.background = '#f0f0f0'
                   }}
                 >
                   <Icon size={16} style={{ color: '#0078d4' }} />

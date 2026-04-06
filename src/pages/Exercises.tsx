@@ -1184,7 +1184,7 @@ function StatsBar({ completedIds }: { completedIds: number[] }) {
             {completedIds.length}/{exercises.length} exercices
           </span>
         </div>
-        <div className="w-full bg-pbi-darker rounded-full h-2.5 overflow-hidden">
+        <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
           <motion.div
             className="h-full rounded-full"
             style={{ background: 'linear-gradient(90deg, #f2c811, #f59e0b)' }}
@@ -1196,7 +1196,7 @@ function StatsBar({ completedIds }: { completedIds: number[] }) {
       </div>
 
       {/* Score */}
-      <div className="flex items-center justify-between mb-4 p-3 rounded-lg bg-pbi-darker/50">
+      <div className="flex items-center justify-between mb-4 p-3 rounded-lg bg-gray-100">
         <div className="flex items-center gap-2">
           <Trophy className="w-4 h-4 text-primary" />
           <span className="text-sm text-pbi-muted">Score</span>
@@ -1289,7 +1289,7 @@ function ExerciseCard({
               className={`flex items-center gap-1 text-xs px-2 py-1 rounded-md transition-colors ${
                 isCompleted
                   ? 'bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30'
-                  : 'bg-pbi-darker text-pbi-muted hover:bg-pbi-border hover:text-pbi-text'
+                  : 'bg-gray-100 text-pbi-muted hover:bg-pbi-border hover:text-pbi-text'
               }`}
             >
               <CheckCircle2 size={14} />
@@ -1330,14 +1330,14 @@ function ExerciseCard({
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="px-5 pb-5 border-t border-pbi-border/50 pt-4">
+            <div className="px-5 pb-5 border-t border-pbi-border pt-4">
               {/* Problem statement */}
               <div className="mb-4">
                 <h4 className="text-sm font-semibold text-pbi-text mb-2 flex items-center gap-2">
                   <Target size={16} className="text-info" />
                   Énoncé
                 </h4>
-                <div className="bg-pbi-darker rounded-lg p-4 text-sm text-pbi-text/90 whitespace-pre-line leading-relaxed">
+                <div className="bg-gray-100 rounded-lg p-4 text-sm text-pbi-text/90 whitespace-pre-line leading-relaxed">
                   {exercise.problemStatement}
                 </div>
               </div>
@@ -1394,7 +1394,7 @@ function ExerciseCard({
                       exit={{ opacity: 0, filter: 'blur(10px)' }}
                       transition={{ duration: 0.4 }}
                     >
-                      <div className="bg-pbi-darker rounded-lg p-4 mb-3 border border-success/20">
+                      <div className="bg-gray-100 rounded-lg p-4 mb-3 border border-success/20">
                         <h5 className="text-xs uppercase tracking-wide text-success mb-2 font-semibold">
                           Solution
                         </h5>
@@ -1509,7 +1509,7 @@ export default function Exercises() {
               className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all ${
                 selectedCategory === 'all'
                   ? 'bg-primary text-pbi-dark'
-                  : 'bg-pbi-darker text-pbi-muted hover:bg-pbi-border hover:text-pbi-text'
+                  : 'bg-gray-100 text-pbi-muted hover:bg-pbi-border hover:text-pbi-text'
               }`}
             >
               Tous
@@ -1524,7 +1524,7 @@ export default function Exercises() {
                   className="px-3 py-1.5 rounded-full text-sm font-medium transition-all"
                   style={{
                     background: isActive ? config.color : config.bg,
-                    color: isActive ? '#1a1a2e' : config.color,
+                    color: isActive ? '#f5f5f5' : config.color,
                   }}
                 >
                   {cat}
@@ -1545,7 +1545,7 @@ export default function Exercises() {
               className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all ${
                 selectedDifficulty === 'all'
                   ? 'bg-primary text-pbi-dark'
-                  : 'bg-pbi-darker text-pbi-muted hover:bg-pbi-border hover:text-pbi-text'
+                  : 'bg-gray-100 text-pbi-muted hover:bg-pbi-border hover:text-pbi-text'
               }`}
             >
               Tous
@@ -1560,7 +1560,7 @@ export default function Exercises() {
                   className="px-3 py-1.5 rounded-full text-sm font-medium transition-all"
                   style={{
                     background: isActive ? config.color : config.bg,
-                    color: isActive ? '#1a1a2e' : config.color,
+                    color: isActive ? '#f5f5f5' : config.color,
                   }}
                 >
                   {diff}

@@ -754,7 +754,7 @@ export default function DaxFormatter() {
       >
         {/* Input panel */}
         <div className="glass-card overflow-hidden rounded-xl lg:rounded-r-none">
-          <div className="flex items-center justify-between px-4 py-2.5 border-b border-pbi-border bg-pbi-card/50">
+          <div className="flex items-center justify-between px-4 py-2.5 border-b border-pbi-border bg-white/80">
             <span className="text-xs font-medium text-pbi-muted uppercase tracking-wider">Entree</span>
             <button
               onClick={handleClear}
@@ -766,7 +766,7 @@ export default function DaxFormatter() {
           </div>
           <div className="relative">
             {/* Line numbers gutter */}
-            <div className="absolute left-0 top-0 bottom-0 w-10 bg-pbi-darker/50 border-r border-pbi-border/30 select-none overflow-hidden pointer-events-none">
+            <div className="absolute left-0 top-0 bottom-0 w-10 bg-gray-100 border-r border-pbi-border/30 select-none overflow-hidden pointer-events-none">
               <div className="py-4 px-1 text-right">
                 {inputLineNumbers.map((n) => (
                   <div key={n} className="text-[11px] leading-[1.6] text-pbi-muted/40 pr-1">{n}</div>
@@ -828,7 +828,7 @@ export default function DaxFormatter() {
 
         {/* Output panel */}
         <div className="glass-card overflow-hidden rounded-xl lg:rounded-l-none">
-          <div className="flex items-center justify-between px-4 py-2.5 border-b border-pbi-border bg-pbi-card/50">
+          <div className="flex items-center justify-between px-4 py-2.5 border-b border-pbi-border bg-white/80">
             <span className="text-xs font-medium text-pbi-muted uppercase tracking-wider">Sortie</span>
             <motion.button
               onClick={handleCopy}

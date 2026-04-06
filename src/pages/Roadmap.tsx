@@ -916,8 +916,8 @@ function RoadmapCard({
       onClick={onToggle}
       className="cursor-pointer rounded-xl border transition-colors"
       style={{
-        background: '#16213e',
-        borderColor: expanded ? categoryConfig[item.category].color + '60' : '#2a3a5c',
+        background: '#ffffff',
+        borderColor: expanded ? categoryConfig[item.category].color + '60' : '#e5e7eb',
       }}
     >
       <div className="p-4 sm:p-5">
@@ -932,7 +932,7 @@ function RoadmapCard({
         <div className="flex items-start justify-between gap-2">
           <h3
             className="text-base font-semibold sm:text-lg"
-            style={{ color: '#e2e8f0' }}
+            style={{ color: '#1e293b' }}
           >
             {item.title}
           </h3>
@@ -961,7 +961,7 @@ function RoadmapCard({
               transition={{ duration: 0.25 }}
               className="overflow-hidden"
             >
-              <div className="mt-4 flex flex-wrap items-center gap-3 border-t pt-3" style={{ borderColor: '#2a3a5c' }}>
+              <div className="mt-4 flex flex-wrap items-center gap-3 border-t pt-3" style={{ borderColor: '#e5e7eb' }}>
                 <span className="text-xs font-medium" style={{ color: '#94a3b8' }}>
                   Bénéficiaires :
                 </span>
@@ -1019,14 +1019,14 @@ function MostAnticipatedCard({
       transition={{ duration: 0.4, delay: rank * 0.08 }}
       className="relative rounded-xl border p-5 sm:p-6"
       style={{
-        background: 'linear-gradient(135deg, #16213e 0%, #1a2744 100%)',
+        background: 'linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%)',
         borderColor: '#f2c81140',
       }}
     >
       {/* Rank badge */}
       <div
         className="absolute -top-3 -left-3 flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold"
-        style={{ background: '#f2c811', color: '#1a1a2e' }}
+        style={{ background: '#f2c811', color: '#1e293b' }}
       >
         #{rank + 1}
       </div>
@@ -1046,7 +1046,7 @@ function MostAnticipatedCard({
         </span>
       </div>
 
-      <h3 className="mb-2 text-lg font-bold" style={{ color: '#e2e8f0' }}>
+      <h3 className="mb-2 text-lg font-bold" style={{ color: '#1e293b' }}>
         {item.title}
       </h3>
 
@@ -1160,7 +1160,7 @@ export default function Roadmap() {
   }
 
   return (
-    <div className="min-h-screen" style={{ background: '#0f0f1e' }}>
+    <div className="min-h-screen" style={{ background: '#fafafa' }}>
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         {/* ── Header ─────────────────────────────────────────────── */}
         <motion.div
@@ -1216,10 +1216,10 @@ export default function Roadmap() {
               <div
                 key={s.label}
                 className="rounded-xl border p-3 text-center"
-                style={{ background: '#16213e', borderColor: '#2a3a5c' }}
+                style={{ background: '#ffffff', borderColor: '#e5e7eb' }}
               >
                 <s.icon size={18} style={{ color: s.color }} className="mx-auto mb-1" />
-                <div className="text-2xl font-bold" style={{ color: '#e2e8f0' }}>
+                <div className="text-2xl font-bold" style={{ color: '#1e293b' }}>
                   {s.value}
                 </div>
                 <div className="text-xs" style={{ color: '#94a3b8' }}>
@@ -1258,7 +1258,7 @@ export default function Roadmap() {
               style={{
                 background:
                   quarterFilter === q ? '#f2c811' : 'rgba(242,200,17,0.08)',
-                color: quarterFilter === q ? '#1a1a2e' : '#f2c811',
+                color: quarterFilter === q ? '#f5f5f5' : '#f2c811',
                 border: `1px solid ${quarterFilter === q ? '#f2c811' : 'rgba(242,200,17,0.25)'}`,
               }}
             >
@@ -1292,7 +1292,7 @@ export default function Roadmap() {
                 style={{
                   background:
                     categoryFilter === cat ? cfg.color : `${cfg.color}12`,
-                  color: categoryFilter === cat ? '#1a1a2e' : cfg.color,
+                  color: categoryFilter === cat ? '#f5f5f5' : cfg.color,
                   border: `1px solid ${categoryFilter === cat ? cfg.color : cfg.color + '30'}`,
                 }}
               >
@@ -1313,7 +1313,7 @@ export default function Roadmap() {
           >
             <div className="mb-6 flex items-center gap-3">
               <Star size={24} style={{ color: '#f2c811' }} fill="#f2c811" />
-              <h2 className="text-2xl font-bold" style={{ color: '#e2e8f0' }}>
+              <h2 className="text-2xl font-bold" style={{ color: '#1e293b' }}>
                 Les plus attendus
               </h2>
             </div>
@@ -1338,7 +1338,7 @@ export default function Roadmap() {
           {/* Vertical line */}
           <div
             className="absolute top-0 bottom-0 left-4 hidden w-0.5 sm:block"
-            style={{ background: 'linear-gradient(to bottom, #f2c811, #0078d4, #0f0f1e)' }}
+            style={{ background: 'linear-gradient(to bottom, #f2c811, #0078d4, #fafafa)' }}
           />
 
           {groupedByQuarter.map(([quarter, items]) => (
@@ -1347,14 +1347,14 @@ export default function Roadmap() {
               <div
                 className="absolute top-1 left-2 hidden h-5 w-5 rounded-full border-2 sm:block"
                 style={{
-                  background: '#0f0f1e',
+                  background: '#fafafa',
                   borderColor: quarter.startsWith('2026') ? '#94a3b8' : '#f2c811',
                 }}
               />
 
               {/* Quarter header */}
               <div className="mb-5">
-                <h2 className="text-xl font-bold sm:text-2xl" style={{ color: '#e2e8f0' }}>
+                <h2 className="text-xl font-bold sm:text-2xl" style={{ color: '#1e293b' }}>
                   {quarter}
                 </h2>
                 <p className="text-sm" style={{ color: '#94a3b8' }}>
@@ -1396,7 +1396,7 @@ export default function Roadmap() {
         {/* ── Source Attribution ──────────────────────────────────── */}
         <div
           className="mt-16 rounded-xl border p-6 text-center"
-          style={{ background: '#16213e', borderColor: '#2a3a5c' }}
+          style={{ background: '#ffffff', borderColor: '#e5e7eb' }}
         >
           <p className="text-xs leading-relaxed" style={{ color: '#94a3b8' }}>
             Basé sur le{' '}

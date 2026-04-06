@@ -100,7 +100,7 @@ function StatsBar() {
                   {count}
                 </span>
               </div>
-              <div className="h-1.5 rounded-full bg-pbi-dark overflow-hidden">
+              <div className="h-1.5 rounded-full bg-gray-50 overflow-hidden">
                 <motion.div
                   className="h-full rounded-full"
                   style={{ background: categoryColors[cat] }}
@@ -131,7 +131,7 @@ function FunctionCard({ fn, index }: { fn: DaxFunction; index: number }) {
       exit={{ opacity: 0, y: -10, scale: 0.95 }}
       transition={{ duration: 0.3, delay: Math.min(index * 0.03, 0.3) }}
       className="glass-card overflow-hidden hover:border-primary/30 transition-colors group"
-      style={{ borderColor: 'rgba(42, 58, 92, 0.5)' }}
+      style={{ borderColor: 'rgba(229, 231, 235, 0.5)' }}
     >
       {/* Header */}
       <div className="p-4 pb-3">
@@ -173,7 +173,7 @@ function FunctionCard({ fn, index }: { fn: DaxFunction; index: number }) {
               Syntaxe
             </span>
           </div>
-          <div className="rounded-lg bg-pbi-darker/80 border border-pbi-border/50 p-3 overflow-x-auto">
+          <div className="rounded-lg bg-gray-100 border border-pbi-border p-3 overflow-x-auto">
             <code className="text-sm font-mono text-primary whitespace-pre">{fn.syntax}</code>
           </div>
         </div>
@@ -198,7 +198,7 @@ function FunctionCard({ fn, index }: { fn: DaxFunction; index: number }) {
                     Exemple
                   </span>
                 </div>
-                <div className="rounded-lg bg-pbi-darker/80 border border-pbi-border/50 p-3 overflow-x-auto">
+                <div className="rounded-lg bg-gray-100 border border-pbi-border p-3 overflow-x-auto">
                   <code className="text-sm font-mono text-pbi-text whitespace-pre">
                     {fn.example}
                   </code>
@@ -331,7 +331,7 @@ export default function DaxReference() {
                 <X className="w-4 h-4" />
               </button>
             )}
-            <span className="text-xs text-pbi-muted bg-pbi-dark px-2 py-1 rounded-md">
+            <span className="text-xs text-pbi-muted bg-gray-50 px-2 py-1 rounded-md">
               {filteredFunctions.length} resultat{filteredFunctions.length !== 1 ? 's' : ''}
             </span>
           </div>
@@ -351,7 +351,7 @@ export default function DaxReference() {
             className={`shrink-0 px-3 py-1.5 rounded-full text-xs font-medium border transition-all cursor-pointer ${
               selectedCategory === 'All'
                 ? 'bg-primary/15 text-primary border-primary/40'
-                : 'bg-pbi-card text-pbi-muted border-pbi-border/50 hover:border-pbi-muted/50 hover:text-pbi-text'
+                : 'bg-pbi-card text-pbi-muted border-pbi-border hover:border-pbi-muted/50 hover:text-pbi-text'
             }`}
           >
             Toutes ({daxFunctions.length})
