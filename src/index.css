@@ -33,6 +33,16 @@
   --accent-cyan: #67c5d8;
   --accent-rose: #f17eb8;
   --text-tertiary: #a3a3a3;
+
+  /* Pastel bento backgrounds (Notion-style) */
+  --bento-peach: #FFE5D4;
+  --bento-mint: #D6F0E0;
+  --bento-sky: #DCE7F7;
+  --bento-lavender: #E8DFF5;
+  --bento-yellow: #FFF3C4;
+  --bento-rose: #FFD6DC;
+  --bento-cream: #FFF6E8;
+  --bento-sage: #E5EEDC;
 }
 
 @theme {
