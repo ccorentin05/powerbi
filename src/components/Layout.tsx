@@ -183,7 +183,11 @@ function NavbarSearch() {
   return (
     <div className="relative">
       <div className="relative">
-        <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-pbi-muted" />
+        <Search
+          size={15}
+          className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"
+          style={{ color: 'var(--muted-foreground)' }}
+        />
         <input
           ref={inputRef}
           type="text"
@@ -192,26 +196,74 @@ function NavbarSearch() {
           onFocus={() => setIsFocused(true)}
           onBlur={() => setTimeout(() => setIsFocused(false), 150)}
           placeholder="Rechercher..."
-          className="w-48 lg:w-64 pl-9 pr-16 py-1.5 rounded-lg text-sm bg-[var(--color-pbi-darker)] border border-[var(--color-pbi-border)] text-[var(--color-pbi-text)] placeholder-[var(--color-pbi-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/20 focus:border-[var(--color-primary)]/50 transition-all"
+          className="w-56 lg:w-72 pl-10 pr-16 py-2.5 rounded-lg text-sm border focus:outline-none transition-all"
+          style={{
+            background: 'var(--background)',
+            borderColor: 'var(--border)',
+            color: 'var(--foreground)',
+          }}
+          onFocusCapture={(e) => {
+            e.currentTarget.style.borderColor = 'var(--primary)'
+            e.currentTarget.style.background = 'var(--card)'
+          }}
+          onBlurCapture={(e) => {
+            e.currentTarget.style.borderColor = 'var(--border)'
+            e.currentTarget.style.background = 'var(--background)'
+          }}
         />
-        <span className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[10px] text-[var(--color-pbi-muted)] bg-white px-1.5 py-0.5 rounded border border-[var(--color-pbi-border)] font-mono">
+        <span
+          className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] px-1.5 py-0.5 rounded border font-mono pointer-events-none"
+          style={{
+            background: 'var(--card)',
+            borderColor: 'var(--border)',
+            color: 'var(--muted-foreground)',
+          }}
+        >
           Ctrl+K
         </span>
       </div>
 
       {showDropdown && (
-        <div className="absolute right-0 top-full mt-2 w-80 rounded-xl bg-white border border-[var(--color-pbi-border)] shadow-lg shadow-black/5 overflow-hidden z-50 max-h-80 overflow-y-auto">
+        <div
+          className="absolute right-0 top-full mt-3 w-96 rounded-xl border overflow-hidden z-50 max-h-[480px] overflow-y-auto py-2"
+          style={{
+            background: 'var(--card)',
+            borderColor: 'var(--border)',
+            boxShadow: '0 8px 30px rgba(0,0,0,0.12)',
+          }}
+        >
           {results.map((page) => (
             <button
               key={page.path}
               onMouseDown={() => handleSelect(page.path)}
-              className="w-full flex items-center gap-3 px-4 py-3 hover:bg-[var(--color-pbi-darker)] transition-colors text-left cursor-pointer"
+              className="w-full flex items-center gap-4 px-5 py-3 transition-colors text-left cursor-pointer"
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'var(--secondary)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'transparent'
+              }}
             >
-              <page.icon className="w-4 h-4 text-[var(--color-pbi-muted)] shrink-0" />
-              <div className="min-w-0">
-                <div className="text-sm font-medium text-[var(--color-pbi-text)] truncate">{page.label}</div>
+              <div
+                className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
+                style={{ background: 'rgba(110,124,241,0.1)' }}
+              >
+                <page.icon size={16} style={{ color: 'var(--primary)' }} />
+              </div>
+              <div className="min-w-0 flex-1">
+                <div
+                  className="text-sm font-medium truncate"
+                  style={{ color: 'var(--foreground)' }}
+                >
+                  {page.label}
+                </div>
                 {page.description && (
-                  <div className="text-xs text-[var(--color-pbi-muted)] truncate">{page.description}</div>
+                  <div
+                    className="text-xs truncate mt-0.5"
+                    style={{ color: 'var(--muted-foreground)' }}
+                  >
+                    {page.description}
+                  </div>
                 )}
               </div>
             </button>
@@ -259,22 +311,44 @@ function NavDropdown({
       onMouseLeave={handleMouseLeave}
     >
       <button
-        className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
-          hasActive
-            ? 'text-[var(--color-primary)]'
-            : 'text-[var(--color-pbi-muted)] hover:text-[var(--color-pbi-text)] hover:bg-[var(--color-pbi-darker)]'
-        }`}
+        className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer"
+        style={{
+          color: hasActive ? 'var(--primary)' : 'var(--muted-foreground)',
+          background: hasActive ? 'rgba(110,124,241,0.08)' : 'transparent',
+        }}
+        onMouseEnter={(e) => {
+          if (!hasActive) {
+            e.currentTarget.style.color = 'var(--foreground)'
+            e.currentTarget.style.background = 'var(--secondary)'
+          }
+        }}
+        onMouseLeave={(e) => {
+          if (!hasActive) {
+            e.currentTarget.style.color = 'var(--muted-foreground)'
+            e.currentTarget.style.background = 'transparent'
+          }
+        }}
       >
         {category.label}
-        <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown
+          size={14}
+          className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+        />
       </button>
 
       <div
-        className={`absolute left-0 top-full pt-1 z-50 transition-all duration-150 ${
+        className={`absolute left-0 top-full pt-3 z-50 transition-all duration-150 ${
           isOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-1'
         }`}
       >
-        <div className="w-64 rounded-xl bg-white border border-[var(--color-pbi-border)] shadow-lg shadow-black/5 overflow-hidden py-1">
+        <div
+          className="w-80 rounded-xl border overflow-hidden py-2"
+          style={{
+            background: 'var(--card)',
+            borderColor: 'var(--border)',
+            boxShadow: '0 8px 30px rgba(0,0,0,0.12)',
+          }}
+        >
           {category.items.map((item) => {
             const isActive = currentPath === item.path
             return (
@@ -285,16 +359,40 @@ function NavDropdown({
                   setIsOpen(false)
                   onNavigate?.()
                 }}
-                className={`flex items-center gap-3 px-4 py-2.5 transition-colors ${
-                  isActive
-                    ? 'bg-[var(--color-primary)]/5 text-[var(--color-primary)]'
-                    : 'text-[var(--color-pbi-text)] hover:bg-[var(--color-pbi-darker)]'
-                }`}
+                className="flex items-start gap-4 px-5 py-3.5 transition-colors"
+                style={{
+                  background: isActive ? 'rgba(110,124,241,0.06)' : 'transparent',
+                }}
+                onMouseEnter={(e) => {
+                  if (!isActive) e.currentTarget.style.background = 'var(--secondary)'
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActive) e.currentTarget.style.background = 'transparent'
+                }}
               >
-                <item.icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-[var(--color-primary)]' : 'text-[var(--color-pbi-muted)]'}`} />
-                <div className="min-w-0">
-                  <div className="text-sm font-medium truncate">{item.label}</div>
-                  <div className={`text-xs truncate ${isActive ? 'text-[var(--color-primary)]/70' : 'text-[var(--color-pbi-muted)]'}`}>
+                <div
+                  className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
+                  style={{
+                    background: isActive
+                      ? 'rgba(110,124,241,0.15)'
+                      : 'rgba(110,124,241,0.08)',
+                  }}
+                >
+                  <item.icon size={16} style={{ color: 'var(--primary)' }} />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div
+                    className="text-sm font-medium"
+                    style={{
+                      color: isActive ? 'var(--primary)' : 'var(--foreground)',
+                    }}
+                  >
+                    {item.label}
+                  </div>
+                  <div
+                    className="text-xs mt-0.5 leading-relaxed"
+                    style={{ color: 'var(--muted-foreground)' }}
+                  >
                     {item.description}
                   </div>
                 </div>
@@ -335,7 +433,7 @@ function MobileMenu({
       />
 
       {/* Panel */}
-      <div className="fixed top-[57px] left-0 right-0 z-50 bg-white border-b border-[var(--color-pbi-border)] shadow-lg shadow-black/5 max-h-[calc(100vh-57px)] overflow-y-auto">
+      <div className="fixed top-[64px] left-0 right-0 z-50 bg-white border-b border-[var(--color-pbi-border)] shadow-lg shadow-black/5 max-h-[calc(100vh-64px)] overflow-y-auto">
         <nav className="py-2 px-4">
           {navigation.map((entry) => {
             if (!isCategory(entry)) {
@@ -422,27 +520,37 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   }, [location.pathname])
 
   return (
-    <div className="min-h-screen bg-[var(--color-pbi-darker)]">
+    <div className="min-h-screen" style={{ background: 'var(--background)' }}>
       {/* Top Navbar */}
       <header
-        className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-[var(--color-pbi-border)]"
+        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b"
+        style={{
+          background: 'rgba(255,255,255,0.85)',
+          borderColor: 'var(--border)',
+        }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-14">
+        <div className="mx-auto w-full max-w-7xl px-6 sm:px-10">
+          <div className="flex items-center justify-between h-16 gap-8">
             {/* Left: Logo + Nav */}
-            <div className="flex items-center gap-8">
+            <div className="flex items-center gap-10">
               {/* Logo */}
-              <NavLink to="/" className="flex items-center gap-2.5 shrink-0">
-                <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-[var(--color-primary)]/10">
-                  <BarChart3 className="w-4.5 h-4.5 text-[var(--color-primary)]" />
+              <NavLink to="/" className="flex items-center gap-3 shrink-0">
+                <div
+                  className="flex items-center justify-center w-9 h-9 rounded-lg"
+                  style={{ background: 'rgba(110,124,241,0.1)' }}
+                >
+                  <BarChart3 size={18} style={{ color: 'var(--primary)' }} />
                 </div>
-                <span className="font-bold text-[var(--color-pbi-text)] text-base hidden sm:block">
-                  Power BI & Fabric
+                <span
+                  className="font-semibold text-base hidden sm:block"
+                  style={{ color: 'var(--foreground)', letterSpacing: '-0.01em' }}
+                >
+                  Power BI &amp; Fabric
                 </span>
               </NavLink>
 
               {/* Desktop Nav */}
-              <nav className="hidden lg:flex items-center gap-0.5">
+              <nav className="hidden lg:flex items-center gap-2">
                 {navigation.map((entry) =>
                   isCategory(entry) ? (
                     <NavDropdown
@@ -454,11 +562,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     <NavLink
                       key={entry.id}
                       to={entry.path}
-                      className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                        currentPath === entry.path
-                          ? 'text-[var(--color-primary)]'
-                          : 'text-[var(--color-pbi-muted)] hover:text-[var(--color-pbi-text)] hover:bg-[var(--color-pbi-darker)]'
-                      }`}
+                      className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                      style={({ isActive }) => ({
+                        color: isActive ? 'var(--primary)' : 'var(--muted-foreground)',
+                        background: isActive ? 'rgba(110,124,241,0.08)' : 'transparent',
+                      })}
                     >
                       {entry.label}
                     </NavLink>
@@ -468,7 +576,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
 
             {/* Right: Search + Mobile toggle */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4 shrink-0">
               <div className="hidden md:block">
                 <NavbarSearch />
               </div>
@@ -476,9 +584,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               {/* Mobile hamburger */}
               <button
                 onClick={() => setMobileOpen((prev) => !prev)}
-                className="lg:hidden p-2 -mr-2 rounded-lg text-[var(--color-pbi-muted)] hover:text-[var(--color-pbi-text)] hover:bg-[var(--color-pbi-darker)] transition-colors cursor-pointer"
+                className="lg:hidden p-2 rounded-lg transition-colors cursor-pointer"
+                style={{ color: 'var(--muted-foreground)' }}
               >
-                {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                {mobileOpen ? <X size={20} /> : <Menu size={20} />}
               </button>
             </div>
           </div>
@@ -489,7 +598,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <MobileMenu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} currentPath={currentPath} />
 
       {/* Main Content */}
-      <main className="pt-14">
+      <main className="pt-16">
         {children}
       </main>
     </div>
